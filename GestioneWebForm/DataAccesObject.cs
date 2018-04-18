@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Interfaces;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -18,8 +17,6 @@ namespace DAO{
         void AddCvStudi(string MatrCv,PerStud studi);
         void AddEspLav(string MatrCv, EspLav esp );
         void AddCompetenze(string MatrCv, Competenza comp);
-	
-	    public enum HType { HMalattia = 1, HPermesso, HFerie }
 		void CompilaHLavoro(DateTime data, int ore, int idCommessa, int idUtente);
 		void Compila(DateTime data, int ore, HType tipoOre, int idUtente);
 		Giorno VisualizzaGiorno(DateTime data, int idUtente);
@@ -43,6 +40,7 @@ namespace DAO{
         //Mostra tutti i corsi a cui è iscritto un determinato studente(idStudente)
         List<Corso>ListaCorsi(int idUtente);
     }
+	 public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class DataAccesObject : IDao {
         public void AddCompetenze(string MatrCv,Competenza comp) {
             throw new NotImplementedException();
