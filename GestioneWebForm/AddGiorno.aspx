@@ -6,6 +6,7 @@
    
     <b>Data (*)</b> <br />
     <asp:TextBox runat="server" Text="gg/mm/aaaa" ID="data"></asp:TextBox> <br />
+    
     <br />
     <b> Tipologia Ore</b> <br />
      <asp:ListBox id="listaore" 
