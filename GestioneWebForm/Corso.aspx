@@ -38,14 +38,36 @@
                  <%=corso.Fine%>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-               <asp:Button OnClick="Lezioni_Click" CssClass="btn btn-default" Text="Lezioni" runat="server" />
-            </div>
-        </div>
+        <asp:Button OnClick="LezioniOn_Click" CssClass="btn btn-default" Text="Mostra lezioni" runat="server" />
+         <asp:Button OnClick="AddLezione_Click" CssClass="btn btn-default" Text="Aggiungi Lezione" runat="server" />
         <hr />
-        <%foreach(DAO.Lezione l in corso.Lezioni){%>
-            
+        <%if(lezioni!=null){ %>
+            <h3><b>Lezioni del corso <%=corso.Nome%></b></h3>
+            <div class="row">
+                <div class="col-md-3">
+                    Nome
+                </div>
+                <div class="col-md-7">
+                    Descrizione
+                </div>
+                <div class="col-md-2">
+                    Durata
+                </div>
+            </div>
+            <%foreach(DAO.Lezione l in lezioni){%>
+                <div class="row">
+                    <div class="col-md-3">
+                        <%=l.Nome%>
+                    </div>
+                    <div class="col-md-7">
+                         <%=l.Descrizione%>
+                    </div>
+                    <div class="col-md-2">
+                         <%=l.Durata%>
+                    </div>
+                </div>
+            <%}%>
+             <asp:Button OnClick="LezioniOff_Click" CssClass="btn btn-default" Text="Non mostrare" runat="server" />   
         <%}%>
     </div>
 </asp:Content>

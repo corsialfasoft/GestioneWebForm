@@ -10,10 +10,18 @@ namespace GestioneWebForm {
     public partial class _Corso : Page {
         DataAccesObject d = new DataAccesObject();
         public Corso corso{get;set;}
+        public List<Lezione> lezioni{ get;set;}
         public string Message{get;set;}
 
-        protected void Lezioni_Click(object sender,EventArgs e) {
-            lezioni = d.
+        protected void LezioniOn_Click(object sender,EventArgs e) {
+            lezioni = corso.Lezioni?? null;
+        }
+        protected void LezioniOff_Click(object sender,EventArgs e) {
+            lezioni = null;
+        }
+        protected void AddLezione_Click(object sender,EventArgs e) {
+            var url = String.Format($"~/AddLezione?idCorso={corso.Id}.aspx");
+            Response.Redirect(url);
         }
 
         protected void Page_Load(object sender,EventArgs e) {

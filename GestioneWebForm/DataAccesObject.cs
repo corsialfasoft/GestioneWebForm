@@ -120,13 +120,19 @@ namespace DAO{
         }
 
         public Corso SearchCorsi(int idCorso) {
-            return new Corso{
+            Corso c = new Corso{
                 Id=1,
                 Nome="Primo",
                 Descrizione="Si imparano tante cose",
                 Inizio = DateTime.Today,
-                Fine = DateTime.Today
+                Fine = DateTime.Today,
+                
             };
+            c.Lezioni = new List<Lezione>();
+            c.Lezioni.Add(new Lezione{Id=1,Nome="First",Descrizione="prima lezione",Durata=2});
+            c.Lezioni.Add(new Lezione{Id=2,Nome="Second",Descrizione="terza lezione",Durata=3});
+            c.Lezioni.Add(new Lezione{Id=3,Nome="Third",Descrizione="terza lezione",Durata=2});
+            return c;
         }
 
         public List<Corso> SearchCorsi(string descrizione) {
