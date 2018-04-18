@@ -129,6 +129,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Corso.aspx" />
+    <Content Include="AddLezione.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -194,6 +195,13 @@
     </Compile>
     <Compile Include="Corso.aspx.designer.cs">
       <DependentUpon>Corso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddLezione.aspx.cs">
+      <DependentUpon>AddLezione.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddLezione.aspx.designer.cs">
+      <DependentUpon>AddLezione.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

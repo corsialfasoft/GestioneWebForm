@@ -60,7 +60,7 @@ namespace DAO{
         }
 
         public void AddLezione(int idCorso,Lezione lezione) {
-            throw new NotImplementedException();
+            
         }
 
         public void AggiungiCV(CV a) {
