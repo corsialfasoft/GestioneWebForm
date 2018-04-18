@@ -9,6 +9,7 @@ using DAO;
 
 namespace GestioneWebForm {
     public partial class AddLezione : Page {
+                public string Message{get;set;}
 				public Lezione newlesson {get; set;}
 				protected void Page_Load(object sender,EventArgs e) {
 					
@@ -20,8 +21,19 @@ namespace GestioneWebForm {
 					newlesson.Descrizione = descrizione.Text;
 					newlesson.Durata = int.Parse(Durata.Text);
                     string a = Request["idCorso"];
-					DataAccess.AddLezione(int.Parse(a),newlesson);
-
+                    if(int.TryParse(a, out int id)){ 
+                        DataAccess.AddLezione(id,newlesson);
+                        Message = $"Lezine {"newlesson.Nome"} aggiunta al corso selezionato";
+                        var url = String.Format($"~/Corso?id={id}");
+                        Response.Redirect(url);
+                        return ;                
+                    }else{ 
+                        Message = "Corso inesistente";
+                        var url = String.Format($"~/ListaCorsi");
+                        Response.Redirect(url);
+                        return;
+                    }
+                    
 				}  
 	}	
 }

@@ -8,7 +8,7 @@
     <div class="container">
        <div class="row">
             <div class="col-md-3">
-               Nome   
+               <b>Nome</b>
             </div>
             <div class="col-md-9">
                  <%=corso.Nome%>
@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-               Descrizione  
+               <b>Descrizione</b>
             </div>
             <div class="col-md-9">
                  <%=corso.Descrizione%>
@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-               Data Inizio  
+               <b>Data Inizio</b>
             </div>
             <div class="col-md-9">
                  <%=corso.Inizio%>
@@ -32,7 +32,7 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-               Data Fine  
+              <b>Data Fine</b>
             </div>
             <div class="col-md-9">
                  <%=corso.Fine%>
@@ -45,13 +45,13 @@
             <h3><b>Lezioni del corso <%=corso.Nome%></b></h3>
             <div class="row">
                 <div class="col-md-3">
-                    Nome
+                   <h3> <b>Nome</b></h3>
                 </div>
                 <div class="col-md-7">
-                    Descrizione
+                    <h3><b>Descrizione</b></h3>
                 </div>
                 <div class="col-md-2">
-                    Durata
+                    <h3><b>Durata</b></h3>
                 </div>
             </div>
             <%foreach(DAO.Lezione l in lezioni){%>

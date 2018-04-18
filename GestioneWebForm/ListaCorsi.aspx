@@ -33,13 +33,13 @@
     <hr />
     <div class="row">
         <div class="col-md-2">
-            <h3>Codice</h3>
+            <h3><b>Codice</b></h3>
         </div>
         <div class="col-md-8">
-            <h3>Descrizone</h3>
+            <h3><b>Descrizone</b></h3>
         </div>
         <div class="col-md-2">
-            <h3>Dettagli</h3>
+            <h3><b>Dettagli</b></h3>
         </div>
     </div>
     <asp:Table id="Table1"
