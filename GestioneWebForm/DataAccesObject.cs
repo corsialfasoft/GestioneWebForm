@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Interfaces;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -18,8 +17,6 @@ namespace DAO{
         void AddCvStudi(string MatrCv,PerStud studi);
         void AddEspLav(string MatrCv, EspLav esp );
         void AddCompetenze(string MatrCv, Competenza comp);
-	
-	    public enum HType { HMalattia = 1, HPermesso, HFerie }
 		void CompilaHLavoro(DateTime data, int ore, int idCommessa, int idUtente);
 		void Compila(DateTime data, int ore, HType tipoOre, int idUtente);
 		Giorno VisualizzaGiorno(DateTime data, int idUtente);
@@ -43,6 +40,7 @@ namespace DAO{
         //Mostra tutti i corsi a cui è iscritto un determinato studente(idStudente)
         List<Corso>ListaCorsi(int idUtente);
     }
+	 public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class DataAccesObject : IDao {
         public void AddCompetenze(string MatrCv,Competenza comp) {
             throw new NotImplementedException();
@@ -109,7 +107,11 @@ namespace DAO{
         }
 
         public CV Search(string id) {
-            throw new NotImplementedException();
+            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
+			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
+			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
+			return new CV {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds };
+			;
         }
 
         public List<CV> SearchChiava(string chiava) {
@@ -143,6 +145,14 @@ namespace DAO{
         public Giorno VisualizzaGiorno(DateTime data,int idUtente) {
             throw new NotImplementedException();
         }
+    }
+    public class Profilo{ 
+        public string Matrincola{get;set;}
+        public string Nome{get;set;}
+        public string Cognome{get;set;}
+        public string Ruolo{get;set;}
+        public string Username{get;set;}
+        public string Password{get;set;}
     }
 
     public class Studente{ 
