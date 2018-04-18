@@ -13,15 +13,14 @@ namespace GestioneWebForm {
 				protected void Page_Load(object sender,EventArgs e) {
 					
 				}
-    
-
 				public void AddLezione_Click(object sender,EventArgs e) {	
 					Lezione newlesson = new Lezione();
 					DataAccesObject DataAccess = new DataAccesObject();
 					newlesson.Nome = nome.Text;
 					newlesson.Descrizione = descrizione.Text;
-					newlesson.Durata = Int32.Parse(Durata.Text);
-					DataAccess.AddLezione(Int32.Parse(Request["idCorso"]),newlesson);
+					newlesson.Durata = int.Parse(Durata.Text);
+                    string a = Request["idCorso"];
+					DataAccess.AddLezione(int.Parse(a),newlesson);
 
 				}  
 	}	

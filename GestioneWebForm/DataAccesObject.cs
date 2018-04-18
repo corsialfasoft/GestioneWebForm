@@ -136,7 +136,12 @@ namespace DAO{
         }
 
         public List<Corso> SearchCorsi(string descrizione) {
-            throw new NotImplementedException();
+            List<Corso> corso = new List<Corso>();
+            corso.Add(new Corso{ Id=1, Nome="Primo",Descrizione="Si imparano tante cose",Inizio = DateTime.Today,Fine = DateTime.Today,});
+            corso.Add(new Corso{ Id=2, Nome="Secondo",Descrizione="Ciccio bello",Inizio = DateTime.Today,Fine = DateTime.Today,});
+            corso.Add(new Corso{ Id=3, Nome="Terzo",Descrizione="Aiuto non so che scrivere",Inizio = DateTime.Today,Fine = DateTime.Today,});
+            corso.Add(new Corso{ Id=4, Nome="Quarto",Descrizione="Ho sentito che a flo piacciono i treni",Inizio = DateTime.Today,Fine = DateTime.Today,});
+            return corso;
         }
 
         public List<Corso> SearchCorsi(string descrizione,int idUtente) {

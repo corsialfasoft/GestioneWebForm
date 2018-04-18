@@ -20,13 +20,12 @@ namespace GestioneWebForm {
             lezioni = null;
         }
         protected void AddLezione_Click(object sender,EventArgs e) {
-            var url = String.Format($"~/AddLezione?idCorso={corso.Id}.aspx");
+            var url = String.Format($"~/AddLezione?idCorso={corso.Id}");
             Response.Redirect(url);
         }
 
         protected void Page_Load(object sender,EventArgs e) {
-            //string a = Request["idCorso"];
-            string a = "2";
+            string a = Request["id"];
             if(int.TryParse(a, out int idi)){ 
                 corso = d.SearchCorsi(idi); 
             }else{
