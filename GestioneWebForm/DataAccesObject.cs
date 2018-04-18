@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Interfaces;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -18,8 +17,6 @@ namespace DAO{
         void AddCvStudi(string MatrCv,PerStud studi);
         void AddEspLav(string MatrCv, EspLav esp );
         void AddCompetenze(string MatrCv, Competenza comp);
-	
-	    public enum HType { HMalattia = 1, HPermesso, HFerie }
 		void CompilaHLavoro(DateTime data, int ore, int idCommessa, int idUtente);
 		void Compila(DateTime data, int ore, HType tipoOre, int idUtente);
 		Giorno VisualizzaGiorno(DateTime data, int idUtente);
@@ -31,7 +28,6 @@ namespace DAO{
         void AddLezione(int idCorso, Lezione lezione);
         //Iscrizione di uno studente a un determinato corso. Lo puo fare solo lo studente specifico
         void Iscriviti (int idCorso, int idStudente);
-
         //Cerca un determinato corso 
         Corso SearchCorsi(int idCorso);
         //Cerca tutti i corsi che contine la "descrizione" nei suoi attributi(nome,descrizione)
@@ -166,6 +162,7 @@ namespace DAO{
         public int Durata{get;set;}
     }
 	
+	public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class Giorno {
 		private List<int> _id;
 		private int _id_utente;
