@@ -14,7 +14,7 @@ namespace GestioneWebForm {
 
 		protected void Go_Click(object sender,EventArgs e)
 		{
-			Matricola = P.Matricola;
+			Matricola = "banana";
 			Response.Redirect($"~/DettaglioCurriculum.aspx?id={Matricola}");
 		}
 	}

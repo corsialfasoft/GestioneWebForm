@@ -114,11 +114,23 @@ namespace DAO{
         }
 
         public List<CV> SearchChiava(string chiava) {
-            throw new NotImplementedException();
+			List<CV> trovati = new List<CV>();
+            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
+			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
+			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
+			return trovati=new List<CV> {new CV  {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
+				new CV  {Nome="Pano",Cognome="Panano",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
+				new CV {Nome="Pono",Cognome="Ponono",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds }};
         }
 
         public List<CV> SearchCognome(string cognome) {
-            throw new NotImplementedException();
+           List<CV> trovati = new List<CV>();
+            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
+			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
+			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
+			return trovati=new List<CV> {new CV  {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
+				new CV  {Nome="Pano",Cognome="Panano",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
+				new CV {Nome="Pono",Cognome="Ponono",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds }};
         }
 
         public Corso SearchCorsi(int idCorso) {
@@ -134,11 +146,23 @@ namespace DAO{
         }
 
         public List<CV> SearchEta(int eta) {
-            throw new NotImplementedException();
+           List<CV> trovati = new List<CV>();
+            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
+			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
+			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
+			return trovati=new List<CV> {new CV  {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
+				new CV  {Nome="Pano",Cognome="Panano",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
+				new CV {Nome="Pono",Cognome="Ponono",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds }};
         }
 
         public List<CV> SearchRange(int etmin,int etmax) {
-            throw new NotImplementedException();
+           List<CV> trovati = new List<CV>();
+            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
+			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
+			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
+			return trovati=new List<CV> {new CV  {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
+				new CV  {Nome="Pano",Cognome="Panano",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
+				new CV {Nome="Pono",Cognome="Ponono",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds }};
         }
 
         public Giorno VisualizzaGiorno(DateTime data,int idUtente) {

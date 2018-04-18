@@ -13,12 +13,48 @@ namespace GestioneWebForm {
     public partial class _RicercaCurriculum {
         
         /// <summary>
-        /// Controllo Codice.
+        /// Controllo Chiava.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Codice;
+        protected global::System.Web.UI.WebControls.TextBox Chiava;
+        
+        /// <summary>
+        /// Controllo Eta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Eta;
+        
+        /// <summary>
+        /// Controllo EtaMin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox EtaMin;
+        
+        /// <summary>
+        /// Controllo EtaMax.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox EtaMax;
+        
+        /// <summary>
+        /// Controllo Cognome.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Cognome;
     }
 }
