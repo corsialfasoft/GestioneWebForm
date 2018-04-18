@@ -144,6 +144,14 @@ namespace DAO{
             throw new NotImplementedException();
         }
     }
+    public class Profilo{ 
+        public string Matrincola{get;set;}
+        public string Nome{get;set;}
+        public string Cognome{get;set;}
+        public string Ruolo{get;set;}
+        public string Username{get;set;}
+        public string Password{get;set;}
+    }
 
     public class Studente{ 
         public int Id{get;set;}
