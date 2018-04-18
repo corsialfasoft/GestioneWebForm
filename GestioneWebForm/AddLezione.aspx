@@ -11,13 +11,13 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <label> Descrizione </label>
+            <label> Descrizione </label><br />
              <asp:TextBox ID="descrizione" runat="server" placeholder="Inserisci una descrizione"></asp:TextBox>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <label> Durata </label>
+            <label> Durata </label><br />
             <asp:TextBox ID="Durata" runat="server" placeholder="Inserisci la durata del corso"></asp:TextBox>           
         </div>
     </div>

@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DAO;
+
+namespace GestioneWebForm {
+    public partial class _Corso : Page {
+        DataAccesObject d = new DataAccesObject();
+        public Corso corso{get;set;}
+        public List<Lezione> lezioni{ get;set;}
+        public string Message{get;set;}
+
+        protected void LezioniOn_Click(object sender,EventArgs e) {
+            lezioni = corso.Lezioni?? null;
+        }
+        protected void LezioniOff_Click(object sender,EventArgs e) {
+            lezioni = null;
+        }
+        protected void AddLezione_Click(object sender,EventArgs e) {
+            var url = String.Format($"~/AddLezione?idCorso={corso.Id}");
+            Response.Redirect(url);
+        }
+
+        protected void Page_Load(object sender,EventArgs e) {
+            string a = Request["id"];
+            if(int.TryParse(a, out int idi)){ 
+                corso = d.SearchCorsi(idi); 
+            }else{
+                Message = "Nessun elemento trovato";     
+            }
+        }
+    }
+}

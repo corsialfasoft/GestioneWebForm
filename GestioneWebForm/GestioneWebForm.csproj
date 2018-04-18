@@ -128,6 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="ListaCorsi.aspx" />
+    <Content Include="Corso.aspx" />
     <Content Include="AddLezione.aspx" />
     <Content Include="MyPage.aspx" />
     <Content Include="Contact.aspx" />
@@ -189,6 +191,20 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ListaCorsi.aspx.cs">
+      <DependentUpon>ListaCorsi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaCorsi.aspx.designer.cs">
+      <DependentUpon>ListaCorsi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Corso.aspx.cs">
+      <DependentUpon>Corso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Corso.aspx.designer.cs">
+      <DependentUpon>Corso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddLezione.aspx.cs">
       <DependentUpon>AddLezione.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
