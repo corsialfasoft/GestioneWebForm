@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="MyPage.aspx" />
     <Content Include="AddGiorno.aspx" />
     <Content Include="ViewCommessa.aspx" />
     <Content Include="MainGeTime.aspx" />
@@ -210,6 +211,13 @@
     </Compile>
     <Compile Include="MainGeTime.aspx.designer.cs">
       <DependentUpon>MainGeTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyPage.aspx.cs">
+      <DependentUpon>MyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyPage.aspx.designer.cs">
+      <DependentUpon>MyPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

@@ -55,6 +55,7 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">Informazioni</a></li>
                         <li><a runat="server" href="~/Contact">Contatto</a></li>
+                        <li><a runat="server" href="~/MyPage">My Page</a></li>
                         <li><a runat="server" href="~/MainGeTime">GeTime</a></li>
                     </ul>
                 </div>
