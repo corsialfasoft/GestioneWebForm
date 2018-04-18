@@ -11,33 +11,41 @@
                Nome   
             </div>
             <div class="col-md-9">
-                 <%=corso%>
-               
+                 <%=corso.Nome%>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
-               Descrizone
+               Descrizione  
             </div>
             <div class="col-md-9">
-                <%=Prod.Descrizione%>
+                 <%=corso.Descrizione%>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
-                Quantita Richiesta
+               Data Inizio  
             </div>
             <div class="col-md-9">
-                <asp:TextBox ID="qta" runat="server"></asp:TextBox>
+                 <%=corso.Inizio%>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
-                <asp:Button OnClick="Aggiungi_Click" CssClass="btn btn-default" Text="Aggiungi al Carrello" runat="server" />
+               Data Fine  
             </div>
             <div class="col-md-9">
-                <asp:Button OnClick="Annulla_Click" CssClass="btn btn-default" Text="Clicca qui" runat="server" />
+                 <%=corso.Fine%>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-3">
+               <asp:Button OnClick="Lezioni_Click" CssClass="btn btn-default" Text="Lezioni" runat="server" />
+            </div>
+        </div>
+        <hr />
+        <%foreach(DAO.Lezione l in corso.Lezioni){%>
+            
+        <%}%>
     </div>
 </asp:Content>

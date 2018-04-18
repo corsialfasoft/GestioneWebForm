@@ -11,8 +11,14 @@ namespace GestioneWebForm {
         DataAccesObject d = new DataAccesObject();
         public Corso corso{get;set;}
         public string Message{get;set;}
+
+        protected void Lezioni_Click(object sender,EventArgs e) {
+            lezioni = d.
+        }
+
         protected void Page_Load(object sender,EventArgs e) {
-            string a = Request["id"];
+            //string a = Request["idCorso"];
+            string a = "2";
             if(int.TryParse(a, out int idi)){ 
                 corso = d.SearchCorsi(idi); 
             }else{
