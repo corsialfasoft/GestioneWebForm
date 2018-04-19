@@ -128,6 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="MyPage.aspx" />
+    <Content Include="AddGiorno.aspx" />
     <Content Include="ViewCommessa.aspx" />
     <Content Include="MainGeTime.aspx" />
     <Content Include="Contact.aspx" />
@@ -189,6 +191,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AddGiorno.aspx.cs">
+      <DependentUpon>AddGiorno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddGiorno.aspx.designer.cs">
+      <DependentUpon>AddGiorno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewCommessa.aspx.cs">
       <DependentUpon>ViewCommessa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -203,6 +212,13 @@
     <Compile Include="MainGeTime.aspx.designer.cs">
       <DependentUpon>MainGeTime.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MyPage.aspx.cs">
+      <DependentUpon>MyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyPage.aspx.designer.cs">
+      <DependentUpon>MyPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +226,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataAccesObject.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
