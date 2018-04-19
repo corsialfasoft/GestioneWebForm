@@ -1,6 +1,7 @@
-﻿<%@ Page Title="Lista Corso" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaCorsi.aspx.cs" Inherits="GestioneWebForm._ListaCorsi" %>
+﻿<%@ Page Title="Lista Corso" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CercaCorsi.aspx.cs" Inherits="GestioneWebForm._CercaCorsi" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+     <%@ Register TagPrefix="GWF" TagName="CorsiTable" Src="~/Controls/ListaCorsi.ascx" %>
     <div class="text-warning">
         <%=Message%>
     </div>
@@ -25,31 +26,13 @@
                 <asp:TextBox ID="descrizione" runat="server"></asp:TextBox>
             </div>
         </div>
+        <hr />
         <asp:Button OnClick="Cerca_Click" CssClass="btn btn-default" Text="Cerca" runat="server" />
         <asp:Button OnClick="MyCerca_Click" CssClass="btn btn-default" Text="CercaMieiCorsi" runat="server" />
         <%if(ut.Ruolo=="admin"){%>
-            <asp:Button OnClick="CreaCorso_Click" CssClass="btn btn-default" Text="Crea" runat="server" />
+            <asp:Button PostBackUrl="~/AggiungiCorso" CssClass="btn btn-default" Text="Aggiungi" runat="server" />
         <%}%>
+        <GWF:CorsiTable  ID="corsiTable" runat="server" />
     </div>
     
-    <%if(corsi != null && corsi.Count>0) {%>
-    <hr />
-    <div class="row">
-        <div class="col-md-2">
-            <h3><b>Codice</b></h3>
-        </div>
-        <div class="col-md-8">
-            <h3><b>Descrizone</b></h3>
-        </div>
-        <div class="col-md-2">
-            <h3><b>Dettagli</b></h3>
-        </div>
-    </div>
-    <asp:Table id="Table1"
-            width="100%"
-            CellPadding="10"
-            GridLines="None"
-            HorizontalAlign="Center"
-            Runat="server"/>
-    <%} %>
 </asp:Content>

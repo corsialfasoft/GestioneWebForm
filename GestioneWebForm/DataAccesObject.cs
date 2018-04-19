@@ -47,7 +47,7 @@ namespace DAO{
         }
 
         public void AddCorso(Corso corso) {
-            throw new NotImplementedException();
+            
         }
 
         public void AddCvStudi(string MatrCv,PerStud studi) {

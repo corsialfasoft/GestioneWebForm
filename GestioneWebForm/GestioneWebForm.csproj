@@ -128,7 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="ListaCorsi.aspx" />
+    <Content Include="Controls\ListaCorsi.ascx" />
+    <Content Include="CercaCorsi.aspx" />
     <Content Include="Corso.aspx" />
     <Content Include="AddLezione.aspx" />
     <Content Include="MyPage.aspx" />
@@ -192,12 +193,19 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ListaCorsi.aspx.cs">
-      <DependentUpon>ListaCorsi.aspx</DependentUpon>
+    <Compile Include="Controls\ListaCorsi.ascx.cs">
+      <DependentUpon>ListaCorsi.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListaCorsi.aspx.designer.cs">
-      <DependentUpon>ListaCorsi.aspx</DependentUpon>
+    <Compile Include="Controls\ListaCorsi.ascx.designer.cs">
+      <DependentUpon>ListaCorsi.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CercaCorsi.aspx.cs">
+      <DependentUpon>CercaCorsi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CercaCorsi.aspx.designer.cs">
+      <DependentUpon>CercaCorsi.aspx</DependentUpon>
     </Compile>
     <Compile Include="Corso.aspx.cs">
       <DependentUpon>Corso.aspx</DependentUpon>
@@ -234,7 +242,6 @@
     <Compile Include="AggiungiCorso.aspx.designer.cs">
       <DependentUpon>AggiungiCorso.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Corso.cs" />
     <Compile Include="DataAccesObject.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -246,7 +253,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Lezione.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
