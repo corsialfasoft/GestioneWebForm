@@ -43,6 +43,7 @@ namespace DAO{
         //Mostra tutti i corsi a cui è iscritto un determinato studente(idStudente)
         List<Corso>ListaCorsi(int idUtente);
     }
+	// public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class DataAccesObject : IDao {
 
         public void AddCompetenze(string MatrCv,Competenza comp) {
@@ -115,7 +116,11 @@ namespace DAO{
         }
 
         public CV Search(string id) {
-            throw new NotImplementedException();
+            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
+			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
+			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
+			return new CV {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds };
+			;
         }
 
         public List<CV> SearchChiava(string chiava) {

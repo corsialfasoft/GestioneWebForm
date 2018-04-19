@@ -40,21 +40,21 @@ namespace GestioneWebForm {
 			for(int i = 0; i<pers.Count; i++){
 				TableRow tr= new TableRow();
 				TableCell tcAI= new TableCell();
-				tcAI.Controls.Add(new Label{Text=pers[i].AnnoInizio.ToString(), CssClass ="col-xs-2" });
+				tcAI.Controls.Add(new Label{Text=pers[i].AnnoInizio.ToString(), CssClass ="col-md-3" });
 				tr.Cells.Add(tcAI);
 				TableCell tcAF = new TableCell();
-				tcAF.Controls.Add(new Label{Text=pers[i].AnnoFine.ToString() , CssClass ="col-xs-2"});
+				tcAF.Controls.Add(new Label{Text=pers[i].AnnoFine.ToString() , CssClass ="col-md-3"});
 				tr.Cells.Add(tcAF);
 				TablePerStudi.Rows.Add(tr);
 				TableRow tr2 = new TableRow();
 				TableCell tcTipo = new TableCell();
-				tcTipo.Controls.Add(new Label{Text=pers[i].Titolo , CssClass ="col-xs-6"});
+				tcTipo.Controls.Add(new Label{Text=pers[i].Titolo , CssClass ="col-md-3"});
 				tr2.Cells.Add(tcTipo);
 				TableCell tcDesc = new TableCell();
-				tcDesc.Controls.Add(new Label{Text=pers[i].Descrizione, CssClass ="col-xs-6"});
+				tcDesc.Controls.Add(new Label{Text=pers[i].Descrizione, CssClass ="col-md-3"});
 				tr2.Cells.Add(tcDesc);
 				TableCell tcMod = new TableCell();
-				tcMod.Controls.Add(new Button {Text="Modifica"} ); // manca IL REFERENIAMENTO
+				tcMod.Controls.Add(new Button {Text="Modifica",ID="btnM" , CssClass="col-md-3"} ); // manca IL REFERENIAMENTO
 				tr2.Cells.Add(tcMod);
 				TablePerStudi.Rows.Add(tr2);
 			}
@@ -63,21 +63,21 @@ namespace GestioneWebForm {
 			for(int i = 0; i<esperienze.Count; i++){
 				TableRow tr= new TableRow();
 				TableCell tcAI= new TableCell();
-				tcAI.Controls.Add(new Label{Text=esperienze[i].AnnoInizio.ToString(), CssClass ="col-xs-2" });
+				tcAI.Controls.Add(new Label{Text=esperienze[i].AnnoInizio.ToString(), CssClass ="col-md-3" });
 				tr.Cells.Add(tcAI);
 				TableCell tcAF = new TableCell();
-				tcAF.Controls.Add(new Label{Text=esperienze[i].AnnoFine.ToString() , CssClass ="col-xs-2"});
+				tcAF.Controls.Add(new Label{Text=esperienze[i].AnnoFine.ToString() , CssClass ="col-md-3"});
 				tr.Cells.Add(tcAF);
-				TablePerStudi.Rows.Add(tr);
+				TableEspLav.Rows.Add(tr);
 				TableRow tr2 = new TableRow();
 				TableCell tcTipo = new TableCell();
-				tcTipo.Controls.Add(new Label{Text=esperienze[i].Qualifica , CssClass ="col-xs-6"});
+				tcTipo.Controls.Add(new Label{Text=esperienze[i].Qualifica , CssClass ="col-md-3"});
 				tr2.Cells.Add(tcTipo);
 				TableCell tcDesc = new TableCell();
-				tcDesc.Controls.Add(new Label{Text=esperienze[i].Descrizione, CssClass ="col-xs-6"});
+				tcDesc.Controls.Add(new Label{Text=esperienze[i].Descrizione, CssClass ="col-md-3"});
 				tr2.Cells.Add(tcDesc);
 				TableCell tcMod = new TableCell();
-				tcMod.Controls.Add(new Button {Text="Modifica"} ); // manca IL REFERENIAMENTO
+				tcMod.Controls.Add(new Button {Text="Modifica",ID="btnM" , CssClass="col-md-3"}); // manca IL REFERENIAMENTO
 				tr2.Cells.Add(tcMod);
 				TableEspLav.Rows.Add(tr2);
 			}
@@ -86,12 +86,15 @@ namespace GestioneWebForm {
 			for(int i = 0; i<competenze.Count; i++){
 				TableRow tr= new TableRow();
 				TableCell tcAI= new TableCell();
-				tcAI.Controls.Add(new Label{Text=competenze[i].Livello.ToString(), CssClass ="col-xs-2" });
+				tcAI.Controls.Add(new Label{Text=competenze[i].Livello.ToString(), CssClass ="col-md-3" });
 				tr.Cells.Add(tcAI);
 				TableCell tcAF = new TableCell();
-				tcAF.Controls.Add(new Label{Text=competenze[i].Titolo, CssClass ="col-xs-6"});
+				tcAF.Controls.Add(new Label{Text=competenze[i].Titolo, CssClass ="col-md-3"});
 				tr.Cells.Add(tcAF);
-				 TableComp.Rows.Add(tr);
+				TableCell tcMod = new TableCell();
+				tcMod.Controls.Add(new Button {Text="Modifica",ID="btnM" , CssClass="col-md-3" } ); // manca IL REFERENIAMENTO
+				tr.Cells.Add(tcMod);
+				TableComp.Rows.Add(tr);
 				
 			}
 		}
