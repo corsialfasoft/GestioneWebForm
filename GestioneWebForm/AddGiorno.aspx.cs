@@ -14,20 +14,21 @@ namespace GestioneWebForm {
 		protected void AggiungiGiorno_Click(object sender,EventArgs e)
 		{
 			DataAccesObject DataAccess = new DataAccesObject();
-			DataAccess.CompilaHLavoro(DateTime.Parse(data.Text),Int32.Parse(numeroore.Text),Int32.Parse(nomecommmessa.Text),Int32.Parse(Request["idUtente"]));
 			switch(listaore.SelectedIndex) {
 			case 1: 
-			
-			
+						
+				DataAccess.Compila(DateTime.Parse(data.Text),Int32.Parse(numeroore.Text),(HType)1,Int32.Parse(Request["idUtente"]));	
 			break;
 			case 2:
-
+			     DataAccess.Compila(DateTime.Parse(data.Text),Int32.Parse(numeroore.Text),(HType)2,Int32.Parse(Request["idUtente"]));		
 			break;
 			case 3:
-
+				DataAccess.Compila(DateTime.Parse(data.Text),Int32.Parse(numeroore.Text),(HType)3,Int32.Parse(Request["idUtente"]));	
+			
 			break;
 			case 4:
-
+				DataAccess.CompilaHLavoro(DateTime.Parse(data.Text),Int32.Parse(numeroore.Text),Int32.Parse(nomecommmessa.Text),Int32.Parse(Request["idUtente"]));		
+			
 			break;
 			}
 
