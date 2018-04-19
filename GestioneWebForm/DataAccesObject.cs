@@ -106,31 +106,78 @@ namespace DAO{
         }
 
         public CV Search(string id) {
-            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
-			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
-			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
-			return new CV {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds };
-			;
+        CV trovato = new CV();
+		SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("dbo.CercaMatricola",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@matri",System.Data.SqlDbType.NVarChar).Value=id;
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()) {
+					trovato= GetCV(reader.GetInt32(0));
+				}
+				reader.Close();
+				command.Dispose();
+				return trovato;
+
+			}catch (Exception e) {
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
+		
         }
 
-        public List<CV> SearchChiava(string chiava) {
+		private CV GetCV(int v)
+		{
+			throw new NotImplementedException();
+		}
+
+		public List<CV> SearchChiava(string chiava) {
 			List<CV> trovati = new List<CV>();
-            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
-			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
-			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
-			return trovati=new List<CV> {new CV  {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
-				new CV  {Nome="Pano",Cognome="Panano",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
-				new CV {Nome="Pono",Cognome="Ponono",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds }};
+		SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("dbo.CercaParolaChiava",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@parola",System.Data.SqlDbType.NVarChar).Value=chiava;
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()) {
+					trovati.Add(GetCV(reader.GetInt32(0)));
+				}
+				reader.Close();
+				command.Dispose();
+				return trovati;
+
+			}catch (Exception e) {
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
         }
 
         public List<CV> SearchCognome(string cognome) {
-           List<CV> trovati = new List<CV>();
-            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
-			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
-			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
-			return trovati=new List<CV> {new CV  {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
-				new CV  {Nome="Pano",Cognome="Panano",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
-				new CV {Nome="Pono",Cognome="Ponono",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds }};
+        List<CV> trovati = new List<CV>();
+		SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("dbo.CercaCognome",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@cognome",System.Data.SqlDbType.NVarChar).Value=cognome;
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()) {
+					trovati.Add(GetCV(reader.GetInt32(0)));
+				}
+				reader.Close();
+				command.Dispose();
+				return trovati;
+
+			}catch (Exception e) {
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
         }
 
         public Corso SearchCorsi(int idCorso) {
@@ -146,13 +193,26 @@ namespace DAO{
         }
 
         public List<CV> SearchEta(int eta) {
-           List<CV> trovati = new List<CV>();
-            List<EspLav> esplav = new List<EspLav>{new EspLav{ AnnoInizio=2012, AnnoFine=2016, Descrizione="Binzinaro",Qualifica="Ciavevo le pompe di benzina"} };
-			List<Competenza> competenzas = new List<Competenza> {new Competenza{Livello=2,Titolo="Alto Mago"} };
-			List<PerStud> perStuds=new List<PerStud> {new PerStud{AnnoInizio=2000,AnnoFine=2005,Descrizione="Media",Titolo="Licenza media" } };
-			return trovati=new List<CV> {new CV  {Nome="Pino",Cognome="Panino",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
-				new CV  {Nome="Pano",Cognome="Panano",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds },
-				new CV {Nome="Pono",Cognome="Ponono",Eta=78,Email="paxxerellotunztunz@netlog.com",Matricola="E9412E",Residenza="Sotto il ponte della tangenziale",Telefono="800900313",Esperienze=esplav,Competenze=competenzas,Percorsostudi=perStuds }};
+        List<CV> trovati = new List<CV>();
+		SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("dbo.CercaCognome",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@cognome",System.Data.SqlDbType.NVarChar).Value=cognome;
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()) {
+					trovati.Add(GetCV(reader.GetInt32(0)));
+				}
+				reader.Close();
+				command.Dispose();
+				return trovati;
+
+			}catch (Exception e) {
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
         }
 
         public List<CV> SearchRange(int etmin,int etmax) {
@@ -168,6 +228,13 @@ namespace DAO{
         public Giorno VisualizzaGiorno(DateTime data,int idUtente) {
             throw new NotImplementedException();
         }
+		public string GetConnection()
+		{
+			SqlConnectionStringBuilder builder= new SqlConnectionStringBuilder();
+			builder.DataSource="(localdb)\MSSQLLocalDB";
+			builder.InitialCatalog="GECV";
+			return builder.ToString();
+		}
     }
 
     public class Studente{ 
