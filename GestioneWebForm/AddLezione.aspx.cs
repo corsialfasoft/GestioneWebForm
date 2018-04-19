@@ -14,12 +14,9 @@ namespace GestioneWebForm {
 				protected void Page_Load(object sender,EventArgs e) {
 					
 				}
-				public void AddLezione_Click(object sender,EventArgs e) {	
-					Lezione newlesson = new Lezione();
+				public void AddLezione_Click(object sender,EventArgs e) {
 					DataAccesObject DataAccess = new DataAccesObject();
-					newlesson.Nome = nome.Text;
-					newlesson.Descrizione = descrizione.Text;
-					newlesson.Durata = int.Parse(Durata.Text);
+                    newlesson = new Lezione {Nome = nome.Text,Descrizione = descrizione.Text,Durata = int.Parse(Durata.Text) };
                     string a = Request["idCorso"];
                     if(int.TryParse(a, out int id)){ 
                         DataAccess.AddLezione(id,newlesson);
@@ -29,7 +26,7 @@ namespace GestioneWebForm {
                         return ;                
                     }else{ 
                         Message = "Corso inesistente";
-                        var url = String.Format($"~/ListaCorsi");
+                        var url = String.Format($"~/CercaCorsi");
                         Response.Redirect(url);
                         return;
                     }

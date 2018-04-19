@@ -10,7 +10,7 @@
 namespace GestioneWebForm {
     
     
-    public partial class _ListaCorsi {
+    public partial class _CercaCorsi {
         
         /// <summary>
         /// Controllo codice.
@@ -31,12 +31,12 @@ namespace GestioneWebForm {
         protected global::System.Web.UI.WebControls.TextBox descrizione;
         
         /// <summary>
-        /// Controllo Table1.
+        /// Controllo corsiTable.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::GestioneWebForm.Controls._ListaCorsi corsiTable;
     }
 }

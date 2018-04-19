@@ -8,6 +8,7 @@ using DAO;
 
 namespace GestioneWebForm {
     public partial class _Corso : Page {
+        public Profilo ut = new Profilo{Matrincola = "qw",Ruolo= "prof" ,Nome="Drago",Cognome="Brinzi", Username="Tandy",Password="qwertyui" };
         DataAccesObject d = new DataAccesObject();
         public Corso corso{get;set;}
         public List<Lezione> lezioni{ get;set;}

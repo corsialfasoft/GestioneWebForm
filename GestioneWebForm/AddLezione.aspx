@@ -7,18 +7,21 @@
         <div class="col-md-3">
             <label> Nome </label> <br />
              <asp:TextBox ID="nome" runat="server" placeholder="Inserisci nome"></asp:TextBox>
+            <asp:RequiredFieldValidator CssClass="text-danger h4" ControlToValidate ="nome" ErrorMessage=" * " runat="server"/>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
             <label> Descrizione </label><br />
-             <asp:TextBox ID="descrizione" runat="server" placeholder="Inserisci una descrizione"></asp:TextBox>
+            <asp:TextBox ID="descrizione" runat="server" placeholder="Inserisci una descrizione"></asp:TextBox>
+            <asp:RequiredFieldValidator CssClass="text-danger h4" ControlToValidate ="descrizione" ErrorMessage=" * " runat="server"/>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
             <label> Durata </label><br />
-            <asp:TextBox ID="Durata" runat="server" placeholder="Inserisci la durata del corso"></asp:TextBox>           
+            <asp:TextBox ID="Durata" runat="server" placeholder="Inserisci la durata del corso"></asp:TextBox>     
+            <asp:RequiredFieldValidator CssClass="text-danger h4" ControlToValidate ="Durata" ErrorMessage=" * " runat="server"/>
         </div>
     </div>
     <div class="row">

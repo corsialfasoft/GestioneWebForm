@@ -34,7 +34,7 @@ namespace DAO{
         //Cerca tutti i corsi che contine la "descrizione" nei suoi attributi(nome,descrizione)
         List<Corso> SearchCorsi(string descrizione);
         //Cerca tutti i corsi che contiene la "descrizione" di un determinato studente(idStudente)
-        List<Corso>SearchCorsi(string descrizione, int idUtente);
+        List<Corso>SearchCorsi(string descrizione, string matrUtente);
         //Mostra tutti i corsi presenti nel db
         List<Corso>ListaCorsi();
         //Mostra tutti i corsi a cui è iscritto un determinato studente(idStudente)
@@ -47,7 +47,7 @@ namespace DAO{
         }
 
         public void AddCorso(Corso corso) {
-            throw new NotImplementedException();
+            
         }
 
         public void AddCvStudi(string MatrCv,PerStud studi) {
@@ -147,8 +147,12 @@ namespace DAO{
             return corso;
         }
 
-        public List<Corso> SearchCorsi(string descrizione,int idUtente) {
-            throw new NotImplementedException();
+        public List<Corso> SearchCorsi(string descrizione,string matrUtente) {
+            List<Corso> corso = new List<Corso>();
+            corso.Add(new Corso{ Id=5, Nome="MainCorsen",Descrizione="La cipolla sa di dfsdrfv",Inizio = DateTime.Today,Fine = DateTime.Today,});
+            corso.Add(new Corso{ Id=6, Nome="MioCorso",Descrizione="Servo della gleba",Inizio = DateTime.Today,Fine = DateTime.Today,});
+            corso.Add(new Corso{ Id=4, Nome="Quarto",Descrizione="Ho sentito che a flo piacciono i treni",Inizio = DateTime.Today,Fine = DateTime.Today,});
+            return corso;
         }
 
         public List<CV> SearchEta(int eta) {

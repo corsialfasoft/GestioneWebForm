@@ -128,7 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="ListaCorsi.aspx" />
+    <Content Include="Controls\ListaCorsi.ascx" />
+    <Content Include="CercaCorsi.aspx" />
     <Content Include="Corso.aspx" />
     <Content Include="AddLezione.aspx" />
     <Content Include="MyPage.aspx" />
@@ -136,6 +137,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="AggiungiCorso.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -191,12 +193,19 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ListaCorsi.aspx.cs">
-      <DependentUpon>ListaCorsi.aspx</DependentUpon>
+    <Compile Include="Controls\ListaCorsi.ascx.cs">
+      <DependentUpon>ListaCorsi.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListaCorsi.aspx.designer.cs">
-      <DependentUpon>ListaCorsi.aspx</DependentUpon>
+    <Compile Include="Controls\ListaCorsi.ascx.designer.cs">
+      <DependentUpon>ListaCorsi.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CercaCorsi.aspx.cs">
+      <DependentUpon>CercaCorsi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CercaCorsi.aspx.designer.cs">
+      <DependentUpon>CercaCorsi.aspx</DependentUpon>
     </Compile>
     <Compile Include="Corso.aspx.cs">
       <DependentUpon>Corso.aspx</DependentUpon>
@@ -226,6 +235,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AggiungiCorso.aspx.cs">
+      <DependentUpon>AggiungiCorso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AggiungiCorso.aspx.designer.cs">
+      <DependentUpon>AggiungiCorso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DataAccesObject.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -252,6 +268,7 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Studente.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

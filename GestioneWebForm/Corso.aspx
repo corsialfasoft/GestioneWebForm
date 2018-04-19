@@ -39,9 +39,13 @@
             </div>
         </div>
         <asp:Button OnClick="LezioniOn_Click" CssClass="btn btn-default" Text="Mostra lezioni" runat="server" />
-         <asp:Button OnClick="AddLezione_Click" CssClass="btn btn-default" Text="Aggiungi Lezione" runat="server" />
+        <%if(ut.Ruolo == "prof"){%>
+            <asp:Button OnClick="AddLezione_Click" CssClass="btn btn-default" Text="Aggiungi Lezione" runat="server" />
+        <%}%>
+        <asp:Button PostBackUrl="~/CercaCorsi" CssClass="btn btn-default" Text="Torna Indietro" runat="server" />
         <hr />
         <%if(lezioni!=null){ %>
+            <hr />
             <h3><b>Lezioni del corso <%=corso.Nome%></b></h3>
             <div class="row">
                 <div class="col-md-3">
