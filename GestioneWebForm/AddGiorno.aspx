@@ -15,10 +15,10 @@
            SelectionMode="Single" 
            runat="server">
 
-         <asp:ListItem Selected="True">Ore di lavoro </asp:ListItem>
+         <asp:ListItem Selected="True">Ore di malattia</asp:ListItem>
          <asp:ListItem>Ore di permesso </asp:ListItem>
          <asp:ListItem>Ore di ferie </asp:ListItem>
-         <asp:ListItem>Ore di malattia </asp:ListItem>         
+         <asp:ListItem> Ore di lavoro </asp:ListItem>         
          </asp:ListBox> <br /> <br />
 
     <b>Nome Commessa</b> <br /> 
