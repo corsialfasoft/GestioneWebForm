@@ -27,6 +27,9 @@
         </div>
         <asp:Button OnClick="Cerca_Click" CssClass="btn btn-default" Text="Cerca" runat="server" />
         <asp:Button OnClick="MyCerca_Click" CssClass="btn btn-default" Text="CercaMieiCorsi" runat="server" />
+        <%if(ut.Ruolo=="admin"){%>
+            <asp:Button OnClick="CreaCorso_Click" CssClass="btn btn-default" Text="Crea" runat="server" />
+        <%}%>
     </div>
     
     <%if(corsi != null && corsi.Count>0) {%>
