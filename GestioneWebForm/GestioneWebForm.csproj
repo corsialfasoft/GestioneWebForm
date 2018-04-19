@@ -132,6 +132,11 @@
     <Content Include="CercaCorsi.aspx" />
     <Content Include="Corso.aspx" />
     <Content Include="AddLezione.aspx" />
+    <Content Include="DB\Iscrizione.sql" />
+    <Content Include="DB\SearchCorso.sql" />
+    <Content Include="DB\SearchCorsi.sql" />
+    <Content Include="DB\SearchCorsiStud.sql" />
+    <Content Include="DB\CreazioneDBGeCo.sql" />
     <Content Include="MyPage.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
