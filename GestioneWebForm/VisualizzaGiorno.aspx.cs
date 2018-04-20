@@ -27,56 +27,49 @@ namespace GestioneWebForm {
                     }
                     TableRow tr = new TableRow();
                     TableCell tdDescr = new TableCell();
-                    tdDescr.Controls.Add(new Label() { Text = "Tipo", CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2", });
-                    tdDescr.Controls.Add(new Label() { Text = "Ore Totali", CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2", });
-                    tdDescr.Controls.Add(new Label() { Text = "Commessa", CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2", });
-                    tdDescr.Controls.Add(new Label() { Text = "Ore Lavoro Commessa", CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2", });
-                    tdDescr.Controls.Add(new Label() { Text = "Note", CssClass="col-xs-4 col-sm-4 col-md-4 col-lg-4", });
+                    CreateCell(tdDescr, "Tipo", 2);
+                    CreateCell(tdDescr, "Ore Totali", 2);
+                    CreateCell(tdDescr, "Commessa", 2);
+                    CreateCell(tdDescr, "Ore Lavoro Commessa", 2);
+                    CreateCell(tdDescr, "Note", 4);
                     tr.Cells.Add(tdDescr);
                     TabellaGiorno.Rows.Add(tr);
 
                     tr = new TableRow();
                     TableCell tdOreLavoro = new TableCell();
-                    tdOreLavoro.Controls.Add(new Label() {Text = "Ore di lavoro", CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2"});
-                    tdOreLavoro.Controls.Add(new Label() { Text = giorno.TotOreLavorate().ToString(), CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2" });
+                    CreateCell(tdOreLavoro, "Ore di lavoro", 2);
+                    CreateCell(tdOreLavoro, giorno.TotOreLavorate().ToString(), 2);
                     foreach(OreCommessa ocomm in giorno.OreLavorate) {
                         if (count>0) {
                             tr = new TableRow();
-                            tdOreLavoro.Controls.Add(new Label() { CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2" });
-                            tdOreLavoro.Controls.Add(new Label() { CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2" });
+                            CreateCell(tdOreLavoro, "", 2);
+                            CreateCell(tdOreLavoro, "", 2);
                         }
-                        tdOreLavoro.Controls.Add(new Label() { Text = giorno.OreLavorate[count].Nome.ToString(),CssClass = "col-xs-2 col-sm-2 col-md-2 col-lg-2" });
-                        tdOreLavoro.Controls.Add(new Label() { Text = giorno.OreLavorate[count].Ore.ToString(),CssClass = "col-xs-2 col-sm-2 col-md-2 col-lg-2" });
-                        tdOreLavoro.Controls.Add(new Label() { Text = giorno.OreLavorate[count].Descrizione.ToString(),CssClass = "col-xs-4 col-sm-4 col-md-4 col-lg-4" });
+                        CreateCell(tdOreLavoro, giorno.OreLavorate[count].Nome.ToString(), 2);
+                        CreateCell(tdOreLavoro, giorno.OreLavorate[count].Ore.ToString(), 2);
+                        CreateCell(tdOreLavoro, giorno.OreLavorate[count].Descrizione.ToString(), 4);
                         tr.Cells.Add(tdOreLavoro);
                         TabellaGiorno.Rows.Add(tr);
                         count++;
                     }
                     tr.Cells.Add(tdOreLavoro);
                     TabellaGiorno.Rows.Add(tr);
-
-                    tr = new TableRow();
-                    TableCell tdOrePerm = new TableCell();
-                    tdOrePerm.Controls.Add(new Label() { Text = "Ore di Permesso", CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2", });
-                    tdOrePerm.Controls.Add(new Label() { Text = giorno.HPermesso.ToString(), CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2" });
-                    tr.Cells.Add(tdOrePerm);
-                    TabellaGiorno.Rows.Add(tr);
-
-                    tr = new TableRow();
-                    TableCell tdOreMal = new TableCell();
-                    tdOreMal.Controls.Add(new Label() { Text = "Ore di Malattia", CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2" });
-                    tdOreMal.Controls.Add(new Label() { Text = giorno.HMalattia.ToString(), CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2" });
-                    tr.Cells.Add(tdOreMal);
-                    TabellaGiorno.Rows.Add(tr);
-
-                    tr = new TableRow();
-                    TableCell tdOreFerie = new TableCell();
-                    tdOreFerie.Controls.Add(new Label() { Text = "Ore di Ferie", CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2" });
-                    tdOreFerie.Controls.Add(new Label() { Text = giorno.HFerie.ToString(), CssClass="col-xs-2 col-sm-2 col-md-2 col-lg-2" });
-                    tr.Cells.Add(tdOreFerie);
-                    TabellaGiorno.Rows.Add(tr);
+                    CreateRow("Ore di Permesso", giorno.HPermesso.ToString(), 2);
+                    CreateRow("Ore di Malattia", giorno.HMalattia.ToString(), 2);
+                    CreateRow("Ore di Ferie", giorno.HFerie.ToString(), 2);
                 }
             }
+        }
+        private void CreateRow (string text1, string text2, int col) {
+            TableRow tr = new TableRow();
+            TableCell td = new TableCell();
+            tr.Cells.Add(CreateCell(td, text1, col));
+            tr.Cells.Add(CreateCell(td, text2, col));
+            TabellaGiorno.Rows.Add(tr);
+        }
+        private TableCell CreateCell (TableCell td, string text, int col) {
+            td.Controls.Add(new Label() {Text = text, CssClass=$"col-xs-{col} col-sm-{col} col-md-{col} col-lg-{col}"});
+            return td;
         }
     }
 }
