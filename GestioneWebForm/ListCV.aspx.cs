@@ -15,10 +15,7 @@ namespace GestioneWebForm {
             ListaCVPg.Update();
         }
         protected void Monk_Click(object sender, EventArgs e) {
-            IDomainModel model = new MockDomainModel();
-            List<CV> monk = model.SearchByDescription("sa");
-            Session["listaCV"] = monk;
-			ListaCVPg.CV = Request[""];
+			
         }
 
         public partial interface IDomainModel {

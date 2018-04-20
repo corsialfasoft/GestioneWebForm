@@ -197,9 +197,9 @@ namespace DAO{
 		SqlConnection connection = new SqlConnection(GetConnection());
 			try {
 				connection.Open();
-				SqlCommand command = new SqlCommand("dbo.CercaCognome",connection);
+				SqlCommand command = new SqlCommand("dbo.CercaEta",connection);
 				command.CommandType=CommandType.StoredProcedure;
-				command.Parameters.Add("@cognome",System.Data.SqlDbType.NVarChar).Value=cognome;
+				command.Parameters.Add("@cognome",System.Data.SqlDbType.Int).Value=eta;
 				SqlDataReader reader = command.ExecuteReader();
 				while(reader.Read()) {
 					trovati.Add(GetCV(reader.GetInt32(0)));
@@ -231,7 +231,7 @@ namespace DAO{
 		public string GetConnection()
 		{
 			SqlConnectionStringBuilder builder= new SqlConnectionStringBuilder();
-			builder.DataSource="(localdb)\MSSQLLocalDB";
+			builder.DataSource=@"(localdb)\MSSQLLocalDB";
 			builder.InitialCatalog="GECV";
 			return builder.ToString();
 		}

@@ -37,7 +37,8 @@ namespace GestioneWebForm {
 				Message="Inserire dei campi di ricerca validi";
 			}
 			if(trovati.Count > 0) {
-				var url=String.Format($"~/ListaCurriculum.aspx?listacurriculum={trovati}");
+				Session["listaCV"]=trovati;
+				var url=$"~/ListCV.aspx";
 				Response.Redirect(url);
 			} else {
 				Message="Non è stato trovato alcun elemento con i parametri di ricerca";
