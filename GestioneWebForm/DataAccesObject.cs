@@ -356,21 +356,21 @@ namespace DAO{
         public List<Competenza> Competenze {get; set;}
     }
     public class EspLav {
-        public int id{get;set;}
+        public int Id{get;set;}
         public int AnnoInizio {get; set;}
         public int AnnoFine {get; set;}
         public string Qualifica {get; set;}
         public string Descrizione {get; set;}
     }
     public class PerStud {
-        public int id{get;set;}
+        public int Id{get;set;}
         public int AnnoInizio {get; set;}
         public int AnnoFine {get; set;}
         public string Titolo {get; set;}
         public string Descrizione {get; set;}
     }
     public class Competenza {
-        public int id{get;set;}
+        public int Id{get;set;}
         public string Titolo {get; set;}
         public int Livello {get; set;}
     }
