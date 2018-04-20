@@ -127,10 +127,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controll\ListCurriculum.ascx" />
+    <Content Include="ListCV.aspx" />
     <Content Include="About.aspx" />
     <Content Include="RicercaCurriculum.aspx" />
     <Content Include="MyPage.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -181,12 +182,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="Controll\ListCurriculum.ascx.cs">
+      <DependentUpon>ListCurriculum.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="Controll\ListCurriculum.ascx.designer.cs">
+      <DependentUpon>ListCurriculum.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ListCV.aspx.cs">
+      <DependentUpon>ListCV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListCV.aspx.designer.cs">
+      <DependentUpon>ListCV.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="RicercaCurriculum.aspx.cs">
@@ -202,13 +210,6 @@
     </Compile>
     <Compile Include="MyPage.aspx.designer.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DataAccesObject.cs" />
     <Compile Include="Default.aspx.cs">
