@@ -16,11 +16,11 @@ namespace GestioneWebForm {
 				}
 				public void AddLezione_Click(object sender,EventArgs e) {
 					DataAccesObject DataAccess = new DataAccesObject();
-                    newlesson = new Lezione {Nome = nome.Text,Descrizione = descrizione.Text,Durata = int.Parse(Durata.Text) };
+                    newlesson = new Lezione {Argomento = argomento.Text,Durata = int.Parse(Durata.Text) };
                     string a = Request["idCorso"];
                     if(int.TryParse(a, out int id)){ 
                         DataAccess.AddLezione(id,newlesson);
-                        Message = $"Lezine {"newlesson.Nome"} aggiunta al corso selezionato";
+                        Message = $"Lezine aggiunta al corso selezionato";
                         var url = String.Format($"~/Corso?id={id}");
                         Response.Redirect(url);
                         return ;                
