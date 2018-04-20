@@ -14,26 +14,28 @@ namespace GestioneWebForm {
 			c=new CV();
 			//string matricola="ciao";
 			c=dao.Search(Request["codice"]);
-			NomeTextBox.Text=c.Nome;
-			CognomeTextBox.Text=c.Cognome;
-			EtaTextBox.Text=c.Eta.ToString();
-			ResidenzaTextBox.Text=c.Residenza;
-			EmailTextBox.Text=c.Email;
-			TelefonoTextBox.Text=c.Telefono;
-			if(c.Percorsostudi==null){
-				InitTablePS(new List<PerStud>());
-			}else{
-				InitTablePS(c.Percorsostudi);
-			}
-			if(c.Esperienze==null){
-				InitTableES(new List<EspLav>());
-			}else{
-				InitTableES(c.Esperienze);
-			}
-			if(c.Competenze==null){
-				InitTableComp(new List<Competenza>());
-			}else{
-				InitTableComp(c.Competenze);
+			if(!Page.IsPostBack){
+				NomeTextBox.Text=c.Nome;
+				CognomeTextBox.Text=c.Cognome;
+				EtaTextBox.Text=c.Eta.ToString();
+				ResidenzaTextBox.Text=c.Residenza;
+				EmailTextBox.Text=c.Email;
+				TelefonoTextBox.Text=c.Telefono;
+				if(c.Percorsostudi==null){
+					InitTablePS(new List<PerStud>());
+				}else{
+					InitTablePS(c.Percorsostudi);
+				}
+				if(c.Esperienze==null){
+					InitTableES(new List<EspLav>());
+				}else{
+					InitTableES(c.Esperienze);
+				}
+				if(c.Competenze==null){
+					InitTableComp(new List<Competenza>());
+				}else{
+					InitTableComp(c.Competenze);
+				}
 			}
 			
 		}
