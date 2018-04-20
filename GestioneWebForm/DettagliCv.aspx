@@ -29,7 +29,7 @@
                 <label>Nome:</label>
             </div>
             <div class="col-md-3">
-                <asp:TextBox  ID="NomeTextBox"  runat="server"></asp:TextBox>
+                <asp:TextBox  ID="NomeTextBox"   runat="server"></asp:TextBox>
             </div>
              <div class="col-md-1">
                  <label>Cognome:</label>
@@ -43,7 +43,7 @@
                  <label>Età:</label>
               </div>
               <div class="col-md-3">
-                    <asp:TextBox ID="EtaTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="EtaTextBox" TextMode="Number" runat="server"></asp:TextBox>
                 </div>
              <div class="col-md-1">
                  <label>Residenza:</label>
@@ -68,6 +68,8 @@
               </div>
          </div>
     </div>
+    <asp:Button ID="modAnag" OnClick="modAnag_Click" Text="Modifica" runat="server"/>
+
     <br />
     <br />
 

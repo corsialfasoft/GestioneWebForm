@@ -7,12 +7,13 @@ using System.Web.UI.WebControls;
 using DAO;
 namespace GestioneWebForm {
 	public partial class DettagliCv : System.Web.UI.Page {
+		public string Message {get;set;}
 		public CV c {get;set;}
 		protected void Page_Load(object sender,EventArgs e) {
 			IDao dao = new DataAccesObject();
 			c=new CV();
-			string matricola="ciao";
-			c=dao.Search(matricola);
+			//string matricola="ciao";
+			c=dao.Search(Request["codice"]);
 			NomeTextBox.Text=c.Nome;
 			CognomeTextBox.Text=c.Cognome;
 			EtaTextBox.Text=c.Eta.ToString();
@@ -100,6 +101,20 @@ namespace GestioneWebForm {
 				TableComp.Rows.Add(tr);
 				
 			}
+		}
+
+		protected void modAnag_Click(object sender,EventArgs e) {
+			DataAccesObject dao = new DataAccesObject();
+			CV Mod = new CV();
+			Mod.Nome= NomeTextBox.Text;
+			Mod.Cognome= CognomeTextBox.Text;
+			Mod.Eta=int.Parse(EtaTextBox.Text);
+			Mod.Residenza= ResidenzaTextBox.Text;
+			Mod.Email=EmailTextBox.Text;
+			Mod.Telefono= TelefonoTextBox.Text;
+			TelefonoTextBox.Text = "CAAA";
+			dao.ModificaCV(c,Mod);
+			c=Mod;
 		}
 	}
 }

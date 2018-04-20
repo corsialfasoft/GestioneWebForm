@@ -67,6 +67,15 @@ namespace GestioneWebForm {
         protected global::System.Web.UI.WebControls.TextBox TelefonoTextBox;
         
         /// <summary>
+        /// Controllo modAnag.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button modAnag;
+        
+        /// <summary>
         /// Controllo TablePerStudi.
         /// </summary>
         /// <remarks>
