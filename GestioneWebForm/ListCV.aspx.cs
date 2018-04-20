@@ -29,6 +29,9 @@ namespace GestioneWebForm {
                 new CV(){Matricola="3",Nome="Mickey",Cognome="Topolino"}
             };
             }
+			public void Elimina(object sender , EventArgs e , string matricola){
+				
+			}
         }
 
     }

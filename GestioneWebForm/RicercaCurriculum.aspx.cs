@@ -33,7 +33,7 @@ namespace GestioneWebForm {
 				}
 			}else if(Cognome.Text != "") {
 				trovati=dao.SearchCognome(Cognome.Text);
-			} else {
+			} else  {
 				Message="Inserire dei campi di ricerca validi";
 			}
 			if(trovati.Count > 0) {
