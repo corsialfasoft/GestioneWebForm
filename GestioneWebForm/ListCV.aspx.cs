@@ -18,6 +18,7 @@ namespace GestioneWebForm {
             IDomainModel model = new MockDomainModel();
             List<CV> monk = model.SearchByDescription("sa");
             Session["listaCV"] = monk;
+			ListaCVPg.CV = Request[""];
         }
 
         public partial interface IDomainModel {
