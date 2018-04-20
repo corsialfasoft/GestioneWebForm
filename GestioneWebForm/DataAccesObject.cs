@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 
 namespace DAO{
+ public enum HType { HMalattia = 1, HPermesso, HFerie }
 	public interface IDao{
 		void ModificaCV(CV a, CV b); //modifica un curriculum nel db
 		void AggiungiCV(CV a); //quando sei loggato, puoi aggiungere un curriculum nel db
@@ -17,6 +18,8 @@ namespace DAO{
         void AddCvStudi(string MatrCv,PerStud studi);
         void AddEspLav(string MatrCv, EspLav esp );
         void AddCompetenze(string MatrCv, Competenza comp);
+	
+	   
 		void CompilaHLavoro(DateTime data, int ore, int idCommessa, int idUtente);
 		void Compila(DateTime data, int ore, HType tipoOre, int idUtente);
 		Giorno VisualizzaGiorno(DateTime data, int idUtente);
@@ -40,8 +43,9 @@ namespace DAO{
         //Mostra tutti i corsi a cui è iscritto un determinato studente(idStudente)
         List<Corso>ListaCorsi(int idUtente);
     }
-	 public enum HType { HMalattia = 1, HPermesso, HFerie }
+	// public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class DataAccesObject : IDao {
+
         public void AddCompetenze(string MatrCv,Competenza comp) {
             throw new NotImplementedException();
         }
@@ -77,8 +81,13 @@ namespace DAO{
         public void Compila(DateTime data,int ore,HType tipoOre,int idUtente) {
             throw new NotImplementedException();
         }
+		/*
+		public void Compila(DateTime data,int ore,HType tipoOre,int idUtente) {
+			throw new NotImplementedException();
+		}
+		*/
 
-        public void CompilaHLavoro(DateTime data,int ore,int idCommessa,int idUtente) {
+		public void CompilaHLavoro(DateTime data,int ore,int idCommessa,int idUtente) {
             throw new NotImplementedException();
         }
 
