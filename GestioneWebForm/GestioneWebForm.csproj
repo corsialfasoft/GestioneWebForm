@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controll\ListCurriculum.ascx" />
+    <Content Include="PerStud.aspx" />
     <Content Include="ListCV.aspx" />
     <Content Include="About.aspx" />
     <Content Include="RicercaCurriculum.aspx" />
@@ -189,6 +190,13 @@
     </Compile>
     <Compile Include="Controll\ListCurriculum.ascx.designer.cs">
       <DependentUpon>ListCurriculum.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="PerStud.aspx.cs">
+      <DependentUpon>PerStud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PerStud.aspx.designer.cs">
+      <DependentUpon>PerStud.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListCV.aspx.cs">
       <DependentUpon>ListCV.aspx</DependentUpon>
