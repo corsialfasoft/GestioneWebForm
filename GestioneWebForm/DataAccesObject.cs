@@ -143,15 +143,45 @@ namespace DAO{
         }
 
         public Giorno VisualizzaGiorno(DateTime data, string idUtente) {
-            OreCommessa orecomm1 = new OreCommessa(1, 2, "MVC", "ciaociaomvc");
-            OreCommessa orecomm2 = new OreCommessa(2, 2, "EF", "ciaociaoef");
-            OreCommessa orecomm3 = new OreCommessa(3, 1, "WebSchifoForm","ciaociaowf");
-            Giorno giornoMock = new Giorno(data, 2, 1 , 0, idUtente);
-            giornoMock.AddOreCommessa(orecomm1);
-            giornoMock.AddOreCommessa(orecomm2);
-            giornoMock.AddOreCommessa(orecomm3);
-            giornoMock.TotOreLavorate();
-            return giornoMock;
+            Giorno result = null;
+            SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
+            scsb.DataSource= @"(localdb)\MSSQLLocalDB";
+            scsb.InitialCatalog="GeTime";
+            SqlConnection connection = new SqlConnection(scsb.ToString());
+            try {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SP_VisualizzaGiorno",connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("@Data", System.Data.SqlDbType.Date).Value = data.ToString("yyyy-MM-dd");
+                command.Parameters.Add("@IdUtente", System.Data.SqlDbType.NVarChar).Value = idUtente;
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read()) {
+                    result = new Giorno(data);
+                    do {
+                        switch (reader.GetInt32(0)) {
+                            case 1:
+                                result.HMalattia = reader.GetInt32(1);
+                                break;
+                            case 2:
+                                result.HPermesso = reader.GetInt32(1);
+                                break;
+                            case 3:
+                                result.HFerie = reader.GetInt32(1);
+                                break;
+                            case 4:
+                                result.AddOreLavorative(new OreLavorative(reader.GetInt32(4), reader.GetInt32(1), reader.GetString(2), reader.GetString(3)));
+                                break;
+                        }
+                    } while(reader.Read());
+                }
+                reader.Close();
+                command.Dispose();
+            } catch (Exception e) {
+                throw e;
+            } finally {
+                connection.Dispose();
+            }
+            return result;
         }
     }
 
@@ -179,33 +209,32 @@ namespace DAO{
     public partial class Giorno {
 		private string _id_utente;
 		private DateTime data;
-
+		private int idG;
 		public DateTime Data { get { return data; } }
-		private List<OreCommessa> commesse;
+		private List<OreLavorative> oreLavorative = new List<OreLavorative>();
 		public string ID_UTENTE { get { return _id_utente; } set { _id_utente = value; } }
 		public int HPermesso{ get;set;}
 		public int HMalattia{ get;set;}
 		public int HFerie{ get;set;}
-		public List<OreCommessa> OreLavorate { get => commesse; }
-
+		public List<OreLavorative> OreLavorate { get => oreLavorative; }
+		public int IdGiorno{ get;set;}
 
 		public Giorno(DateTime data) { this.data = data; }
-		public Giorno(DateTime data, int HP, int HM, int HF, string id_utente) {
+		public Giorno(DateTime data, int idG, int HP, int HM, int HF, string id_utente) {
 			this.data = data;
 			HPermesso = HP;
 			HMalattia = HM;
 			HFerie = HF;
 			_id_utente = id_utente;
+			this.idG=idG;
 		}
 
-		public void AddOreCommessa(OreCommessa com) {
-			if (commesse == null)
-				commesse = new List<OreCommessa>();
-			commesse.Add(com);
+		public void AddOreLavorative(OreLavorative com) {
+			oreLavorative.Add(com);
 		}
 		public int TotOreLavorate() {
 			int tot = 0;
-			foreach (OreCommessa com in OreLavorate) {
+			foreach (OreLavorative com in OreLavorate) {
 				tot += com.Ore;
 			}
 			return tot;
@@ -217,18 +246,16 @@ namespace DAO{
 			return base.GetHashCode();
 		}
 	}
-	public partial class OreCommessa {
-		public int Id{ get;set;}
+	public partial class OreLavorative {
+		public int IdC{ get;set;}
 		public string Descrizione { get => _descrizione; set => _descrizione = value; }
 		public string Nome { get => _nome; set => _nome = value; }
 		public int Ore{ get; set; }
-
-		private int oreLavorate;
 		private string _nome;
 		private string _descrizione;
 
-		public OreCommessa(int id, int oreLavorate, string nome, string descrizione) {
-			Id = id;
+		public OreLavorative(int idC, int oreLavorate, string nome, string descrizione) {
+			this.IdC = idC;
 			Ore = oreLavorate;
 			_nome = nome;
 			_descrizione = descrizione;

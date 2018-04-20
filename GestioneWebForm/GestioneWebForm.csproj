@@ -127,6 +127,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SQL\DDLGeTime.sql" />
+    <Content Include="SQL\SP_VisualizzaGiorno.sql" />
     <Content Include="VisualizzaGiorno.aspx" />
     <Content Include="About.aspx" />
     <Content Include="MyPage.aspx" />

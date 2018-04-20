@@ -20,7 +20,7 @@ namespace GestioneWebForm {
             if(IsPostBack) {
                 giorno = new DataAccesObject().VisualizzaGiorno(data.SelectedDate, "admin");
                 if (giorno == null) {
-                    Message= "La data selezionata non è presente nel DB!";
+                    Message= "* La data selezionata non è ancora stata inserita nel registro!";
                 } else if (giorno!=null && giorno.Data.ToString("yyyy-MM-dd") != "0001-01-01") {
                     if (TabellaGiorno!=null) {
                        TabellaGiorno.Rows.Clear();
@@ -39,7 +39,7 @@ namespace GestioneWebForm {
                     TableCell tdOreLavoro = new TableCell();
                     CreateCell(tdOreLavoro, "Ore di lavoro", 2);
                     CreateCell(tdOreLavoro, giorno.TotOreLavorate().ToString(), 2);
-                    foreach(OreCommessa ocomm in giorno.OreLavorate) {
+                    foreach(OreLavorative ocomm in giorno.OreLavorate) {
                         if (count>0) {
                             tr = new TableRow();
                             CreateCell(tdOreLavoro, "", 2);
