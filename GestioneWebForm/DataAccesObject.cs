@@ -26,9 +26,9 @@ namespace DAO{
         //Aggiungi nuovo corso. Lo puo fare solo l'admin
         void AddCorso(Corso corso);//fatto
         //Aggiungi una lezione a un determinato corso. Lo puo fare solo il prof
-        void AddLezione(int idCorso, Lezione lezione);
+        void AddLezione(int idCorso, Lezione lezione);//fatto
         //restituisce le lezioni di un determinato corso
-        List<Lezione> SearchLezioni(int idCorso);
+        List<Lezione> SearchLezioni(int idCorso);//fatto
         //Iscrizione di uno studente a un determinato corso. Lo puo fare solo lo studente specifico
         void Iscriviti (int idCorso, string idStudente);//fatto
         //Cerca un determinato corso 
@@ -76,7 +76,7 @@ namespace DAO{
         public void AddEspLav(string MatrCv,EspLav esp) {
             throw new NotImplementedException();
         }
-        //da controllare
+        //fatto
         public void AddLezione(int idCorso,Lezione lezione){
             SqlConnection con = new SqlConnection(GetConnection());
             try{
@@ -274,7 +274,7 @@ namespace DAO{
             throw new NotImplementedException();
         }
 
-        //da controllare
+        //fatto
         public List<Lezione> SearchLezioni(int idCorso) {
             List<Lezione> lezioni = new List<Lezione>();
             SqlConnection con = new SqlConnection(GetConnection());
