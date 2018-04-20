@@ -28,7 +28,7 @@ namespace GestioneWebForm {
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inizio;
+        protected global::System.Web.UI.WebControls.Calendar inizio;
         
         /// <summary>
         /// Controllo fine.
@@ -37,7 +37,7 @@ namespace GestioneWebForm {
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fine;
+        protected global::System.Web.UI.WebControls.Calendar fine;
         
         /// <summary>
         /// Controllo descrizione.

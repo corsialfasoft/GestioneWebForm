@@ -17,17 +17,18 @@ namespace GestioneWebForm {
         }
 
         protected void Crea_Click(object sender, EventArgs e){
-            if(nome.Text != null && inizio.Text != null && fine.Text != null && descrizione.Text != null)
-            {
+            try{
                 Corsi = new List<Corso>();
-                Corso = new Corso{Nome = nome.Text, Inizio = DateTime.Parse(inizio.Text.ToString()), Fine = DateTime.Parse(fine.Text.ToString()), Descrizione = descrizione.Text };
+                Corso = new Corso{Nome = nome.Text, Inizio = inizio.SelectedDate, Fine = fine.SelectedDate, Descrizione = descrizione.Text };
                 Corsi.Add(Corso);
                 d.AddCorso(Corso);
                 Session["Corsi"]= Corsi;
-            }
-            else
-            {
+                Message = $"Corso {Corso.Nome} aggiunto";
+            }catch(Exception){
                 Message="Errore non tutti i campi sono stati riempiti !";
+            }finally{ 
+                var url = String.Format($"~/CercaCorsi");
+                Response.Redirect(url);  
             }
         }
     }

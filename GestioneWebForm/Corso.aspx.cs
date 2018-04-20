@@ -8,14 +8,14 @@ using DAO;
 
 namespace GestioneWebForm {
     public partial class _Corso : Page {
-        public Profilo ut = new Profilo{Matrincola = "qw",Ruolo= "prof" ,Nome="Drago",Cognome="Brinzi", Username="Tandy",Password="qwertyui" };
+        public Profilo ut = new Profilo{Matrincola = "aa",Ruolo= "prof" ,Nome="Drago",Cognome="Brinzi", Username="Tandy",Password="qwertyui" };
         DataAccesObject d = new DataAccesObject();
         public Corso corso{get;set;}
         public List<Lezione> lezioni{ get;set;}
         public string Message{get;set;}
 
         protected void LezioniOn_Click(object sender,EventArgs e) {
-            lezioni = corso.Lezioni?? null;
+            lezioni = d.SearchLezioni(corso.Id)?? null;
         }
         protected void LezioniOff_Click(object sender,EventArgs e) {
             lezioni = null;
@@ -24,11 +24,19 @@ namespace GestioneWebForm {
             var url = String.Format($"~/AddLezione?idCorso={corso.Id}");
             Response.Redirect(url);
         }
+        protected void Iscriviti_Click(object sender,EventArgs e) {
+            try{ 
+                d.Iscriviti(corso.Id,ut.Matrincola);
+                Message = "Iscrizione al corso riuscita";
+            }catch(Exception){ 
+                Message = "Iscrizione al corso non riuscita";
+            }
+        }
 
         protected void Page_Load(object sender,EventArgs e) {
             string a = Request["id"];
             if(int.TryParse(a, out int idi)){ 
-                corso = d.SearchCorsi(idi); 
+                corso = d.SearchCorsi(idi);
             }else{
                 Message = "Nessun elemento trovato";     
             }

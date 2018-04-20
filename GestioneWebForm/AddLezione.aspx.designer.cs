@@ -13,22 +13,13 @@ namespace GestioneWebForm {
     public partial class AddLezione {
         
         /// <summary>
-        /// Controllo nome.
+        /// Controllo argomento.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nome;
-        
-        /// <summary>
-        /// Controllo descrizione.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox descrizione;
+        protected global::System.Web.UI.WebControls.TextBox argomento;
         
         /// <summary>
         /// Controllo Durata.

@@ -27,8 +27,7 @@
             <asp:Label runat="server">Data inizio</asp:Label>
         </div>
         <div class="col-sm-8">
-            <asp:TextBox runat="server" ID="inizio"></asp:TextBox>
-            <asp:RequiredFieldValidator CssClass="text-danger h4" ControlToValidate ="inizio" ErrorMessage=" * " runat="server"/>
+            <asp:Calendar runat="server" ID="inizio"></asp:Calendar>
         </div>
     </div>
     <br />
@@ -37,8 +36,7 @@
             <asp:Label runat="server">Data fine</asp:Label>
         </div>
         <div class="col-sm-8">
-            <asp:TextBox runat="server" ID="fine"></asp:TextBox>
-            <asp:RequiredFieldValidator CssClass="text-danger h4" ControlToValidate ="fine" ErrorMessage=" * " runat="server"/>
+            <asp:Calendar runat="server" ID="fine"></asp:Calendar>
         </div>
     </div>
     <br />

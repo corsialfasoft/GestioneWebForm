@@ -5,16 +5,9 @@
     <h3>Pagina per l'aggiunta di una lezione</h3>
     <div class="row">
         <div class="col-md-3">
-            <label> Nome </label> <br />
-             <asp:TextBox ID="nome" runat="server" placeholder="Inserisci nome"></asp:TextBox>
-            <asp:RequiredFieldValidator CssClass="text-danger h4" ControlToValidate ="nome" ErrorMessage=" * " runat="server"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <label> Descrizione </label><br />
-            <asp:TextBox ID="descrizione" runat="server" placeholder="Inserisci una descrizione"></asp:TextBox>
-            <asp:RequiredFieldValidator CssClass="text-danger h4" ControlToValidate ="descrizione" ErrorMessage=" * " runat="server"/>
+            <label> Argomento </label> <br />
+             <asp:TextBox ID="argomento" runat="server" placeholder="Argomento"></asp:TextBox>
+            <asp:RequiredFieldValidator CssClass="text-danger h4" ControlToValidate ="argomento" ErrorMessage=" * " runat="server"/>
         </div>
     </div>
     <div class="row">

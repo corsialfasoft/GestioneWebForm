@@ -42,6 +42,9 @@
         <%if(ut.Ruolo == "prof"){%>
             <asp:Button OnClick="AddLezione_Click" CssClass="btn btn-default" Text="Aggiungi Lezione" runat="server" />
         <%}%>
+        <%if(ut.Ruolo == "studente"){%>
+            <asp:Button OnClick="Iscriviti_Click" CssClass="btn btn-default" Text="Iscriviti" runat="server" />
+        <%}%>
         <asp:Button PostBackUrl="~/CercaCorsi" CssClass="btn btn-default" Text="Torna Indietro" runat="server" />
         <hr />
         <%if(lezioni!=null){ %>
@@ -49,10 +52,7 @@
             <h3><b>Lezioni del corso <%=corso.Nome%></b></h3>
             <div class="row">
                 <div class="col-md-3">
-                   <h3> <b>Nome</b></h3>
-                </div>
-                <div class="col-md-7">
-                    <h3><b>Descrizione</b></h3>
+                   <h3> <b>Argomento</b></h3>
                 </div>
                 <div class="col-md-2">
                     <h3><b>Durata</b></h3>
@@ -61,10 +61,7 @@
             <%foreach(DAO.Lezione l in lezioni){%>
                 <div class="row">
                     <div class="col-md-3">
-                        <%=l.Nome%>
-                    </div>
-                    <div class="col-md-7">
-                         <%=l.Descrizione%>
+                        <%=l.Argomento%>
                     </div>
                     <div class="col-md-2">
                          <%=l.Durata%>

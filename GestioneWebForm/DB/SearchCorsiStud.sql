@@ -9,7 +9,7 @@ as
 				on c.id = sc.idCorsi
 			inner join Studenti s
 				on sc.idStudenti = s.matr
-			where c.nome like '%'+@descrizione+'%' or c.descrizione like '%'+@descrizione+'%' and @idStudente=s.matr;
+			where (c.nome like '%'+@descrizione+'%' or c.descrizione like '%'+@descrizione+'%') and @idStudente=s.matr;
 		commit transaction;
 	end try
 	begin catch
@@ -19,3 +19,5 @@ as
 		rollback transaction;
 	end catch
 go
+
+exec SearchCorsiStud 'aa',''
