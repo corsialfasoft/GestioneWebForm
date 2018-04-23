@@ -72,23 +72,33 @@
 
     <br />
     <br />
-
-    <label>Tabella Studi</label> <br />
+    <div>
+        <label>Tabella Studi</label> <br />
+        <asp:Button runat="server" ID="btn_AddPerStudi" OnClick="btn_AddPerStudi_Click"  Text="Aggiungi Percorso" />
+    </div>
     <div class="row">
-        <asp:Table ID="TablePerStudi"  CellPadding="10" Width="100%"  runat="server" >
+       <%-- <Asp:Button ID="btnPerStud" OnClick="btnPerStud_Click" runat="server" Text="Percorso Studi" />
+        <Asp:Button ID="btnEspLav" OnClick="btnEspLav_Click" runat="server" Text="Esperienze Lvaorative" />
+        <Asp:Button ID="btnComp" OnClick="btnComp_Click" runat="server" Text="Competenze" />--%>
+        <asp:Table ID="TablePerStudi" CellPadding="10" Width="100%"  runat="server" >
 
         </asp:Table>
     </div>
     <br />
-    <label>Tabella Esperienze lavorative</label> <br />
+     <div>
+        <label>Tabella Esperienze lavorative</label> <br />
+         <asp:Button runat="server" ID="btn_AddEspLav" OnClick="btn_AddEspLav_Click" Text="Aggiungi EspLav" />
+     </div>
     <div class="row">
         <asp:Table ID="TableEspLav"  CellPadding="10" Width="100%"  runat="server" >
 
         </asp:Table>
     </div>
     <br />
-
-    <label>Tabella Competenze</label> <br />
+    <div>
+        <label>Tabella Competenze</label> <br />
+        <asp:Button ID="btn_AddComp" OnClick="btn_AddComp_Click" runat="server" />
+    </div>
     <div class="row">
         <asp:Table ID="TableComp" CellPadding="10" Width="100%"  runat="server" >
          

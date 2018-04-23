@@ -51,7 +51,7 @@ namespace DAO{
         public void AddCompetenze(string MatrCv,Competenza comp) {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
 				DataSource = @"(localdb)\MSSQLLocalDB",
-				InitialCatalog = "GECV"
+				InitialCatalog = "GECUV"
 			};
 			SqlConnection connection = new SqlConnection(builder.ToString());
 			int x;
