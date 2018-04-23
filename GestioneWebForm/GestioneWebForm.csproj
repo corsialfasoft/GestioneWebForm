@@ -131,6 +131,9 @@
     <Content Include="Controll\ListCurriculum.ascx" />
     <Content Include="DB.CV\DataBase\Creazione.sql" />
     <Content Include="DB.CV\Popolamento\Test.sql" />
+    <Content Include="DB.CV\Procedure\GetPercorso.sql" />
+    <Content Include="DB.CV\Procedure\GetEsperienza.sql" />
+    <Content Include="DB.CV\Procedure\GetCompetenza.sql" />
     <Content Include="DB.CV\Procedure\GetEspLav.sql" />
     <Content Include="DB.CV\Procedure\GetPerStudi.sql" />
     <Content Include="DB.CV\Procedure\GetComp.sql" />

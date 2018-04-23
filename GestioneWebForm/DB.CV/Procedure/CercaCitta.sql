@@ -1,5 +1,5 @@
-﻿Create procedure CercaEta
-	@eta int
+﻿create procedure CercaCitta
+	@citta nvarchar
 as
-	Select c.Matricola from Curriculum c Where c.Eta=@eta
+	select c.IdCv from Curriculum c where c.residenza like '%'+@citta+'%';
 go
