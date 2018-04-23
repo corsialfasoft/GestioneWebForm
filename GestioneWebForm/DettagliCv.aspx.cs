@@ -59,7 +59,6 @@ namespace GestioneWebForm {
 				tcDesc.Controls.Add(new Label { Text = pers[i].Descrizione });
 				tr2.Cells.Add(tcDesc);
 				TableCell tcMod = new TableCell() { CssClass = "col-md-3" };
-				tcMod.Controls.Add(CreaBottone(new Button { Text = "ModificaPerStud" , PostBackUrl = $"/_PerStud.aspx?idPercorso={pers[i].Id}" ,ID = $"{pers[i].Id}" })); // manca IL REFERENIAMENTO
 				tr2.Cells.Add(CreaBottone(new Button { Text = "ModificaPerStud",PostBackUrl = $"/PerStud.aspx?idPercorso={pers[i].Id}",ID = $"{pers[i].Id}" }));
 				TablePerStudi.Rows.Add(tr2);
 
@@ -84,8 +83,7 @@ namespace GestioneWebForm {
 				tcDesc.Controls.Add(new Label { Text = esperienze[i].Descrizione });
 				tr2.Cells.Add(tcDesc);
 				TableCell tcMod = new TableCell() { CssClass = "col-md-3" };
-				tcMod.Controls.Add(CreaBottone(new Button { Text = "ModificaEsp",ID = $"{esperienze[i].Id}" })); // manca IL REFERENIAMENTO
-				tr2.Cells.Add(tcMod);
+				tr2.Cells.Add(CreaBottone(new Button { Text = "ModificaEsp", PostBackUrl = $"/EspLav.aspx?idEsperienza={esperienze[i].Id}" ,ID = $"{esperienze[i].Id}" }));
 				TableEspLav.Rows.Add(tr2);
 			}
 		}
@@ -142,8 +140,7 @@ namespace GestioneWebForm {
 				tcAF.Controls.Add(new Label { Text = competenze[i].Titolo });
 				tr.Cells.Add(tcAF);
 				TableCell tcMod = new TableCell() { CssClass = "col-md-1" };
-				tcMod.Controls.Add(CreaBottone(new Button { Text = "ModificaComp",ID = $"{competenze[i].Id}" })); // manca IL REFERENIAMENTO
-				tr.Cells.Add(tcMod);
+				tr.Cells.Add(CreaBottone(new Button { Text = "ModificaComp", PostBackUrl = $"/Comp.aspx?idCompetenza={competenze[i].Id}" ,ID = $"{competenze[i].Id}" }));
 				TableComp.Rows.Add(tr);
 
 			}

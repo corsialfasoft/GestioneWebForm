@@ -13,21 +13,23 @@ namespace GestioneWebForm {
         public string Message{get;set;}
         public int idCo{ get;set;}
         protected void Page_Load(object sender,EventArgs e) {
-            idCo = 5;
-            if(!Page.IsPostBack){
-                compe = dao.GetCompetenza(idCo);
-                titolo.Text = compe.Titolo;
-                livello.Text = compe.Livello.ToString();
-                //}else{ 
-                //    Message = "Errore: percorso non trovato";    
-                //}
+            if(int.TryParse(Request["idCompetenza"],out int x)){
+                idCo = x;
+                if(!Page.IsPostBack){
+                    compe = dao.GetCompetenza(idCo);
+                    titolo.Text = compe.Titolo;
+                    livello.Text = compe.Livello.ToString();
+                    //}else{ 
+                    //    Message = "Errore: percorso non trovato";    
+                    //}
+                }
             }
         }
         protected void Modifica_Click(object sender, EventArgs e) {
 			Competenza co = new Competenza{Livello=int.Parse(livello.Text),Titolo=titolo.Text};
             dao.ModComp(idCo,co);
             compe = dao.GetCompetenza(idCo);
-            var url = String.Format($"~/Comp");
+            var url = String.Format($"~/DettagliCv.aspx");
             Response.Redirect(url);
         }
 	}
