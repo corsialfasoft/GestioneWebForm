@@ -18,6 +18,9 @@ namespace DAO{
         void AddCvStudi(string MatrCv,PerStud studi);
         void AddEspLav(string MatrCv, EspLav esp );
         void AddCompetenze(string MatrCv, Competenza comp);
+        Competenza GetCompetenza(int id);
+        EspLav GetEsperienza(int id);
+        PerStud GetPercorso(int id);
 	
 	   
 		void CompilaHLavoro(DateTime data, int ore, int idCommessa, int idUtente);
@@ -339,7 +342,86 @@ namespace DAO{
 				connection.Dispose();
 			}
 		}
-		public void AggiungiCV(CV c) {
+		
+
+        //fatto
+        public Competenza GetCompetenza(int id){ 
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                Competenza c = new Competenza();
+                SqlCommand cmd = new SqlCommand("GetCompetenza",con){CommandType=CommandType.StoredProcedure};
+                cmd.Parameters.Add("id",SqlDbType.Int).Value = id;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read()){ 
+                    c.Id = reader.GetInt32(0);
+                    c.Titolo = reader.GetString(1);
+                    c.Livello = reader.GetInt32(2);
+                }
+                reader.Close();
+                cmd.Dispose();
+                return c;
+            }catch(Exception e){ 
+                throw e;
+            }
+            finally{ 
+                con.Dispose();
+            }   
+        }
+        //fatto
+        public EspLav GetEsperienza(int id){ 
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                EspLav es = new EspLav();
+                SqlCommand cmd = new SqlCommand("GetEsperienza",con){CommandType=CommandType.StoredProcedure};
+                cmd.Parameters.Add("id",SqlDbType.Int).Value = id;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read()){ 
+                    es.Id = reader.GetInt32(0);
+                    es.AnnoInizio  = reader.GetInt32(1);
+                    es.AnnoFine = reader.GetInt32(2);
+                    es.Qualifica = reader.GetString(3);
+                    es.Descrizione = reader.GetString(4);
+                }
+                reader.Close();
+                cmd.Dispose();
+                return es;
+            }catch(Exception e){ 
+                throw e;
+            }
+            finally{ 
+                con.Dispose();
+            }   
+        }
+        //fatto
+        public PerStud GetPercorso(int id){ 
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                PerStud ps = new PerStud();
+                SqlCommand cmd = new SqlCommand("GetPercorso",con){CommandType=CommandType.StoredProcedure};
+                cmd.Parameters.Add("id",SqlDbType.Int).Value = id;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read()){ 
+                    ps.Id = reader.GetInt32(0);
+                    ps.AnnoInizio  = reader.GetInt32(1);
+                    ps.AnnoFine = reader.GetInt32(2);
+                    ps.Titolo = reader.GetString(3);
+                    ps.Descrizione = reader.GetString(4);
+                }
+                reader.Close();
+                cmd.Dispose();
+                return ps;
+            }catch(Exception e){ 
+                throw e;
+            }
+            finally{ 
+                con.Dispose();
+            }   
+        }
+        
+        public void AggiungiCV(CV c) {
 			SqlConnection connection = new SqlConnection(GetConnection());
 			try{
 				connection.Open();
@@ -360,18 +442,14 @@ namespace DAO{
 				connection.Dispose();
 			}
 		}
-		public void ModEspLav(string matricola , EspLav daMod , EspLav Mod){
+        //modificato
+		public void ModEspLav(int id, EspLav Mod){
 			SqlConnection connection = new SqlConnection(GetConnection());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("ModEspLav",connection);
 				command.CommandType = System.Data.CommandType.StoredProcedure;
-				command.Parameters.Add("@matricola" , System.Data.SqlDbType.NVarChar).Value= matricola;
-				command.Parameters.Add("@annoIdaMod" , System.Data.SqlDbType.Int).Value= daMod.AnnoInizio;
-				command.Parameters.Add("@annoFdaMod" , System.Data.SqlDbType.Int).Value= daMod.AnnoFine;
-				command.Parameters.Add("@qualificaDaMod" , System.Data.SqlDbType.NVarChar).Value= daMod.Qualifica;
-				command.Parameters.Add("@descrDaMod" , System.Data.SqlDbType.NVarChar).Value= daMod.Descrizione;
-
+				command.Parameters.Add("@id" , System.Data.SqlDbType.Int).Value= id;
 				command.Parameters.Add("@annoIMod" , System.Data.SqlDbType.Int).Value= Mod.AnnoInizio;
 				command.Parameters.Add("@annoFMod" , System.Data.SqlDbType.Int).Value= Mod.AnnoFine;
 				command.Parameters.Add("@qualificaMod" , System.Data.SqlDbType.NVarChar).Value= Mod.Qualifica;
@@ -384,18 +462,14 @@ namespace DAO{
 				connection.Dispose();
 			}
 		}
-		public void ModPerStudi(string matricola , PerStud daMod , PerStud Mod){
+        //modificato
+		public void ModPerStudi(int id, PerStud Mod){
 			SqlConnection connection = new SqlConnection(GetConnection());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("ModPerStud",connection);
 				command.CommandType = System.Data.CommandType.StoredProcedure;
-				command.Parameters.Add("@matricola" , System.Data.SqlDbType.NVarChar).Value= matricola;
-				command.Parameters.Add("@annoIdaMod" , System.Data.SqlDbType.Int).Value= daMod.AnnoInizio;
-				command.Parameters.Add("@annoFdaMod" , System.Data.SqlDbType.Int).Value= daMod.AnnoFine;
-				command.Parameters.Add("@titoloDaMod" , System.Data.SqlDbType.NVarChar).Value= daMod.Titolo;
-				command.Parameters.Add("@descrDaMod" , System.Data.SqlDbType.NVarChar).Value= daMod.Descrizione;
-
+				command.Parameters.Add("@id" , System.Data.SqlDbType.Int).Value= id;
 				command.Parameters.Add("@annoIMod" , System.Data.SqlDbType.Int).Value= Mod.AnnoInizio;
 				command.Parameters.Add("@annoFMod" , System.Data.SqlDbType.Int).Value= Mod.AnnoFine;
 				command.Parameters.Add("@titoloMod" , System.Data.SqlDbType.NVarChar).Value= Mod.Titolo;
@@ -408,15 +482,14 @@ namespace DAO{
 				connection.Dispose();
 			}
 		}
-		public void ModComp (string matricola , Competenza daMod , Competenza Mod){
+        //modificato
+		public void ModComp (int id, Competenza Mod){
 			SqlConnection connection = new SqlConnection(GetConnection());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("ModComp",connection);
 				command.CommandType = System.Data.CommandType.StoredProcedure;
-				command.Parameters.Add("@matricola" , System.Data.SqlDbType.NVarChar).Value= matricola;
-				command.Parameters.Add("@titoloDaMod" , System.Data.SqlDbType.NVarChar).Value= daMod.Titolo;
-				command.Parameters.Add("@livDaMod" , System.Data.SqlDbType.Int).Value= daMod.Livello;
+				command.Parameters.Add("@id" , System.Data.SqlDbType.Int).Value= id;
 				command.Parameters.Add("@titoloMod" , System.Data.SqlDbType.NVarChar).Value= Mod.Titolo;
 				command.Parameters.Add("@livMod" , System.Data.SqlDbType.Int).Value= Mod.Livello;
 				command.ExecuteNonQuery();
@@ -559,7 +632,7 @@ namespace DAO{
 		{
 			SqlConnectionStringBuilder builder= new SqlConnectionStringBuilder();
 			builder.DataSource=@"(localdb)\MSSQLLocalDB";
-			builder.InitialCatalog="GECUV";
+			builder.InitialCatalog="GECuV";
 			return builder.ToString();
 		}
     }
