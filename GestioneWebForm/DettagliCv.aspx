@@ -75,9 +75,9 @@
 
     <label>Tabella Studi</label> <br />
     <div class="row">
-        <asp:Table ID="TablePerStudi"  CellPadding="10" Width="100%"  runat="server" >
-
-        </asp:Table>
+        <Asp:Button ID="btnPerStud" OnClick="btnPerStud_Click" runat="server" Text="Percorso Studi" />
+        <Asp:Button ID="btnEspLav" OnClick="btnEspLav_Click" runat="server" Text="Esperienze Lvaorative" />
+        <Asp:Button ID="btnComp" OnClick="btnComp_Click" runat="server" Text="Competenze" />
     </div>
     <br />
     <label>Tabella Esperienze lavorative</label> <br />

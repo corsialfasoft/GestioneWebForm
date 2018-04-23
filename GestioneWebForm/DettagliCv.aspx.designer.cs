@@ -76,13 +76,31 @@ namespace GestioneWebForm {
         protected global::System.Web.UI.WebControls.Button modAnag;
         
         /// <summary>
-        /// Controllo TablePerStudi.
+        /// Controllo btnPerStud.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TablePerStudi;
+        protected global::System.Web.UI.WebControls.Button btnPerStud;
+        
+        /// <summary>
+        /// Controllo btnEspLav.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEspLav;
+        
+        /// <summary>
+        /// Controllo btnComp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnComp;
         
         /// <summary>
         /// Controllo TableEspLav.
