@@ -632,7 +632,7 @@ namespace DAO{
 		{
 			SqlConnectionStringBuilder builder= new SqlConnectionStringBuilder();
 			builder.DataSource=@"(localdb)\MSSQLLocalDB";
-			builder.InitialCatalog="GECV";
+			builder.InitialCatalog="GECuV";
 			return builder.ToString();
 		}
     }
