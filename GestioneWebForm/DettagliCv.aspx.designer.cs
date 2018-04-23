@@ -76,31 +76,31 @@ namespace GestioneWebForm {
         protected global::System.Web.UI.WebControls.Button modAnag;
         
         /// <summary>
-        /// Controllo btnPerStud.
+        /// Controllo btn_AddPerStudi.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPerStud;
+        protected global::System.Web.UI.WebControls.Button btn_AddPerStudi;
         
         /// <summary>
-        /// Controllo btnEspLav.
+        /// Controllo TablePerStudi.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEspLav;
+        protected global::System.Web.UI.WebControls.Table TablePerStudi;
         
         /// <summary>
-        /// Controllo btnComp.
+        /// Controllo btn_AddEspLav.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnComp;
+        protected global::System.Web.UI.WebControls.Button btn_AddEspLav;
         
         /// <summary>
         /// Controllo TableEspLav.
@@ -110,6 +110,15 @@ namespace GestioneWebForm {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table TableEspLav;
+        
+        /// <summary>
+        /// Controllo btn_AddComp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_AddComp;
         
         /// <summary>
         /// Controllo TableComp.
