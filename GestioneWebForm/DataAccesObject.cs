@@ -256,7 +256,7 @@ namespace DAO{
 				connection.Dispose();
 			}
         }
-		private List<Competenza> GetComp(string matricola) {
+		public List<Competenza> GetComp(string matricola) {
 			SqlConnection connection = new SqlConnection(GetConnection());
 			try{
 				connection.Open();
@@ -268,8 +268,9 @@ namespace DAO{
 				SqlDataReader reader = command.ExecuteReader();
 				Competenza e = new Competenza();
 				while(reader.Read()){
-					e.Livello = reader.GetValue(0) == DBNull.Value ? 0 : reader.GetInt32(0);
-					e.Titolo = reader.GetValue(1) == DBNull.Value ? "" : reader.GetString(1);
+                    e.Id = reader.GetValue(0) == DBNull.Value? 0 : reader.GetInt32(0);
+					e.Livello = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(1);
+					e.Titolo = reader.GetValue(2) == DBNull.Value ? "" : reader.GetString(2);
 				
 					res.Add(e);
 				}
@@ -282,7 +283,7 @@ namespace DAO{
 				connection.Dispose();
 			}
 		}
-		private List<PerStud> GetPerStudi(string matricola) {
+		public List<PerStud> GetPerStudi(string matricola) {
 			SqlConnection connection = new SqlConnection(GetConnection());
 			try{
 				connection.Open();
@@ -294,10 +295,11 @@ namespace DAO{
 				SqlDataReader reader = command.ExecuteReader();
 				PerStud e = new PerStud();
 				while(reader.Read()){
-					e.AnnoInizio = reader.GetValue(0) == DBNull.Value ? 0 : reader.GetInt32(0);
-					e.AnnoFine = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(1);
-					e.Titolo = reader.GetValue(2) == DBNull.Value ? "" : reader.GetString(2);
-					e.Descrizione = reader.GetValue(3) == DBNull.Value ? "" : reader.GetString(3);
+                    e.Id = reader.GetValue(0) == DBNull.Value? 0 : reader.GetInt32(0);
+					e.AnnoInizio = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(1);
+					e.AnnoFine = reader.GetValue(2) == DBNull.Value ? 0 : reader.GetInt32(2);
+					e.Titolo = reader.GetValue(3) == DBNull.Value ? "" : reader.GetString(3);
+					e.Descrizione = reader.GetValue(4) == DBNull.Value ? "" : reader.GetString(4);
 					res.Add(e);
 				}
 				reader.Close();
@@ -309,7 +311,7 @@ namespace DAO{
 				connection.Dispose();
 			}
 		}
-		private List<EspLav> GetEspLav(string matricola) {
+		public List<EspLav> GetEspLav(string matricola) {
 			SqlConnection connection = new SqlConnection(GetConnection());
 			try{
 				connection.Open();
@@ -321,10 +323,11 @@ namespace DAO{
 				SqlDataReader reader = command.ExecuteReader();
 				EspLav e = new EspLav();
 				while(reader.Read()){
-					e.AnnoInizio = reader.GetValue(0) == DBNull.Value ? 0 : reader.GetInt32(0);
-					e.AnnoFine = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(1);
-					e.Qualifica = reader.GetValue(2)==DBNull.Value ? "" : reader.GetString(2);
-					e.Descrizione =reader.GetValue(3)==DBNull.Value ? "" : reader.GetString(3);
+                    e.Id = reader.GetValue(0) == DBNull.Value? 0 : reader.GetInt32(0);
+					e.AnnoInizio = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(0);
+					e.AnnoFine = reader.GetValue(2) == DBNull.Value ? 0 : reader.GetInt32(1);
+					e.Qualifica = reader.GetValue(3)==DBNull.Value ? "" : reader.GetString(2);
+					e.Descrizione =reader.GetValue(4)==DBNull.Value ? "" : reader.GetString(3);
 					res.Add(e);
 				}
 				reader.Close();
@@ -676,18 +679,21 @@ namespace DAO{
 		}
     }
     public class EspLav {
+        public int Id{get;set;}
         public int AnnoInizio {get; set;}
         public int AnnoFine {get; set;}
         public string Qualifica {get; set;}
         public string Descrizione {get; set;}
     }
     public class PerStud {
+        public int Id{get;set;}
         public int AnnoInizio {get; set;}
         public int AnnoFine {get; set;}
         public string Titolo {get; set;}
         public string Descrizione {get; set;}
     }
     public class Competenza {
+        public int Id{get;set;}
         public string Titolo {get; set;}
         public int Livello {get; set;}
     }
