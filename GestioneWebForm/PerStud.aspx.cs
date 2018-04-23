@@ -11,10 +11,9 @@ namespace GestioneWebForm {
         DataAccesObject dao = new DataAccesObject();
         public PerStud percorso{get;set;}
         public string Message{get;set;}
-        public bool add{get;set;}
-        protected void Page_Load(object sender,EventArgs e) {add = false;
-            //if(int.TryParse(Request["idPs"],out int idPs)){
-            int idPs = 1;
+        public int idPs{ get;set;}
+        protected void Page_Load(object sender,EventArgs e) {
+            idPs = 5;
                 percorso = dao.GetPercorso(idPs);
                 annoI.Text = percorso.AnnoInizio.ToString();
                 annoF.Text = percorso.AnnoFine.ToString();
@@ -27,6 +26,7 @@ namespace GestioneWebForm {
         protected void Modifica_Click(object sender, EventArgs e) {
 			PerStud pN = new PerStud{Titolo=titolo.Text,Descrizione=descrizione.Text,AnnoFine=int.Parse(annoF.Text),AnnoInizio=int.Parse(annoI.Text)};
             dao.ModPerStudi(percorso.Id,pN);
+            percorso = dao.GetPercorso(idPs);
         }
 	}
 }

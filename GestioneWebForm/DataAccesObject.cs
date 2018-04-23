@@ -234,7 +234,6 @@ namespace DAO{
 				SqlCommand command = new SqlCommand("GetCv",connection) {
 					CommandType = System.Data.CommandType.StoredProcedure
 				};
-			
 				command.Parameters.Add("@Matricola",System.Data.SqlDbType.NVarChar).Value=matr;
 				SqlDataReader reader = command.ExecuteReader();
 				CV c = new CV();
@@ -327,10 +326,10 @@ namespace DAO{
 				EspLav e = new EspLav();
 				while(reader.Read()){
                     e.Id = reader.GetValue(0) == DBNull.Value? 0 : reader.GetInt32(0);
-					e.AnnoInizio = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(0);
-					e.AnnoFine = reader.GetValue(2) == DBNull.Value ? 0 : reader.GetInt32(1);
-					e.Qualifica = reader.GetValue(3)==DBNull.Value ? "" : reader.GetString(2);
-					e.Descrizione =reader.GetValue(4)==DBNull.Value ? "" : reader.GetString(3);
+					e.AnnoInizio = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(1);
+					e.AnnoFine = reader.GetValue(2) == DBNull.Value ? 0 : reader.GetInt32(2);
+					e.Qualifica = reader.GetValue(3)==DBNull.Value ? "" : reader.GetString(3);
+					e.Descrizione =reader.GetValue(4)==DBNull.Value ? "" : reader.GetString(4);
 					res.Add(e);
 				}
 				reader.Close();

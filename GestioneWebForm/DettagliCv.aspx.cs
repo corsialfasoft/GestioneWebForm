@@ -13,7 +13,7 @@ namespace GestioneWebForm {
 			IDao dao = new DataAccesObject();
 			c=new CV();
 			//string matricola="ciao";
-			c=dao.Search(Request["codice"]);
+			c=dao.Search("EEEE");
 			NomeTextBox.Text=c.Nome;
 			CognomeTextBox.Text=c.Cognome;
 			EtaTextBox.Text=c.Eta.ToString();
