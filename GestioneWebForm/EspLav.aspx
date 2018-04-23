@@ -1,27 +1,27 @@
 ﻿<%@ Page 
-    Title="Percorso Studi" 
+    Title="Esperienze Lavorative" 
     Language="C#" 
     MasterPageFile="~/Site.Master" 
     AutoEventWireup="true" 
-    CodeBehind="PerStud.aspx.cs"
-    Inherits="GestioneWebForm._PerStud" %>
+    CodeBehind="EspLav.aspx.cs"
+    Inherits="GestioneWebForm._EspLav" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%:Title %></h2>
     <div class="container">
-    <%if(percorso !=null){%>
+    <%if(esperienza !=null){%>
         <div class ="row">
             <div class="col-md-3">
-                Titolo
+                Qualifica
             </div>
             <div class="col-md-3">
-                <asp:TextBox ID="titolo" runat="server" Text=""></asp:TextBox>
+                <asp:TextBox ID="qualifica" runat="server" Text=""></asp:TextBox>
             </div>
             <div class="col-md-3">
                 Descrizione
             </div>
             <div class="col-md-3">
-                <asp:TextBox ID="descrizione" runat="server"></asp:TextBox>
+                <asp:TextBox ID="descrizioneEl" runat="server"></asp:TextBox>
             </div>
         </div> 
         <div class ="row">
@@ -29,18 +29,18 @@
                 Anno Inizio
             </div>
             <div class="col-md-3">
-                <asp:TextBox TextMode="Number" ID="annoI" runat="server"></asp:TextBox>
+                <asp:TextBox TextMode="Number" ID="annoIEl" runat="server"></asp:TextBox>
             </div>
             <div class="col-md-3">
                 Anno Fine
             </div>
             <div class="col-md-3">
-                <asp:TextBox ID="annoF" TextMode="Number" runat="server"></asp:TextBox>
+                <asp:TextBox ID="annoFEl" TextMode="Number" runat="server"></asp:TextBox>
             </div>
         </div> 
 
         <asp:Button runat="server" OnClick="Modifica_Click" Text="Modifica"/>
     <%}%>
-        </div>
+    </div>
     <br />
 </asp:Content>

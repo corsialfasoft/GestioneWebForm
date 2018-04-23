@@ -156,6 +156,8 @@
     <Content Include="DB.CV\Procedure\AddCvStudi.sql" />
     <Content Include="DB.CV\Procedure\AddCv.sql" />
     <Content Include="DB.CV\Procedure\procedure.sql" />
+    <Content Include="Comp.aspx" />
+    <Content Include="EspLav.aspx" />
     <Content Include="PerStud.aspx" />
     <Content Include="ListCV.aspx" />
     <Content Include="About.aspx" />
@@ -225,6 +227,20 @@
     </Compile>
     <Compile Include="Controll\ListCurriculum.ascx.designer.cs">
       <DependentUpon>ListCurriculum.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comp.aspx.cs">
+      <DependentUpon>Comp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comp.aspx.designer.cs">
+      <DependentUpon>Comp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EspLav.aspx.cs">
+      <DependentUpon>EspLav.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EspLav.aspx.designer.cs">
+      <DependentUpon>EspLav.aspx</DependentUpon>
     </Compile>
     <Compile Include="PerStud.aspx.cs">
       <DependentUpon>PerStud.aspx</DependentUpon>

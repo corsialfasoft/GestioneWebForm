@@ -453,8 +453,11 @@ namespace DAO{
 				command.Parameters.Add("@annoFMod" , System.Data.SqlDbType.Int).Value= Mod.AnnoFine;
 				command.Parameters.Add("@qualificaMod" , System.Data.SqlDbType.NVarChar).Value= Mod.Qualifica;
 				command.Parameters.Add("@descrMod" , System.Data.SqlDbType.NVarChar).Value= Mod.Descrizione;
-				command.ExecuteNonQuery();
+				int x =command.ExecuteNonQuery();
 				command.Dispose();
+                if(x<1){ 
+                    throw new Exception();    
+                }
 			}catch(Exception e ){
 				throw e;
 			}finally{
@@ -473,8 +476,11 @@ namespace DAO{
 				command.Parameters.Add("@annoFMod" , System.Data.SqlDbType.Int).Value= Mod.AnnoFine;
 				command.Parameters.Add("@titoloMod" , System.Data.SqlDbType.NVarChar).Value= Mod.Titolo;
 				command.Parameters.Add("@descrMod" , System.Data.SqlDbType.NVarChar).Value= Mod.Descrizione;
-				command.ExecuteNonQuery();
+				int x =command.ExecuteNonQuery();
 				command.Dispose();
+                if(x<1){ 
+                    throw new Exception();    
+                }
 			}catch(Exception e ){
 				throw e;
 			}finally{
