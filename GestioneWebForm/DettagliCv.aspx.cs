@@ -11,11 +11,11 @@ namespace GestioneWebForm {
 		public CV c {get;set;}
 		protected void Page_Load(object sender,EventArgs e) {
 			IDao dao = new DataAccesObject();
-			c=new CV();
 			//string matricola="ciao";
 			//c=dao.Search(Request["codice"]);
-			c=dao.Search("BBBB");
 			if(!Page.IsPostBack){
+				c=new CV();
+				c=dao.Search("BBBB");
 				NomeTextBox.Text=c.Nome;
 				CognomeTextBox.Text=c.Cognome;
 				EtaTextBox.Text=c.Eta.ToString();
@@ -59,8 +59,8 @@ namespace GestioneWebForm {
 				tcDesc.Controls.Add(new Label { Text = pers[i].Descrizione });
 				tr2.Cells.Add(tcDesc);
 				TableCell tcMod = new TableCell() { CssClass = "col-md-3" };
-				tcMod.Controls.Add(CreaBottone(new Button { Text = "ModificaPerStud",ID = $"{pers[i].Id}" })); // manca IL REFERENIAMENTO
-				tr2.Cells.Add(tcMod);
+				tcMod.Controls.Add(CreaBottone(new Button { Text = "ModificaPerStud" , PostBackUrl = $"/_PerStud.aspx?idPercorso={pers[i].Id}" ,ID = $"{pers[i].Id}" })); // manca IL REFERENIAMENTO
+				tr2.Cells.Add(CreaBottone(new Button { Text = "ModificaPerStud",PostBackUrl = $"/PerStud.aspx?idPercorso={pers[i].Id}",ID = $"{pers[i].Id}" }));
 				TablePerStudi.Rows.Add(tr2);
 
 			}
@@ -106,7 +106,7 @@ namespace GestioneWebForm {
 					return cell;
 				}
 				case "ModificaPerStud":{
-					c.Click+= C_ModPerStud;
+					//c.Click+= C_ModPerStud;
 					TableCell cell = new TableCell();
 					cell.Controls.Add(c);
 					return cell;
@@ -120,7 +120,7 @@ namespace GestioneWebForm {
 
 		private void C_ModPerStud(object sender,EventArgs e) {
 			Button b = (Button) sender;
-			Response.Redirect( string.Format($"~/PerStud?idPercorso={b.ID}"));
+			Response.Redirect( string.Format($"~/_PerStud?idPercorso={b.ID}"));
 		}
 
 		private void C_ModComp(object sender,EventArgs e) {
