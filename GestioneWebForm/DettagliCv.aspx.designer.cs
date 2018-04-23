@@ -76,6 +76,15 @@ namespace GestioneWebForm {
         protected global::System.Web.UI.WebControls.Button modAnag;
         
         /// <summary>
+        /// Controllo btn_AddPerStudi.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_AddPerStudi;
+        
+        /// <summary>
         /// Controllo TablePerStudi.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace GestioneWebForm {
         protected global::System.Web.UI.WebControls.Table TablePerStudi;
         
         /// <summary>
+        /// Controllo btn_AddEspLav.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_AddEspLav;
+        
+        /// <summary>
         /// Controllo TableEspLav.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace GestioneWebForm {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table TableEspLav;
+        
+        /// <summary>
+        /// Controllo btn_AddComp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_AddComp;
         
         /// <summary>
         /// Controllo TableComp.

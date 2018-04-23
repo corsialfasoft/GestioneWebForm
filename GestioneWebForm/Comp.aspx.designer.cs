@@ -10,7 +10,7 @@
 namespace GestioneWebForm {
     
     
-    public partial class _PerStud {
+    public partial class _Comp {
         
         /// <summary>
         /// Controllo titolo.
@@ -22,30 +22,12 @@ namespace GestioneWebForm {
         protected global::System.Web.UI.WebControls.TextBox titolo;
         
         /// <summary>
-        /// Controllo descrizione.
+        /// Controllo livello.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox descrizione;
-        
-        /// <summary>
-        /// Controllo annoI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox annoI;
-        
-        /// <summary>
-        /// Controllo annoF.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox annoF;
+        protected global::System.Web.UI.WebControls.TextBox livello;
     }
 }

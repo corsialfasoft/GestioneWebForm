@@ -10,42 +10,42 @@
 namespace GestioneWebForm {
     
     
-    public partial class _PerStud {
+    public partial class _EspLav {
         
         /// <summary>
-        /// Controllo titolo.
+        /// Controllo qualifica.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox titolo;
+        protected global::System.Web.UI.WebControls.TextBox qualifica;
         
         /// <summary>
-        /// Controllo descrizione.
+        /// Controllo descrizioneEl.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox descrizione;
+        protected global::System.Web.UI.WebControls.TextBox descrizioneEl;
         
         /// <summary>
-        /// Controllo annoI.
+        /// Controllo annoIEl.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox annoI;
+        protected global::System.Web.UI.WebControls.TextBox annoIEl;
         
         /// <summary>
-        /// Controllo annoF.
+        /// Controllo annoFEl.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox annoF;
+        protected global::System.Web.UI.WebControls.TextBox annoFEl;
     }
 }
