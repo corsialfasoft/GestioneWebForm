@@ -127,6 +127,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddComp.aspx" />
+    <Content Include="AddPerStud.aspx" />
     <Content Include="Controll\ListPerStud.ascx" />
     <Content Include="Controll\ListCurriculum.ascx" />
     <Content Include="DB.CV\DataBase\Creazione.sql" />
@@ -157,6 +159,7 @@
     <Content Include="DB.CV\Procedure\AddCv.sql" />
     <Content Include="DB.CV\Procedure\procedure.sql" />
     <Content Include="Comp.aspx" />
+    <Content Include="AddEspLav.aspx" />
     <Content Include="EspLav.aspx" />
     <Content Include="PerStud.aspx" />
     <Content Include="ListCV.aspx" />
@@ -213,6 +216,20 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddComp.aspx.cs">
+      <DependentUpon>AddComp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddComp.aspx.designer.cs">
+      <DependentUpon>AddComp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddPerStud.aspx.cs">
+      <DependentUpon>AddPerStud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddPerStud.aspx.designer.cs">
+      <DependentUpon>AddPerStud.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controll\ListPerStud.ascx.cs">
       <DependentUpon>ListPerStud.ascx</DependentUpon>
@@ -234,6 +251,13 @@
     </Compile>
     <Compile Include="Comp.aspx.designer.cs">
       <DependentUpon>Comp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddEspLav.aspx.cs">
+      <DependentUpon>AddEspLav.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddEspLav.aspx.designer.cs">
+      <DependentUpon>AddEspLav.aspx</DependentUpon>
     </Compile>
     <Compile Include="EspLav.aspx.cs">
       <DependentUpon>EspLav.aspx</DependentUpon>

@@ -13,9 +13,9 @@ namespace GestioneWebForm {
 			IDao dao = new DataAccesObject();
 			//string matricola="ciao";
 			//c=dao.Search(Request["codice"]);
+			c=new CV();
+			c=dao.Search("EEEE");
 			if(!Page.IsPostBack){
-				c=new CV();
-				c=dao.Search("BBBB");
 				NomeTextBox.Text=c.Nome;
 				CognomeTextBox.Text=c.Cognome;
 				EtaTextBox.Text=c.Eta.ToString();
@@ -59,7 +59,8 @@ namespace GestioneWebForm {
 				tcDesc.Controls.Add(new Label { Text = pers[i].Descrizione });
 				tr2.Cells.Add(tcDesc);
 				TableCell tcMod = new TableCell() { CssClass = "col-md-3" };
-				tr2.Cells.Add(CreaBottone(new Button { Text = "ModificaPerStud",PostBackUrl = $"/PerStud.aspx?idPercorso={pers[i].Id}",ID = $"{pers[i].Id}" }));
+                tcMod.Controls.Add(new Button { Text = "Modifica",PostBackUrl = $"/PerStud.aspx?idPercorso={pers[i].Id}",ID = $"{pers[i].Id}" });
+				tr2.Cells.Add(tcMod);
 				TablePerStudi.Rows.Add(tr2);
 
 			}
@@ -83,52 +84,10 @@ namespace GestioneWebForm {
 				tcDesc.Controls.Add(new Label { Text = esperienze[i].Descrizione });
 				tr2.Cells.Add(tcDesc);
 				TableCell tcMod = new TableCell() { CssClass = "col-md-3" };
-				tr2.Cells.Add(CreaBottone(new Button { Text = "ModificaEsp", PostBackUrl = $"/EspLav.aspx?idEsperienza={esperienze[i].Id}" ,ID = $"{esperienze[i].Id}" }));
+                tcMod.Controls.Add(new Button { Text = "Modifica", PostBackUrl = $"/EspLav.aspx?idEsperienza={esperienze[i].Id}" ,ID = $"{esperienze[i].Id}" });
+				tr2.Cells.Add(tcMod);
 				TableEspLav.Rows.Add(tr2);
 			}
-		}
-		private TableCell CreaBottone(Control b){
-			Button c = (Button) b;
-			switch(c.Text){
-				case "ModificaEsp":{
-					c.Click+= ModEsp;
-					TableCell cell = new TableCell();
-					cell.Controls.Add(c);
-					return cell;
-					
-				}
-				case "ModificaComp":{
-					c.Click+= C_ModComp;
-					TableCell cell = new TableCell();
-					cell.Controls.Add(c);
-					return cell;
-				}
-				case "ModificaPerStud":{
-					//c.Click+= C_ModPerStud;
-					TableCell cell = new TableCell();
-					cell.Controls.Add(c);
-					return cell;
-				}
-				default :
-					Message="Attenzione Qualcosa è andata storto";
-					return null;
-			}
-			
-		}
-
-		private void C_ModPerStud(object sender,EventArgs e) {
-			Button b = (Button) sender;
-			Response.Redirect( string.Format($"~/_PerStud?idPercorso={b.ID}"));
-		}
-
-		private void C_ModComp(object sender,EventArgs e) {
-			Button b = (Button) sender;
-			Response.Redirect( string.Format($"~/Comp?idCompetenza={b.ID}"));
-		}
-
-		private void ModEsp(object sender,EventArgs e) {
-			Button b = (Button) sender;
-			Response.Redirect( string.Format($"~/EspLav?idEsperienza={b.ID}"));
 		}
 		protected void InitTableComp(List<Competenza> competenze) {
 			for(int i = 0; i < competenze.Count; i++) {
@@ -140,11 +99,12 @@ namespace GestioneWebForm {
 				tcAF.Controls.Add(new Label { Text = competenze[i].Titolo });
 				tr.Cells.Add(tcAF);
 				TableCell tcMod = new TableCell() { CssClass = "col-md-1" };
-				tr.Cells.Add(CreaBottone(new Button { Text = "ModificaComp", PostBackUrl = $"/Comp.aspx?idCompetenza={competenze[i].Id}" ,ID = $"{competenze[i].Id}" }));
+                tcMod.Controls.Add(new Button { Text = "Modifica", PostBackUrl = $"/Comp.aspx?idCompetenza={competenze[i].Id}" ,ID = $"{competenze[i].Id}" });
+				tr.Cells.Add(tcMod);
 				TableComp.Rows.Add(tr);
-
 			}
 		}
+
 
 		protected void modAnag_Click(object sender,EventArgs e) {
 			DataAccesObject dao = new DataAccesObject();
@@ -160,28 +120,18 @@ namespace GestioneWebForm {
 			c=Mod;
 		}
 
-		protected void btnPerStud_Click(object sender,EventArgs e) {
-			Response.Redirect( string.Format($"~/PerStud?matr={c.Matricola}"));
-		}
-
-		protected void btnEspLav_Click(object sender,EventArgs e) {
-			Response.Redirect( string.Format($"~/EspLav?matr={c.Matricola}"));
-		}
-
-		protected void btnComp_Click(object sender,EventArgs e) {
-			Response.Redirect( string.Format($"~/Comp?matr={c.Matricola}"));
-		}
-
 		protected void btn_AddPerStudi_Click(object sender,EventArgs e) {
 			Response.Redirect( string.Format($"~/AddPerStud?matr={c.Matricola}"));
 		}
 
 		protected void btn_AddEspLav_Click(object sender,EventArgs e) {
-			Response.Redirect( string.Format($"~/AddEspLav?matr={c.Matricola}"));
+            var url = string.Format($"~/AddEspLav?matr={c.Matricola}");
+			Response.Redirect(url);
 		}
-
+        
 		protected void btn_AddComp_Click(object sender,EventArgs e) {
-			Response.Redirect( string.Format($"~/AddComp?matr={c.Matricola}"));
+            var url = string.Format($"~/AddComp?matr={c.Matricola}");
+			Response.Redirect(url);
 		}
 	}
 }

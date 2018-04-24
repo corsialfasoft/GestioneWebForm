@@ -49,11 +49,7 @@ namespace DAO{
     public partial class DataAccesObject : IDao {
 
         public void AddCompetenze(string MatrCv,Competenza comp) {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
-				DataSource = @"(localdb)\MSSQLLocalDB",
-				InitialCatalog = "GECUV"
-			};
-			SqlConnection connection = new SqlConnection(builder.ToString());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			int x;
 			try {
 				connection.Open();
@@ -80,11 +76,7 @@ namespace DAO{
         }
 
         public void AddCvStudi(string MatrCv,PerStud studi) {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
-				DataSource = @"(localdb)\MSSQLLocalDB",
-				InitialCatalog = "GECV"
-			};
-			SqlConnection connection = new SqlConnection(builder.ToString());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			int x;
 			try {
 				connection.Open();
@@ -109,7 +101,7 @@ namespace DAO{
         }
 
         public void AddEspLav(string MatrCv,EspLav esp) {
-            SqlConnection con= new SqlConnection(GetConnection());
+            SqlConnection con= new SqlConnection(GetConnectionGeCuV());
 			try {
 				con.Open();
 				SqlCommand command = new SqlCommand("AddEspLav",con);
@@ -200,7 +192,7 @@ namespace DAO{
             throw new NotImplementedException();
         }
 		public void ModificaCV(CV a,CV b) {
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("ModificaCurriculum",connection) {
@@ -228,7 +220,7 @@ namespace DAO{
 
         public CV Search(string matr) {
 			CV trovato = new CV();
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("GetCv",connection) {
@@ -259,7 +251,7 @@ namespace DAO{
 			}
         }
 		public List<Competenza> GetComp(string matricola) {
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("GetComp",connection) {
@@ -268,8 +260,8 @@ namespace DAO{
 				command.Parameters.Add("@Matricola",System.Data.SqlDbType.NVarChar).Value=matricola;
 				List<Competenza> res = new List<Competenza>();
 				SqlDataReader reader = command.ExecuteReader();
-				Competenza e = new Competenza();
 				while(reader.Read()){
+				    Competenza e = new Competenza();
                     e.Id = reader.GetValue(0) == DBNull.Value? 0 : reader.GetInt32(0);
 					e.Livello = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(1);
 					e.Titolo = reader.GetValue(2) == DBNull.Value ? "" : reader.GetString(2);
@@ -286,7 +278,7 @@ namespace DAO{
 			}
 		}
 		public List<PerStud> GetPerStudi(string matricola) {
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("GetPerStudi",connection) {
@@ -295,8 +287,8 @@ namespace DAO{
 				command.Parameters.Add("@Matricola",System.Data.SqlDbType.NVarChar).Value=matricola;
 				List<PerStud> res = new List<PerStud>();
 				SqlDataReader reader = command.ExecuteReader();
-				PerStud e = new PerStud();
 				while(reader.Read()){
+				    PerStud e = new PerStud();
                     e.Id = reader.GetValue(0) == DBNull.Value? 0 : reader.GetInt32(0);
 					e.AnnoInizio = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(1);
 					e.AnnoFine = reader.GetValue(2) == DBNull.Value ? 0 : reader.GetInt32(2);
@@ -314,7 +306,7 @@ namespace DAO{
 			}
 		}
 		public List<EspLav> GetEspLav(string matricola) {
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("GetEspLav",connection) {
@@ -323,8 +315,8 @@ namespace DAO{
 				command.Parameters.Add("@Matricola",System.Data.SqlDbType.NVarChar).Value=matricola;
 				List<EspLav> res = new List<EspLav>();
 				SqlDataReader reader = command.ExecuteReader();
-				EspLav e = new EspLav();
 				while(reader.Read()){
+				    EspLav e = new EspLav();
                     e.Id = reader.GetValue(0) == DBNull.Value? 0 : reader.GetInt32(0);
 					e.AnnoInizio = reader.GetValue(1) == DBNull.Value ? 0 : reader.GetInt32(1);
 					e.AnnoFine = reader.GetValue(2) == DBNull.Value ? 0 : reader.GetInt32(2);
@@ -345,7 +337,7 @@ namespace DAO{
 
         //fatto
         public Competenza GetCompetenza(int id){ 
-            SqlConnection con = new SqlConnection(GetConnection());
+            SqlConnection con = new SqlConnection(GetConnectionGeCuV());
             try{
                 con.Open();
                 Competenza c = new Competenza();
@@ -369,7 +361,7 @@ namespace DAO{
         }
         //fatto
         public EspLav GetEsperienza(int id){ 
-            SqlConnection con = new SqlConnection(GetConnection());
+            SqlConnection con = new SqlConnection(GetConnectionGeCuV());
             try{
                 con.Open();
                 EspLav es = new EspLav();
@@ -395,7 +387,7 @@ namespace DAO{
         }
         //fatto
         public PerStud GetPercorso(int id){ 
-            SqlConnection con = new SqlConnection(GetConnection());
+            SqlConnection con = new SqlConnection(GetConnectionGeCuV());
             try{
                 con.Open();
                 PerStud ps = new PerStud();
@@ -421,7 +413,7 @@ namespace DAO{
         }
         
         public void AggiungiCV(CV c) {
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("AddCv",connection) {
@@ -443,7 +435,7 @@ namespace DAO{
 		}
         //modificato
 		public void ModEspLav(int id, EspLav Mod){
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("ModEspLav",connection);
@@ -466,7 +458,7 @@ namespace DAO{
 		}
         //modificato
 		public void ModPerStudi(int id, PerStud Mod){
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("ModPerStud",connection);
@@ -489,7 +481,7 @@ namespace DAO{
 		}
         //modificato
 		public void ModComp (int id, Competenza Mod){
-			SqlConnection connection = new SqlConnection(GetConnection());
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("ModComp",connection);
@@ -523,7 +515,7 @@ namespace DAO{
 
 		public List<CV> SearchChiava(string chiava) {
 			List<CV> trovati = new List<CV>();
-		SqlConnection connection = new SqlConnection(GetConnection());
+		SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try {
 				connection.Open();
 				SqlCommand command = new SqlCommand("dbo.CercaParolaChiava",connection);
@@ -546,7 +538,7 @@ namespace DAO{
 
         public List<CV> SearchCognome(string cognome) {
         List<CV> trovati = new List<CV>();
-		SqlConnection connection = new SqlConnection(GetConnection());
+		SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try {
 				connection.Open();
 				SqlCommand command = new SqlCommand("dbo.CercaCognome",connection);
@@ -581,7 +573,7 @@ namespace DAO{
 
         public List<CV> SearchEta(int eta) {
         List<CV> trovati = new List<CV>();
-		SqlConnection connection = new SqlConnection(GetConnection());
+		SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try {
 				connection.Open();
 				SqlCommand command = new SqlCommand("dbo.CercaEta",connection);
@@ -633,7 +625,7 @@ namespace DAO{
         public Giorno VisualizzaGiorno(DateTime data,int idUtente) {
             throw new NotImplementedException();
         }
-		public string GetConnection()
+		public string GetConnectionGeCuV()
 		{
 			SqlConnectionStringBuilder builder= new SqlConnectionStringBuilder();
 			builder.DataSource=@"(localdb)\MSSQLLocalDB";
