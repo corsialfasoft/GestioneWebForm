@@ -18,9 +18,9 @@ namespace GestioneWebForm.Controls
 			if(Lezioni.Count > 0 && Lezioni != null) {
 				foreach(Lezione lezione in Lezioni) {
 					TableRow tableRow = new TableRow();
-					tableRow.Cells.Add(CreaCella(new Label { Text = lezione.Id.ToString() ,CssClass="col-md-6"}));
-					tableRow.Cells.Add(CreaCella(new Label { Text = lezione.Argomento ,CssClass="col-md-6"}));
-					tableRow.Cells.Add(CreaCella(new Label { Text = lezione.Durata.ToString(),CssClass="col-md-6" }));
+					tableRow.Cells.Add(CreaCella(new Label() { Text = lezione.Id.ToString() ,CssClass="col-xs-6"}));
+					tableRow.Cells.Add(CreaCella(new Label() { Text = lezione.Argomento ,CssClass="col-xs-6"}));
+					tableRow.Cells.Add(CreaCella(new Label() { Text = lezione.Durata.ToString(),CssClass="col-xs-6" }));
 					if(IsModificaEnabled) {// da finire, devo creare una pagina modifica lezione.
 						TableCell table = new TableCell();
 						Button modifica = new Button();
