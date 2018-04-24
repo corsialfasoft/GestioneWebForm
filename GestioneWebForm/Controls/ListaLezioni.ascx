@@ -4,10 +4,12 @@
     Inherits="GestioneWebForm.Controls.ListaLezioni" %>
 
 <%if(Lezioni!=null && Lezioni.Count>0) {%>
+
 <asp:Table
     id="LezioniList"
     runat="server"
     width="100%"
+    border="1px solid black;"
     CellPadding="10"
     GridLines="None"
     HorizontalAlign="Center"
