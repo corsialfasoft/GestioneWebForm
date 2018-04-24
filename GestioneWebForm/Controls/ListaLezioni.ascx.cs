@@ -42,9 +42,6 @@ namespace GestioneWebForm.Controls
 				}
 			}
 		}
-		public void Riempi()
-		{
-		}
 		private TableCell CreaCella(Control label)
 		{
 			TableCell c = new TableCell();
@@ -53,7 +50,10 @@ namespace GestioneWebForm.Controls
 		}
 		public void Cancella_Click(object sender,CommandEventArgs e)
 		{
-
+			DataAccesObject dao = new DataAccesObject();
+			int idLezione;
+			int.TryParse((string)e.CommandArgument,out idLezione);
+			dao.EliminaLezione(idLezione);
 		}
 		public void Modifica_Click(object sender,CommandEventArgs e)
 		{

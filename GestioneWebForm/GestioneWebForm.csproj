@@ -141,6 +141,7 @@
     <Content Include="DB\SearchCorsi.sql" />
     <Content Include="DB\SearchCorsiStud.sql" />
     <Content Include="DB\CreazioneDBGeCo.sql" />
+    <Content Include="DB\EliminaLezione.sql" />
     <Content Include="MyPage.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
