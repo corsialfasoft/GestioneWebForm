@@ -16,6 +16,11 @@ namespace GestioneWebForm.Controls
 		protected void Page_Load(object sender,EventArgs e)
 		{
 			if(Lezioni.Count > 0 && Lezioni != null) {
+				TableRow row = new TableRow();
+				row.Cells.Add(CreaCella(new Label() { Text="idLezione",}));
+				row.Cells.Add(CreaCella(new Label() { Text="Descrizione"}));
+				row.Cells.Add(CreaCella(new Label() { Text="Durata"}));
+				LezioniList.Rows.Add(row);
 				foreach(Lezione lezione in Lezioni) {
 					TableRow tableRow = new TableRow();
 					tableRow.Cells.Add(CreaCella(new Label() { Text = lezione.Id.ToString() ,CssClass="col-xs-6"}));
@@ -27,6 +32,7 @@ namespace GestioneWebForm.Controls
 						modifica.CommandArgument = lezione.Id.ToString();
 						modifica.Command += Modifica_Click;
 						modifica.Text = "Modifica";
+						modifica.CssClass="col-xs-4";
 						table.Controls.Add(modifica);
 						tableRow.Cells.Add(table);
 					}
@@ -36,6 +42,7 @@ namespace GestioneWebForm.Controls
 						modifica.CommandArgument = lezione.Id.ToString();
 						modifica.Command += Cancella_Click;
 						modifica.Text="Elimina";
+						modifica.CssClass="col-xs-4";
 						table.Controls.Add(modifica);
 						tableRow.Cells.Add(table);
 					}
