@@ -514,7 +514,8 @@ namespace DAO{
 		}
 
 		public List<CV> SearchChiava(string chiava) {
-			List<CV> trovati = new List<CV>();
+		List<CV> trovati = new List<CV>();
+        List<string> matrs = new List<string>();
 		SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try {
 				connection.Open();
@@ -523,7 +524,11 @@ namespace DAO{
 				command.Parameters.Add("@parola",System.Data.SqlDbType.NVarChar).Value=chiava;
 				SqlDataReader reader = command.ExecuteReader();
 				while(reader.Read()) {
-					trovati.Add(Search(reader.GetString(0)));
+                    string matricola =reader.GetString(0);
+                    if(!matrs.Contains(matricola)){
+                        trovati.Add(Search(matricola));
+                        matrs.Add(matricola);
+                    }
 				}
 				reader.Close();
 				command.Dispose();

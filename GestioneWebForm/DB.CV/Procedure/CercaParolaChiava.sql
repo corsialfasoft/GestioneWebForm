@@ -16,3 +16,4 @@ AS
 		OR EL.Descrizione like '%'+ @parola +'%'
 		OR CS.Tipo like '%'+ @parola +'%'
 GO
+exec CercaParolaChiava 'a'
