@@ -9,10 +9,11 @@ create table Corsi(
 	dFine date
 );
 
-create table Lezioni (
+Create table Lezioni (
 	id int identity(1,1) primary key not null,
-	durata nvarchar(50) not null,
-	idCorsi int foreign key references Corsi
+	argomento nvarchar(30),
+	durata int not null,
+	idCorso int foreign key references Corsi
 );
 
 create table Studenti(

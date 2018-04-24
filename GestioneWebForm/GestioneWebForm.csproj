@@ -130,6 +130,7 @@
     <Content Include="About.aspx" />
     <Content Include="Controls\ListaCorsi.ascx" />
     <Content Include="CercaCorsi.aspx" />
+    <Content Include="Controls\ListaLezioni.ascx" />
     <Content Include="Corso.aspx" />
     <Content Include="AddLezione.aspx" />
     <Content Include="DB\AddLezione.sql" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="CercaCorsi.aspx.designer.cs">
       <DependentUpon>CercaCorsi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListaLezioni.ascx.cs">
+      <DependentUpon>ListaLezioni.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ListaLezioni.ascx.designer.cs">
+      <DependentUpon>ListaLezioni.ascx</DependentUpon>
     </Compile>
     <Compile Include="Corso.aspx.cs">
       <DependentUpon>Corso.aspx</DependentUpon>
