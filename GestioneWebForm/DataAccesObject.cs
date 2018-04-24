@@ -43,6 +43,7 @@ namespace DAO{
         List<Corso>ListaCorsi(int idUtente);//fatto
 		void EliminaLezione(int idLezione);
 		Lezione SearchLezione(int idLezione);
+		void ModificaLezione(Lezione lezione);
     }
 	 public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class DataAccesObject : IDao {
@@ -337,6 +338,28 @@ namespace DAO{
 				}
 				return lez;
 			} catch (Exception e){
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
+		}
+
+		public void ModificaLezione(Lezione lezione)
+		{
+			SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("ModificaLezione",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@idLezione",SqlDbType.Int).Value=lezione.Id;
+				command.Parameters.Add("@argomento",SqlDbType.NVarChar).Value=lezione.Argomento;
+				command.Parameters.Add("@durata",SqlDbType.Int).Value=lezione.Durata;
+				int x = command.ExecuteNonQuery();
+				if(x == 0) {
+					throw new Exception("Nessuna lezione modificata");
+				}
+				
+			}catch(Exception e) {
 				throw e;
 			} finally {
 				connection.Dispose();

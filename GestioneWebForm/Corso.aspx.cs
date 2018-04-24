@@ -13,6 +13,7 @@ namespace GestioneWebForm {
         public Corso corso{get;set;}
         public List<Lezione> lezioni{ get;set;}
         public string Message{get;set;}
+		
 
         //protected void LezioniOn_Click(object sender,EventArgs e) {
          
@@ -40,6 +41,7 @@ namespace GestioneWebForm {
                 corso = d.SearchCorsi(idi);
 			lezioni = d.SearchLezioni(corso.Id)?? null;
 			Lezione.Lezioni = lezioni;
+			Lezione.IdCorso = idi;
             }else{
                 Message = "Nessun elemento trovato";     
             }

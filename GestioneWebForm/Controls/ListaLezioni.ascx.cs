@@ -9,6 +9,7 @@ namespace GestioneWebForm.Controls
 {
 	public partial class ListaLezioni : System.Web.UI.UserControl
 	{
+		public int IdCorso { get;set;}
 		public List<Lezione> Lezioni { get; set; }
 		public bool IsModificaEnabled { get; set; }
 		public bool IsEliminaEnabled { get; set; }
@@ -54,12 +55,13 @@ namespace GestioneWebForm.Controls
 			int idLezione;
 			int.TryParse((string)e.CommandArgument,out idLezione);
 			dao.EliminaLezione(idLezione);
+			Response.Redirect($"~/Corso?id={IdCorso}");
 		}
 		public void Modifica_Click(object sender,CommandEventArgs e)
 		{
 			int idLez;
 			int.TryParse((string)e.CommandArgument,out idLez);
-			Response.Redirect($"~/ModLezione?id={idLez}");
+			Response.Redirect($"~/ModLezione?id={idLez}&idCorso={IdCorso}");
 		}
 	}
 }
