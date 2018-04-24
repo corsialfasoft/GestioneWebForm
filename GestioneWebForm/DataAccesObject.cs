@@ -152,10 +152,7 @@ namespace DAO{
         }
 
         public void EliminaCV(CV curriculum) {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
-				DataSource = @"(localdb)\MSSQLLocalDB",
-				InitialCatalog = "GECV"
-			};
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(GetConnectionGeCuV());
 			SqlConnection connection = new SqlConnection(builder.ToString());
 			int x;
 			try {

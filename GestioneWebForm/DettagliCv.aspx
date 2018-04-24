@@ -67,7 +67,7 @@
          </div>
     </div>
     <asp:Button ID="modAnag" OnClick="modAnag_Click" Text="Modifica" runat="server"/>
-    <hr />
+    <hr  style="color:black; border-width:3px;"/>
     <br />
     <div class="row">
         <div class="col-md-2">
@@ -77,10 +77,14 @@
             <asp:Button runat="server" ID="btn_AddPerStudi" OnClick="btn_AddPerStudi_Click"  Text="Aggiungi" />
         </div>
     </div>
-    <div class="row">
-        <asp:Table ID="TablePerStudi" CellPadding="10" Width="100%" runat="server"></asp:Table>
+    <hr style="color:black; border-width:3px;" >
+    <div class="row"  >
+        <asp:Table ID="TablePerStudi" class="table" CellPadding="10"  Width="100%" runat="server">
+
+        </asp:Table>
     </div>
-    <hr />
+    <hr style="color:black; border-width:5px;" />
+    
      <div class="row">
         <div class="col-md-2">
             <label>Esperienze Lavorative</label> <br />
@@ -89,20 +93,22 @@
             <asp:Button runat="server" ID="btn_AddEspLav" OnClick="btn_AddEspLav_Click" Text="Aggiungi" />
         </div>
     </div>
+     <hr style="color:black; border-width:5px;">
     <div class="row">
-        <asp:Table ID="TableEspLav"  CellPadding="10" Width="100%"  runat="server" ></asp:Table>
+        <asp:Table ID="TableEspLav"  class="table" CellPadding="10" GridLines="None" Width="100%"  runat="server" ></asp:Table>
     </div>
-    <hr />
+    <hr  style="color:black; border-width:5px;"/>
     <div class="row">
         <div class="col-md-2">
             <label>Tabella Competenze</label> <br />
         </div>
         <div class="col-md-2">
-            <asp:Button ID="btn_AddComp" Text="Aggiungi" OnClick="btn_AddComp_Click" runat="server" />
+            <asp:Button ID="btn_AddComp" Text="Aggiungi"  OnClick="btn_AddComp_Click" runat="server" />
         </div>
     </div>
+    <hr style="color:black; border-width:5px;">
     <div class="row">
-        <asp:Table ID="TableComp" CellPadding="10" Width="100%"  runat="server" ></asp:Table>
+        <asp:Table ID="TableComp"  class="table" CellPadding="10" Width="100%" GridLines="None"  runat="server" ></asp:Table>
     </div>
     <br />
 </asp:Content>

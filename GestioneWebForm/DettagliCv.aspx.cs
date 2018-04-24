@@ -13,7 +13,7 @@ namespace GestioneWebForm {
 			IDao dao = new DataAccesObject();
 			//string matricola="ciao";
 			//c=dao.Search(Request["codice"]);
-			c=new CV();
+			
 			c=dao.Search("EEEE");
 			if(!Page.IsPostBack){
 				NomeTextBox.Text=c.Nome;
@@ -26,66 +26,83 @@ namespace GestioneWebForm {
 					InitTablePS(new List<PerStud>());
 				}else{
 					InitTablePS(c.Percorsostudi);
-					//}
-					if(c.Esperienze == null) {
-						InitTableES(new List<EspLav>());
-					} else {
-						InitTableES(c.Esperienze);
-					}
-					if(c.Competenze == null) {
-						InitTableComp(new List<Competenza>());
-					} else {
-						InitTableComp(c.Competenze);
-					}
 				}
+				if(c.Esperienze == null) {
+					InitTableES(new List<EspLav>());
+				} else {
+					InitTableES(c.Esperienze);
+				}
+				if(c.Competenze == null) {
+					InitTableComp(new List<Competenza>());
+				} else {
+					InitTableComp(c.Competenze);
+				}
+			}else{
+				if(c.Percorsostudi==null){
+					InitTablePS(new List<PerStud>());
+				}else{
+					InitTablePS(c.Percorsostudi);
+				}
+				if(c.Esperienze == null) {
+					InitTableES(new List<EspLav>());
+				} else {
+					InitTableES(c.Esperienze);
+				}
+				if(c.Competenze == null) {
+					InitTableComp(new List<Competenza>());
+				} else {
+					InitTableComp(c.Competenze);
+				}
+				
 			}
 		}
 		protected void InitTablePS(List<PerStud> pers) {
 			for(int i = 0; i < pers.Count; i++) {
 				TableRow tr = new TableRow();
-				TableCell tcAI = new TableCell() { CssClass = "col-md-6" };
-				tcAI.Controls.Add(new Label { Text = pers[i].AnnoInizio.ToString() });
+				TableCell tcAI = new TableCell() { CssClass = "col-md-6"};
+				tcAI.Controls.Add(new Label { Text =$"<b>AnnoInzio</b>:{pers[i].AnnoInizio.ToString()}" });
 				tr.Cells.Add(tcAI);
 				TableCell tcAF = new TableCell() { CssClass = "col-md-6" };
-				tcAF.Controls.Add(new Label { Text = pers[i].AnnoFine.ToString() });
+				tcAF.Controls.Add(new Label { Text =$"<b>AnnoFine</b>: {pers[i].AnnoFine.ToString()}" });
 				tr.Cells.Add(tcAF);
 				TablePerStudi.Rows.Add(tr);
 
-				TableRow tr2 = new TableRow();
-				TableCell tcTipo = new TableCell() { CssClass = "col-md-6" };
-				tcTipo.Controls.Add(new Label { Text = pers[i].Titolo });
+				TableRow tr2 = new TableRow(){ CssClass="noBorderTop"};
+				TableCell tcTipo = new TableCell() { CssClass = "col-md-6 noBorderTop" };
+				tcTipo.Controls.Add(new Label { Text =$"<b>Titolo</b>:{pers[i].Titolo}"});
 				tr2.Cells.Add(tcTipo);
-				TableCell tcDesc = new TableCell() { CssClass = "col-md-3" };
-				tcDesc.Controls.Add(new Label { Text = pers[i].Descrizione });
+				TableCell tcDesc = new TableCell() { CssClass = "col-md-3 noBorderTop" };
+				tcDesc.Controls.Add(new Label { Text =$"<b>Descrizione</b>: {pers[i].Descrizione} "});
 				tr2.Cells.Add(tcDesc);
-				TableCell tcMod = new TableCell() { CssClass = "col-md-3" };
-                tcMod.Controls.Add(new Button { Text = "Modifica",PostBackUrl = $"/PerStud.aspx?idPercorso={pers[i].Id}",ID = $"{pers[i].Id}" });
+				TableCell tcMod = new TableCell() { CssClass = "col-md-3 noBorderTop" };
+                tcMod.Controls.Add(new Button { Text = "Modifica ",PostBackUrl = $"/PerStud.aspx?idPercorso={pers[i].Id}",ID = $"{pers[i].Id}" });
 				tr2.Cells.Add(tcMod);
 				TablePerStudi.Rows.Add(tr2);
-
+				//tr2.BorderStyle= BorderStyle.Outset;
 			}
 		}
 		protected void InitTableES(List<EspLav> esperienze) {
 			for(int i = 0; i < esperienze.Count; i++) {
-				TableRow tr = new TableRow();
-				TableCell tcAI = new TableCell() { CssClass = "col-md-6" };
-				tcAI.Controls.Add(new Label { Text = esperienze[i].AnnoInizio.ToString() });
+				TableRow tr = new TableRow(){ CssClass="table"};
+				TableCell tcAI = new TableCell() { CssClass = "col-md-4" };
+				tcAI.Controls.Add(new Label { Text =$"<div class='col-md-6'><b>AnnoInizio:</b></div><div>{esperienze[i].AnnoInizio.ToString()} </div>"});
 				tr.Cells.Add(tcAI);
-				TableCell tcAF = new TableCell() { CssClass = "col-md-6" };
-				tcAF.Controls.Add(new Label { Text = esperienze[i].AnnoFine.ToString() });
+				TableCell tcAF = new TableCell() { ColumnSpan=2, CssClass = "col-md-8"};
+				tcAF.Controls.Add(new Label { Text =$"<div class='col-md-6'><b>AnnoFine:</b></div><div>{esperienze[i].AnnoFine.ToString()} </div>" });
 				tr.Cells.Add(tcAF);
 				TableEspLav.Rows.Add(tr);
 
-				TableRow tr2 = new TableRow();
-				TableCell tcTipo = new TableCell() { CssClass = "col-md-6" };
-				tcTipo.Controls.Add(new Label { Text = esperienze[i].Qualifica });
+				TableRow tr2 = new TableRow(){CssClass="noBorderTop"} ;
+				TableCell tcTipo = new TableCell() { CssClass = "col-md-6 noBorderTop"};
+				tcTipo.Controls.Add(new Label { Text =$"<div class='col-md-6'><b>Qualifica:</b></div><div> {esperienze[i].Qualifica} </div>" });
 				tr2.Cells.Add(tcTipo);
-				TableCell tcDesc = new TableCell() { CssClass = "col-md-3" };
-				tcDesc.Controls.Add(new Label { Text = esperienze[i].Descrizione });
+				TableCell tcDesc = new TableCell() { CssClass = "col-md-3  noBorderTop" };
+				tcDesc.Controls.Add(new Label { Text = $"<div class='col-md-6'><b>Descrizione:</b></div><div> {esperienze[i].Descrizione} </div> <br>" });
 				tr2.Cells.Add(tcDesc);
-				TableCell tcMod = new TableCell() { CssClass = "col-md-3" };
+				TableCell tcMod = new TableCell() { CssClass = "col-md-3  noBorderTop" };
                 tcMod.Controls.Add(new Button { Text = "Modifica", PostBackUrl = $"/EspLav.aspx?idEsperienza={esperienze[i].Id}" ,ID = $"{esperienze[i].Id}" });
 				tr2.Cells.Add(tcMod);
+				//tr2.BorderStyle= BorderStyle.Outset;
 				TableEspLav.Rows.Add(tr2);
 			}
 		}
@@ -93,14 +110,16 @@ namespace GestioneWebForm {
 			for(int i = 0; i < competenze.Count; i++) {
 				TableRow tr = new TableRow();
 				TableCell tcAI = new TableCell() { CssClass = "col-md-6" };
-				tcAI.Controls.Add(new Label { Text = competenze[i].Livello.ToString() });
+				tcAI.Controls.Add(new Label { Text = $"<b>Livello:</b>{competenze[i].Livello.ToString()}" });
 				tr.Cells.Add(tcAI);
 				TableCell tcAF = new TableCell() { CssClass = "col-md-6" };
-				tcAF.Controls.Add(new Label { Text = competenze[i].Titolo });
+				tcAF.Controls.Add(new Label { Text =$"<b>Titolo:</b>{competenze[i].Titolo}"});
 				tr.Cells.Add(tcAF);
 				TableCell tcMod = new TableCell() { CssClass = "col-md-1" };
                 tcMod.Controls.Add(new Button { Text = "Modifica", PostBackUrl = $"/Comp.aspx?idCompetenza={competenze[i].Id}" ,ID = $"{competenze[i].Id}" });
 				tr.Cells.Add(tcMod);
+				//tr.ControlStyle.BorderStyle= BorderStyle.Groove;
+
 				TableComp.Rows.Add(tr);
 			}
 		}
@@ -115,9 +134,8 @@ namespace GestioneWebForm {
 			Mod.Residenza= ResidenzaTextBox.Text;
 			Mod.Email=EmailTextBox.Text;
 			Mod.Telefono= TelefonoTextBox.Text;
-			TelefonoTextBox.Text = "CAAA";
 			dao.ModificaCV(c,Mod);
-			c=Mod;
+			c=dao.Search(c.Matricola);
 		}
 
 		protected void btn_AddPerStudi_Click(object sender,EventArgs e) {

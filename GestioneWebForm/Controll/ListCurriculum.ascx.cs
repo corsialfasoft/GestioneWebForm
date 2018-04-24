@@ -46,6 +46,7 @@ namespace GestioneWebForm.Controll {
 			String matr = b.ID;
 			DataAccesObject dao = new DataAccesObject();
 			dao.EliminaCV(dao.Search(matr));
+			Response.Redirect($"/RicercaCurriculum.aspx?");
 		}
 
 		private TableCell CreaCella(Control label) {
