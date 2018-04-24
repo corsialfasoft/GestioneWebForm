@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LibreriaDB">
+      <HintPath>..\..\..\..\net\Gestione2ù\Gestione\LibreriaDB\bin\Debug\LibreriaDB.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -127,9 +130,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddGiorno.aspx" />
     <Content Include="SQL\DDLGeTime.sql" />
     <Content Include="SQL\SP_VisualizzaGiorno.sql" />
-    <Content Include="AddGiorno.aspx" />
     <Content Include="VisualizzaGiorno.aspx" />
     <Content Include="About.aspx" />
     <Content Include="MyPage.aspx" />
@@ -192,6 +195,7 @@
     <Compile Include="AddGiorno.aspx.designer.cs">
       <DependentUpon>AddGiorno.aspx</DependentUpon>
     </Compile>
+    <Compile Include="trasformatori.cs" />
     <Compile Include="VisualizzaGiorno.aspx.cs">
       <DependentUpon>VisualizzaGiorno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
