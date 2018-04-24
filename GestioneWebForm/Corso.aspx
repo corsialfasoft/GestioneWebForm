@@ -44,7 +44,7 @@
             </div>
         </div>
         <%if(lezioni.Count>0){%>
-                <GetLezioni:Lezione ID="Lezione" runat="server" IsEliminaEnabled="true" />
+                <GetLezioni:Lezione ID="Lezione" runat="server" IsEliminaEnabled="true" IsModificaEnabled="true" />
             <%}%>
         <%if(ut.Ruolo == "prof"){%>
             <asp:Button OnClick="AddLezione_Click" CssClass="btn btn-default" Text="Aggiungi Lezione" runat="server" />

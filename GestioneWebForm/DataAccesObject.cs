@@ -42,6 +42,7 @@ namespace DAO{
         //Mostra tutti i corsi a cui è iscritto un determinato studente(idStudente)
         List<Corso>ListaCorsi(int idUtente);//fatto
 		void EliminaLezione(int idLezione);
+		Lezione SearchLezione(int idLezione);
     }
 	 public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class DataAccesObject : IDao {
@@ -315,6 +316,28 @@ namespace DAO{
 				command.Dispose();
 			}catch (Exception x) {
 				throw x;
+			} finally {
+				connection.Dispose();
+			}
+		}
+
+		public Lezione SearchLezione(int idLezione)
+		{
+			Lezione lez = new Lezione();
+			SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("SearchLezione",connection);
+				command.CommandType= CommandType.StoredProcedure;
+				command.Parameters.Add("@idLezione",SqlDbType.Int).Value=idLezione;
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()) {
+					lez.Argomento= reader.GetString(0);
+					lez.Durata = reader.GetInt32(1);
+				}
+				return lez;
+			} catch (Exception e){
+				throw e;
 			} finally {
 				connection.Dispose();
 			}

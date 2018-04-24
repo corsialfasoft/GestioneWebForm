@@ -1,9 +1,11 @@
-﻿Create procedure EliminaLezione
-@IdLezione int
+﻿create procedure ModificaLezione
+@idLezione int,
+@argomento nvarchar(30),
+@durata int
 as
 begin transaction;
 begin try
-	Delete Lezioni where id=@IdLezione
+	Update Lezioni set argomento=@argomento , durata=@durata where id=@idLezione
 	commit transaction;
 end try
 begin catch  

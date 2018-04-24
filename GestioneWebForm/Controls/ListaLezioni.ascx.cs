@@ -21,13 +21,13 @@ namespace GestioneWebForm.Controls
 					tableRow.Cells.Add(CreaCella(new Label { Text = lezione.Argomento }));
 					tableRow.Cells.Add(CreaCella(new Label { Text = lezione.Durata.ToString() }));
 					if(IsModificaEnabled) {// da finire, devo creare una pagina modifica lezione.
-						//TableCell table=new TableCell();
-						//Button modifica = new Button();
-						//modifica.CommandArgument = lezione.Id.ToString();
-						//modifica.Command += Modifica_Click;
-						//modifica.Text="Modifica";
-						//table.Controls.Add(modifica);
-						//tableRow.Cells.Add(table);
+						TableCell table = new TableCell();
+						Button modifica = new Button();
+						modifica.CommandArgument = lezione.Id.ToString();
+						modifica.Command += Modifica_Click;
+						modifica.Text = "Modifica";
+						table.Controls.Add(modifica);
+						tableRow.Cells.Add(table);
 					}
 					if(IsEliminaEnabled) {
 						TableCell table=new TableCell();
@@ -57,7 +57,9 @@ namespace GestioneWebForm.Controls
 		}
 		public void Modifica_Click(object sender,CommandEventArgs e)
 		{
-
+			int idLez;
+			int.TryParse((string)e.CommandArgument,out idLez);
+			Response.Redirect($"~/ModLezione?id={idLez}");
 		}
 	}
 }
