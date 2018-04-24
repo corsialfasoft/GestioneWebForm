@@ -19,7 +19,7 @@ namespace DAO{
         void AddCompetenze(string MatrCv, Competenza comp);
 		void CompilaHLavoro(DateTime data, int ore, int idCommessa, int idUtente);
 		void Compila(DateTime data, int ore, HType tipoOre, int idUtente);
-		Giorno VisualizzaGiorno(DateTime data, int idUtente);
+		Giorno VisualizzaGiorno(DateTime data, string idUtente);
 		List<Giorno> GiorniCommessa(int idCommessa, int idUtente);
 		Commessa CercaCommessa(string nomeCommessa);
         //Aggiungi nuovo corso. Lo puo fare solo l'admin
@@ -142,8 +142,46 @@ namespace DAO{
             throw new NotImplementedException();
         }
 
-        public Giorno VisualizzaGiorno(DateTime data,int idUtente) {
-            throw new NotImplementedException();
+        public Giorno VisualizzaGiorno(DateTime data, string idUtente) {
+            Giorno result = null;
+            SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
+            scsb.DataSource= @"(localdb)\MSSQLLocalDB";
+            scsb.InitialCatalog="GeTime";
+            SqlConnection connection = new SqlConnection(scsb.ToString());
+            try {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SP_VisualizzaGiorno",connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("@Data", System.Data.SqlDbType.Date).Value = data.ToString("yyyy-MM-dd");
+                command.Parameters.Add("@IdUtente", System.Data.SqlDbType.NVarChar).Value = idUtente;
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read()) {
+                    result = new Giorno(data);
+                    do {
+                        switch (reader.GetInt32(0)) {
+                            case 1:
+                                result.HMalattia = reader.GetInt32(1);
+                                break;
+                            case 2:
+                                result.HPermesso = reader.GetInt32(1);
+                                break;
+                            case 3:
+                                result.HFerie = reader.GetInt32(1);
+                                break;
+                            case 4:
+                                result.AddOreLavorative(new OreLavorative(reader.GetInt32(4), reader.GetInt32(1), reader.GetString(2), reader.GetString(3)));
+                                break;
+                        }
+                    } while(reader.Read());
+                }
+                reader.Close();
+                command.Dispose();
+            } catch (Exception e) {
+                throw e;
+            } finally {
+                connection.Dispose();
+            }
+            return result;
         }
     }
 
@@ -169,40 +207,35 @@ namespace DAO{
     }
 	
     public partial class Giorno {
-		private List<int> _id;
-		private int _id_utente;
-		private int[] ore = new int[3];
+		private string _id_utente;
 		private DateTime data;
-
+		private int idG;
 		public DateTime Data { get { return data; } }
-		private List<Commessa> commesse;
-
-		public int ID_UTENTE { get { return _id_utente; } set { _id_utente = value; } }
-		public List<int> ID { get { return _id; } set { _id = value; } }
-		public int HL { get { return TotCom(); } }
-		public int[] Ore { get => ore; set => ore = value; }
-		public List<Commessa> Commesse { get => commesse; }
-
+		private List<OreLavorative> oreLavorative = new List<OreLavorative>();
+		public string ID_UTENTE { get { return _id_utente; } set { _id_utente = value; } }
+		public int HPermesso{ get;set;}
+		public int HMalattia{ get;set;}
+		public int HFerie{ get;set;}
+		public List<OreLavorative> OreLavorate { get => oreLavorative; }
+		public int IdGiorno{ get;set;}
 
 		public Giorno(DateTime data) { this.data = data; }
-		public Giorno(DateTime data, int HP, int HM, int HF, List<int> id, int id_utente) {
+		public Giorno(DateTime data, int idG, int HP, int HM, int HF, string id_utente) {
 			this.data = data;
-			Ore[(int)HType.HPermesso] = HP;
-			Ore[(int)HType.HMalattia] = HM;
-			Ore[(int)HType.HFerie] = HF;
-			_id = id;
+			HPermesso = HP;
+			HMalattia = HM;
+			HFerie = HF;
 			_id_utente = id_utente;
+			this.idG=idG;
 		}
 
-		public void AddCommessa(Commessa com) {
-			if (commesse == null)
-				commesse = new List<Commessa>();
-			commesse.Add(com);
+		public void AddOreLavorative(OreLavorative com) {
+			oreLavorative.Add(com);
 		}
-		private int TotCom() {
+		public int TotOreLavorate() {
 			int tot = 0;
-			foreach (Commessa com in Commesse) {
-				tot += com.OreLavorate;
+			foreach (OreLavorative com in OreLavorate) {
+				tot += com.Ore;
 			}
 			return tot;
 		}
@@ -213,28 +246,36 @@ namespace DAO{
 			return base.GetHashCode();
 		}
 	}
-	public partial class Commessa {
-
-		public int Capacita { get => _capacita; set => _capacita = value; }
+	public partial class OreLavorative {
+		public int IdC{ get;set;}
 		public string Descrizione { get => _descrizione; set => _descrizione = value; }
 		public string Nome { get => _nome; set => _nome = value; }
-		public int OreLavorate { get => oreLavorate; set => oreLavorate = value; }
-
-
-		private int _id; public int Id { get; set; }
-		private int oreLavorate;
+		public int Ore{ get; set; }
 		private string _nome;
-		private int _capacita;
 		private string _descrizione;
 
-		public Commessa(int id, int oreLavorate, string nome, int capacita, string descrizione) {
-			_id = id;
-			this.oreLavorate = oreLavorate;
+		public OreLavorative(int idC, int oreLavorate, string nome, string descrizione) {
+			this.IdC = idC;
+			Ore = oreLavorate;
 			_nome = nome;
-			_capacita = capacita;
 			_descrizione = descrizione;
 		}
     }
+	public class Commessa {
+		public int Id { get; set; }
+		public string Descrizione { get; set; }
+		public string Nome { get; set; }
+		public int Capienza { get; set; }
+		public int OreLavorate { get; set; }
+
+		public Commessa(int id, string nome, string descrizione, int capienza, int oreLavorate) {
+			Id = id;
+			OreLavorate = oreLavorate;
+			Nome = nome;
+			Descrizione = descrizione;
+			Capienza = capienza;
+		}
+	}
 
     public class CV {
         public string Matricola {get; set;}

@@ -1,36 +1,80 @@
-﻿<%@ Page Title="Aggiungi Giorno" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGiorno.aspx.cs" Inherits="GestioneWebForm.AddGiorno" %>
+﻿<%@ Page Title="Aggiungi un giorno" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGiorno.aspx.cs" Inherits="GestioneWebForm._AddGiorno" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %></h2>
-    <h3>Aggiungi Giorno</h3>
-   
-    <b>Data (*)</b> <br />
-    <asp:TextBox runat="server" Text="gg/mm/aaaa" ID="data"></asp:TextBox> <br />
     
+    <script type="text/javascript">
+        function changeHTyp(value) {
+        if (value == 'Ore di permesso' || value == 'Ore di malattia') {
+            // document.getElementById('commesse').hidden = true;
+            document.getElementById('commesse').disabled = true;
+            document.getElementById('ore').value = "";
+            document.getElementById('ore').disabled = false;
+        }
+        if (value == 'Ore di ferie') {
+            document.getElementById('ore').value = 8;
+            document.getElementById('ore').disabled = true;
+            document.getElementById('commesse').disabled = true;
+        }
+        if (value == 'Ore di lavoro') {
+            document.getElementById('commesse').disabled = false;
+            document.getElementById('ore').value = "";
+            document.getElementById('ore').disabled = false;
+        }
+    }</script>
+    <h2><%: Title %></h2>
     <br />
-    <b> Tipologia Ore</b> <br />
-     <asp:ListBox id="listaore" 
-           Rows="4"
-           Width="200px"
-           SelectionMode="Single" 
-           runat="server">
-
-         <asp:ListItem Selected="True">Ore di malattia</asp:ListItem>
-         <asp:ListItem>Ore di permesso </asp:ListItem>
-         <asp:ListItem>Ore di ferie </asp:ListItem>
-         <asp:ListItem> Ore di lavoro </asp:ListItem>         
-         </asp:ListBox> <br /> <br />
-
-    <b>Nome Commessa</b> <br /> 
-     <asp:TextBox runat="server" Placeholder="-- -- -- --" ID="nomecommmessa"></asp:TextBox>  <b> (Solo per ore di lavoro)</b>
-    <br /> <br />
-    <b>Numero Ore (*)</b> <br /> 
-     <asp:TextBox runat="server" ID="numeroore"></asp:TextBox>
-    <br /> <br />
-    <asp:Button runat="server" OnClick="AggiungiGiorno_Click" Text="CaricaOre" />  <br />
-
-    <i>(*) Campi obbligatori</i>
-
-
-
+    <div class="text-warning" style="font-size:large">
+        <%=Message %>
+        <br />
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            Seleziona una data
+        </div>
+        <div class="col-md-1">
+            <asp:Calendar runat="server" ID="data" OnSelectionChanged="SelezionaGiorno" OnLoad="SelezionaGiorno"></asp:Calendar>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            Tipo di orario
+        </div>
+        <div class="col-md-1">
+            <select id="HType" name="tipoOre" onChange = "javascript:changeHTyp(this.value);">
+                        <option value="Seleziona tipo Ore" />Seleziona tipo Ore
+                        <option value="Ore di lavoro" />Ore di lavoro
+                        <option value="Ore di permesso" />Ore di permesso
+                        <option value="Ore di ferie" />Ore di ferie
+                        <option value="Ore di malattia" />Ore di malattia
+             </select>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            Commessa
+        </div>
+        <div class="col-md-1">
+            <asp:TextBox runat="server" ID="commessa" ></asp:TextBox>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            Ore
+        </div>
+        <div class="col-md-1">
+            <asp:TextBox runat="server" ID="ore" TextMode="Number" ></asp:TextBox>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <asp:Button  runat="server" ID="Aggiungi" OnClick="Aggiungi_Click" Text="Aggiungi"  ></asp:Button>
+        </div>
+    </div>
+    
+    
 </asp:Content>

@@ -127,6 +127,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SQL\DDLGeTime.sql" />
+    <Content Include="SQL\SP_VisualizzaGiorno.sql" />
+    <Content Include="AddGiorno.aspx" />
+    <Content Include="VisualizzaGiorno.aspx" />
     <Content Include="About.aspx" />
     <Content Include="MyPage.aspx" />
     <Content Include="AddGiorno.aspx" />
@@ -182,6 +186,20 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddGiorno.aspx.cs">
+      <DependentUpon>AddGiorno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddGiorno.aspx.designer.cs">
+      <DependentUpon>AddGiorno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VisualizzaGiorno.aspx.cs">
+      <DependentUpon>VisualizzaGiorno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VisualizzaGiorno.aspx.designer.cs">
+      <DependentUpon>VisualizzaGiorno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
