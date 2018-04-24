@@ -34,7 +34,7 @@
             Seleziona una data
         </div>
         <div class="col-md-1">
-            <asp:Calendar runat="server" ID="data"    ></asp:Calendar>
+            <asp:Calendar runat="server" ID="oggi"    ></asp:Calendar>
         </div>
     </div>
     <br />
@@ -43,14 +43,13 @@
             Tipo di orario
         </div>
         <div class="col-md-1">
-            
-             <select id="HType"  name="tipoOre"   onchange = "javascript:changeHTyp(this.value);">
-                <option value="Seleziona tipo Ore" />Seleziona tipo Ore
-                <option value="Ore di lavoro" />Ore di lavoro
-                <option value="Ore di permesso" />Ore di permesso
-                <option value="Ore di ferie" />Ore di ferie
-                <option value="Ore di malattia" />Ore di malattia
-            </select>
+                 <select id="HType"  name="tipoOre"   onchange = "javascript:changeHTyp(this.value);">
+                    <option value="" />Seleziona tipo Ore
+                    <option value="Ore di lavoro" />Ore di lavoro
+                    <option value="Ore di permesso" />Ore di permesso
+                    <option value="Ore di ferie" />Ore di ferie
+                    <option value="Ore di malattia" />Ore di malattia
+                </select>
         </div>
     </div>
     <br />

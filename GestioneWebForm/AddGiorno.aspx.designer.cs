@@ -13,13 +13,13 @@ namespace GestioneWebForm {
     public partial class _AddGiorno {
         
         /// <summary>
-        /// Controllo data.
+        /// Controllo oggi.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar data;
+        protected global::System.Web.UI.WebControls.Calendar oggi;
         
         /// <summary>
         /// Controllo commesse.

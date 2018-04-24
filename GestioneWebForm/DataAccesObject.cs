@@ -227,7 +227,7 @@ namespace DAO{
 	
     public partial class Giorno {
         private string _id_utente;
-        private DateTime data;
+        public DateTime data;
         private int idG;
         public DateTime Data { get { return data; } set { data = value; } }
         private List<OreLavorative> oreLavorative = new List<OreLavorative>();
