@@ -133,6 +133,9 @@
     <Content Include="VisualizzaGiorno.aspx" />
     <Content Include="About.aspx" />
     <Content Include="MyPage.aspx" />
+    <Content Include="AddGiorno.aspx" />
+    <Content Include="ViewCommessa.aspx" />
+    <Content Include="MainGeTime.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -206,6 +209,27 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AddGiorno.aspx.cs">
+      <DependentUpon>AddGiorno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddGiorno.aspx.designer.cs">
+      <DependentUpon>AddGiorno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCommessa.aspx.cs">
+      <DependentUpon>ViewCommessa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewCommessa.aspx.designer.cs">
+      <DependentUpon>ViewCommessa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainGeTime.aspx.cs">
+      <DependentUpon>MainGeTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainGeTime.aspx.designer.cs">
+      <DependentUpon>MainGeTime.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MyPage.aspx.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
