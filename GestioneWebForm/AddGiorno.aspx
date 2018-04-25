@@ -5,22 +5,24 @@
     <h2><%: Title %></h2>
     <br />
 <script type="text/javascript">
-    function changeHTyp(value) {
+   function changeHTyp(value) {
         if (value == 'Ore di permesso' || value == 'Ore di malattia') {
-            // document.getElementById('commesse').hidden = true;
-            document.getElementById('MainContent_commesse').disabled = true;
-            document.getElementById('MainContent_ore').value = "";
-            document.getElementById('MainContent_ore').disabled = false;
-        }
-        if (value == 'Ore di ferie') {
-            document.getElementById('MainContent_ore').value = 8;
-            document.getElementById('MainContent_ore').disabled = true;
-            document.getElementById('MainContent_commesse').disabled = true;
-        }
-        if (value == 'Ore di lavoro' || value == '') {
-            document.getElementById('MainContent_commesse').disabled = false;
-            document.getElementById('MainContent_ore').value = "";
-            document.getElementById('MainContent_ore').disabled = false;
+            document.getElementById('commesse').disabled = true;
+            document.getElementById('ore').value = ""; 
+            document.getElementById('ore').setAttribute('max', '8');
+            document.getElementById('ore').disabled = false;
+        } else if (value == 'Ore di ferie') {
+            document.getElementById('ore').value = 8;
+            document.getElementById('ore').disabled = true;
+            document.getElementById('commesse').disabled = true;
+        } else if (value == 'Ore di lavoro' || value =='') {
+            document.getElementById('commesse').disabled = false;
+            document.getElementById('ore').value = "";
+            if (value == 'Ore di lavoro')
+                document.getElementById('ore').setAttribute('max', '14');
+            else
+                document.getElementById('ore').setAttribute('max', '8');
+            document.getElementById('ore').disabled = false;
         }
     }
 </script>
