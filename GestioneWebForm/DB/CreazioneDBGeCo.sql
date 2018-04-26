@@ -1,0 +1,29 @@
+﻿create database GeCo;
+
+use GeCo;
+create table Corsi(
+	id int identity(1,1) primary key not null,
+	nome nvarchar(50) not null,
+	descrizione nvarchar (200),
+	dInizio date,
+	dFine date
+);
+
+Create table Lezioni (
+	id int identity(1,1) primary key not null,
+	argomento nvarchar(30),
+	durata int not null,
+	idCorso int foreign key references Corsi
+);
+
+create table Studenti(
+	matr nvarchar(10) primary key not null,
+	nome varchar (15) not null,
+	cognome varchar(15) not null
+);
+
+create table StudentiCorsi(
+	idCorsi int foreign key references Corsi,
+	idStudenti nvarchar(10) foreign key references Studenti,
+	primary key(idCorsi,idStudenti)
+);
