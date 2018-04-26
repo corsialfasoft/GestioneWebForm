@@ -27,7 +27,7 @@ namespace DAO{
         Commessa CercaCommessa(string nomeCommessa);
 
 
-         List<Giorno> VisualizzaMese(int anno, int mese, string idUtente);
+         List<GiornoMese> VisualizzaMese(int anno, int mese, string idUtente);
 		
         //Aggiungi nuovo corso. Lo puo fare solo l'admin
         void AddCorso(Corso corso);
@@ -217,23 +217,8 @@ namespace DAO{
                 throw e;
             }
         }
-
-    }
-    public class Profilo{ 
-        public string Matrincola{get;set;}
-        public string Nome{get;set;}
-        public string Cognome{get;set;}
-        public string Ruolo{get;set;}
-        public string Username{get;set;}
-        public string Password{get;set;}
-            } finally {
-                connection.Dispose();
-            }
-            return result;
-        }
-
-        public List<Giorno> VisualizzaMese(int anno, int mese, string idUtente){ 
-            List<Giorno> result = null;
+        public List<GiornoMese> VisualizzaMese(int anno, int mese, string idUtente){ 
+            List<GiornoMese> result = null;
             SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
             scsb.DataSource= @"(localdb)\MSSQLLocalDB";
             scsb.InitialCatalog="GeTime";
@@ -246,35 +231,27 @@ namespace DAO{
                 command.Parameters.Add("@mese", System.Data.SqlDbType.Date).Value = mese;
                 command.Parameters.Add("@IdUtente", System.Data.SqlDbType.NVarChar).Value = idUtente;
                 SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read()) {
-                    result = new Giorno(reader.GetInt32(2));
-                    do {
-                        switch (reader.GetInt32(0)) {
-                            case 1:
-                                result.HM = reader.GetInt32(1);
-                                break;
-                            case 2:
-                                result.HP = reader.GetInt32(1);
-                                break;
-                            case 3:
-                                result.HF = reader.GetInt32(1);
-                                break;
-                            case 4:
-                                result.HL = reader.GetInt32(1);
-                                break;
-                        }
-                    } while(reader.Read());
-                    result.id_utente = idUtente;
+                while(reader.Read()){
+                    result.Add(new GiornoMese{data=reader.GetDateTime(2), Tipo =reader.GetInt32(0), Ore= reader.GetInt32(1)});
                 }
                 reader.Close();
                 command.Dispose();
+                return result;
             } catch (Exception e) {
                 throw e;
             } finally {
                 connection.Dispose();
             }
-            return result;
+            
         }
+    }
+    public class Profilo{ 
+        public string Matrincola{get;set;}
+        public string Nome{get;set;}
+        public string Cognome{get;set;}
+        public string Ruolo{get;set;}
+        public string Username{get;set;}
+        public string Password{get;set;}
     }
 
     public class Studente{ 
@@ -297,18 +274,21 @@ namespace DAO{
         public string Descrizione{get;set;}
         public int Durata{get;set;}
     }
-	
+	public class GiornoMese{ 
+        public DateTime data{ get;set;}
+        public int Tipo {get;set;}
+        public int Ore{get;set;}
+    }
     public partial class Giorno {
-        private string _id_utente;
         public DateTime data;
         private int idG;
         public DateTime Data { get { return data; } set { data = value; } }
         private List<OreLavorative> oreLavorative = new List<OreLavorative>();
-        public string ID_UTENTE { get { return _id_utente; } set { _id_utente = value; } }
+        public string ID_UTENTE { get;set;}
         public int HPermesso { get; set; }
         public int HMalattia { get; set; }
         public int HFerie { get; set; }
-        public List<OreLavorative> OreLavorate { get => oreLavorative; }
+        public List<OreLavorative> OreLavorate { get;set; }
         public int IdGiorno { get; set; }
         public int TotOreLavorate { get; set; }
 
@@ -321,15 +301,13 @@ namespace DAO{
             HPermesso = HP;
             HMalattia = HM;
             HFerie = HF;
-            _id_utente = id_utente;
+           ID_UTENTE = id_utente;
             this.idG = idG;
-        }
-
+        } 
         public void AddOreLavorative(OreLavorative com) {
             oreLavorative.Add(com);
             this.TotOreLavorate += com.Ore;
         }
-
         public override bool Equals(object obj) {
             return data.Equals(((Giorno)obj).data);
         }
