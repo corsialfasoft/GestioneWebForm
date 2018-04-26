@@ -133,6 +133,7 @@
     <Content Include="SQL\SP_VisualizzaGiorno.sql" />
 
     <Content Include="VisualizzaMese.aspx" />
+    <Content Include="Controls\TabellaCommesse.ascx" />
     <Content Include="VisualizzaGiorno.aspx" />
     <Content Include="About.aspx" />
     <Content Include="MyPage.aspx" />
@@ -201,6 +202,13 @@
     </Compile>
     <Compile Include="VisualizzaMese.aspx.designer.cs">
       <DependentUpon>VisualizzaMese.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TabellaCommesse.ascx.cs">
+      <DependentUpon>TabellaCommesse.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TabellaCommesse.ascx.designer.cs">
+      <DependentUpon>TabellaCommesse.ascx</DependentUpon>
     </Compile>
     <Compile Include="trasformatori.cs" />
     <Compile Include="VisualizzaGiorno.aspx.cs">

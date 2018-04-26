@@ -18,7 +18,7 @@ namespace GestioneWebForm {
         protected void SelezionaGiorno(object sender,EventArgs e) {
             int count=0;
             if(IsPostBack) {
-                giorno = new DataAccesObject().VisualizzaGiorno(data.SelectedDate, "admin");
+                giorno = new DataAccesObject().VisualizzaGiorno(data.SelectedDate, "prova");
                 if (giorno == null) {
                     Message= "* La data selezionata non è ancora stata inserita nel registro!";
                 } else if (giorno!=null && giorno.Data.ToString("yyyy-MM-dd") != "0001-01-01") {
