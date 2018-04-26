@@ -141,6 +141,8 @@
     <Content Include="DB\SearchCorsi.sql" />
     <Content Include="DB\SearchCorsiStud.sql" />
     <Content Include="DB\CreazioneDBGeCo.sql" />
+    <Content Include="DB\EliminaLezione.sql" />
+    <Content Include="ModLezione.aspx" />
     <Content Include="MyPage.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -186,6 +188,8 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="DB\SearchLezione.sql" />
+    <Content Include="DB\ModificaLezione.sql" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -236,6 +240,13 @@
     </Compile>
     <Compile Include="AddLezione.aspx.designer.cs">
       <DependentUpon>AddLezione.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModLezione.aspx.cs">
+      <DependentUpon>ModLezione.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModLezione.aspx.designer.cs">
+      <DependentUpon>ModLezione.aspx</DependentUpon>
     </Compile>
     <Compile Include="MyPage.aspx.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>

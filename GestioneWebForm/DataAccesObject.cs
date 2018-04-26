@@ -41,6 +41,9 @@ namespace DAO{
         List<Corso>ListaCorsi();//fatto
         //Mostra tutti i corsi a cui è iscritto un determinato studente(idStudente)
         List<Corso>ListaCorsi(int idUtente);//fatto
+		void EliminaLezione(int idLezione);
+		Lezione SearchLezione(int idLezione);
+		void ModificaLezione(Lezione lezione);
     }
 	 public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class DataAccesObject : IDao {
@@ -298,7 +301,71 @@ namespace DAO{
                 con.Dispose();    
             }
         }
-    }
+
+		public void EliminaLezione(int idLezione)
+		{
+			SqlConnection connection=new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("dbo.EliminaLezione",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@IdLezione",System.Data.SqlDbType.Int).Value=idLezione;
+				int x = command.ExecuteNonQuery();
+				if (x == 0) {
+					throw new Exception("La lezione non è stata eliminata");
+				}
+				command.Dispose();
+			}catch (Exception x) {
+				throw x;
+			} finally {
+				connection.Dispose();
+			}
+		}
+
+		public Lezione SearchLezione(int idLezione)
+		{
+			Lezione lez = new Lezione();
+			SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("SearchLezione",connection);
+				command.CommandType= CommandType.StoredProcedure;
+				command.Parameters.Add("@idLezione",SqlDbType.Int).Value=idLezione;
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()) {
+					lez.Argomento= reader.GetString(0);
+					lez.Durata = reader.GetInt32(1);
+				}
+				return lez;
+			} catch (Exception e){
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
+		}
+
+		public void ModificaLezione(Lezione lezione)
+		{
+			SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("ModificaLezione",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@idLezione",SqlDbType.Int).Value=lezione.Id;
+				command.Parameters.Add("@argomento",SqlDbType.NVarChar).Value=lezione.Argomento;
+				command.Parameters.Add("@durata",SqlDbType.Int).Value=lezione.Durata;
+				int x = command.ExecuteNonQuery();
+				if(x == 0) {
+					throw new Exception("Nessuna lezione modificata");
+				}
+				
+			}catch(Exception e) {
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
+		}
+	}
     public class Profilo{ 
         public string Matrincola{get;set;}
         public string Nome{get;set;}

@@ -10,15 +10,24 @@
 namespace GestioneWebForm {
     
     
-    public partial class _Corso {
+    public partial class _ModLezione {
         
         /// <summary>
-        /// Controllo Lezione.
+        /// Controllo argomento.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::GestioneWebForm.Controls.ListaLezioni Lezione;
+        protected global::System.Web.UI.WebControls.TextBox argomento;
+        
+        /// <summary>
+        /// Controllo Durata.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Durata;
     }
 }

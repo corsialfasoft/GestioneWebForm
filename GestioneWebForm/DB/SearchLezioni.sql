@@ -1,7 +1,7 @@
-﻿create procedure SearchLezioni
-	@idCorso int
+﻿create procedure SearchLezione
+	@idLezione int
 as 
-	select l.id,l.argomento,l.durata from Lezioni l where l.idCorso = @idCorso
+	select l.argomento,l.durata from Lezioni l where l.id = @idLezione
 go
 
-exec SearchLezioni 1
+exec SearchLezione 4
