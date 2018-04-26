@@ -128,12 +128,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SQL\DDLGeTime.sql" />
+    <Content Include="SQL\SP_GeTime.sql" />
     <Content Include="SQL\SP_VisualizzaGiorno.sql" />
     <Content Include="AddGiorno.aspx" />
+    <Content Include="VisualizzaMese.aspx" />
     <Content Include="VisualizzaGiorno.aspx" />
     <Content Include="About.aspx" />
     <Content Include="MyPage.aspx" />
-    <Content Include="AddGiorno.aspx" />
     <Content Include="ViewCommessa.aspx" />
     <Content Include="MainGeTime.aspx" />
     <Content Include="Contact.aspx" />
@@ -193,6 +194,13 @@
     <Compile Include="AddGiorno.aspx.designer.cs">
       <DependentUpon>AddGiorno.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VisualizzaMese.aspx.cs">
+      <DependentUpon>VisualizzaMese.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VisualizzaMese.aspx.designer.cs">
+      <DependentUpon>VisualizzaMese.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VisualizzaGiorno.aspx.cs">
       <DependentUpon>VisualizzaGiorno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -209,13 +217,6 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="AddGiorno.aspx.cs">
-      <DependentUpon>AddGiorno.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddGiorno.aspx.designer.cs">
-      <DependentUpon>AddGiorno.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ViewCommessa.aspx.cs">
       <DependentUpon>ViewCommessa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
