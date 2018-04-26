@@ -38,7 +38,7 @@ namespace GestioneWebForm {
                     tr = new TableRow();
                     TableCell tdOreLavoro = new TableCell();
                     CreateCell(tdOreLavoro, "Ore di lavoro", 2);
-                    CreateCell(tdOreLavoro, giorno.TotOreLavorate().ToString(), 2);
+                    CreateCell(tdOreLavoro, giorno.TotOreLavorate.ToString(), 2);
                     foreach(OreLavorative ocomm in giorno.OreLavorate) {
                         if (count>0) {
                             tr = new TableRow();
