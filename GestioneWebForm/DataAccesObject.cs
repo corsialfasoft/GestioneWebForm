@@ -25,6 +25,10 @@ namespace DAO{
         List<Giorno> GiorniCommessa(int idCommessa, string idUtente);
         List<Commessa> CercaCommesse(string nomeCommessa);
         Commessa CercaCommessa(string nomeCommessa);
+
+
+         List<Giorno> VisualizzaMese(int anno, int mese, string idUtente);
+		
         //Aggiungi nuovo corso. Lo puo fare solo l'admin
         void AddCorso(Corso corso);
         //Aggiungi una lezione a un determinato corso. Lo puo fare solo il prof
@@ -214,6 +218,63 @@ namespace DAO{
             }
         }
 
+    }
+    public class Profilo{ 
+        public string Matrincola{get;set;}
+        public string Nome{get;set;}
+        public string Cognome{get;set;}
+        public string Ruolo{get;set;}
+        public string Username{get;set;}
+        public string Password{get;set;}
+            } finally {
+                connection.Dispose();
+            }
+            return result;
+        }
+
+        public List<Giorno> VisualizzaMese(int anno, int mese, string idUtente){ 
+            List<Giorno> result = null;
+            SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
+            scsb.DataSource= @"(localdb)\MSSQLLocalDB";
+            scsb.InitialCatalog="GeTime";
+            SqlConnection connection = new SqlConnection(scsb.ToString());
+            try {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SP_VisualizzaMese",connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("@anno", System.Data.SqlDbType.Date).Value = anno;
+                command.Parameters.Add("@mese", System.Data.SqlDbType.Date).Value = mese;
+                command.Parameters.Add("@IdUtente", System.Data.SqlDbType.NVarChar).Value = idUtente;
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read()) {
+                    result = new Giorno(reader.GetInt32(2));
+                    do {
+                        switch (reader.GetInt32(0)) {
+                            case 1:
+                                result.HM = reader.GetInt32(1);
+                                break;
+                            case 2:
+                                result.HP = reader.GetInt32(1);
+                                break;
+                            case 3:
+                                result.HF = reader.GetInt32(1);
+                                break;
+                            case 4:
+                                result.HL = reader.GetInt32(1);
+                                break;
+                        }
+                    } while(reader.Read());
+                    result.id_utente = idUtente;
+                }
+                reader.Close();
+                command.Dispose();
+            } catch (Exception e) {
+                throw e;
+            } finally {
+                connection.Dispose();
+            }
+            return result;
+        }
     }
 
     public class Studente{ 

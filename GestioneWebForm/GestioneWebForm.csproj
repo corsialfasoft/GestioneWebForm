@@ -129,7 +129,10 @@
   <ItemGroup>
     <Content Include="AddGiorno.aspx" />
     <Content Include="SQL\DDLGeTime.sql" />
+    <Content Include="SQL\SP_GeTime.sql" />
     <Content Include="SQL\SP_VisualizzaGiorno.sql" />
+
+    <Content Include="VisualizzaMese.aspx" />
     <Content Include="Controls\TabellaCommesse.ascx" />
     <Content Include="VisualizzaGiorno.aspx" />
     <Content Include="About.aspx" />
@@ -192,6 +195,13 @@
     </Compile>
     <Compile Include="AddGiorno.aspx.designer.cs">
       <DependentUpon>AddGiorno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VisualizzaMese.aspx.cs">
+      <DependentUpon>VisualizzaMese.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VisualizzaMese.aspx.designer.cs">
+      <DependentUpon>VisualizzaMese.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controls\TabellaCommesse.ascx.cs">
       <DependentUpon>TabellaCommesse.ascx</DependentUpon>

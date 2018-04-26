@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Aggiungi un giorno" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGiorno.aspx.cs" Inherits="GestioneWebForm._AddGiorno" %>
-
+<%@ Register TagPrefix="TabCom" TagName="tabCom" Src=""  %> 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
     <h2><%: Title %></h2>
@@ -30,6 +30,7 @@
         <%=Message %>
         <br />
     </div>
+<%if(ListaCommesse==null){%>
     <br />
     <div class="row">
         <div class="col-md-2">
@@ -45,13 +46,13 @@
             Tipo di orario
         </div>
         <div class="col-md-1">
-                 <select id="HType"  name="tipoOre"   onchange = "javascript:changeHTyp(this.value);">
-                    <option value="" />Seleziona tipo Ore
-                    <option value="Ore di lavoro" />Ore di lavoro
-                    <option value="Ore di permesso" />Ore di permesso
-                    <option value="Ore di ferie" />Ore di ferie
-                    <option value="Ore di malattia" />Ore di malattia
-                </select>
+                  <asp:DropDownList ID="tipoOre" runat="server" onClick="changeHTyp(this.value);">
+                  <asp:ListItem Selected="True" Value=""> Scegli una Tipologia </asp:ListItem>
+                  <asp:ListItem Value="Ore di lavoro"> Lavoro </asp:ListItem>
+                  <asp:ListItem Value="Ore di permesso" > Permesso </asp:ListItem>
+                  <asp:ListItem Value="Ore di ferie"> Ferie </asp:ListItem>
+                  <asp:ListItem Value="Ore di malattia"> Malattia </asp:ListItem>
+            </asp:DropDownList>
         </div>
     </div>
     <br />
@@ -78,6 +79,12 @@
             <asp:Button  runat="server" ID="Aggiungi" OnClick="Aggiungi_Click" Text="Aggiungi"  ></asp:Button>
         </div>
     </div>
-    
+    <div class="row">
+        <%=EsitoAddGiorno %>
+        <%=GeCoDataTime %>
+    </div>
+<%}else{%> 
+    <%Table %>
+<%}%>
     
 </asp:Content>

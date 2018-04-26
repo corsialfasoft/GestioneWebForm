@@ -7,7 +7,9 @@
     <div class="btn-group-vertical">
         <asp:Button class="btn btn-primary" runat="server" PostBackUrl="~/AddGiorno" text="Aggiungi ore"></asp:Button>
         <br>
-        <asp:Button class="btn btn-primary" runat="server" PostBackUrl="~/ViewGiorno" text="Visualizza giorno"></asp:Button>
+        <asp:Button class="btn btn-primary" runat="server" PostBackUrl="~/VisualizzaGiorno" text="Visualizza giorno"></asp:Button>
+        <br>
+        <asp:Button class="btn btn-primary" runat="server" PostBackUrl="~/VisualizzaMese" text="Visualizza mese"></asp:Button>
         <br>
         <asp:Button class="btn btn-primary" runat="server" PostBackUrl="~/ViewCommessa" text="Visualizza commessa"></asp:Button>
     </div>

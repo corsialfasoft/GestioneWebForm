@@ -12,16 +12,23 @@ AS
 			INSERT INTO Giorni (giorno, idUtente) VALUES (@giorno, @idUtente);
 			SET @idGiorno = (SELECT IDENT_CURRENT ('Giorni'))
 		END
-	begin try
-		INSERT INTO OreNonLavorative (tipoOre, ore, idGiorno) VALUES (@TipoOre, @ore, @idGiorno);
-	end try
-	begin catch			
-		if(@@Error = 2627)
-			begin
-				declare @oreNL int = (select top 1 ore from OreNonLavorative where idGiorno=@idGiorno and tipoOre = @TipoOre);
-				update OreNonLavorative set ore=@ore+@oreNL where idGiorno=@idGiorno and tipoOre = @TipoOre;
-			end
-	end catch
+	DECLARE @OreLav int = ISNULL((SELECT top 1 SUM(ore) FROM OreLavorative WHERE idGiorno=@idGiorno),0)
+	DECLARE @OreNLav int =  ISNULL((SELECT top 1 SUM(ore) FROM OreNonLavorative WHERE idGiorno=@idGiorno),0)
+	IF @OreNLav+ @OreLav +@ore>8 
+		throw 111133,'non si puo inserire il record',22;
+	ELSE
+		BEGIN
+			begin try
+					INSERT INTO OreNonLavorative (tipoOre, ore, idGiorno) VALUES (@TipoOre, @ore, @idGiorno);
+				end try
+				begin catch			
+					if(@@Error = 2627)
+						begin
+							declare @oreNL int = (select top 1 ore from OreNonLavorative where idGiorno=@idGiorno and tipoOre = @TipoOre);
+							update OreNonLavorative set ore=@ore+@oreNL where idGiorno=@idGiorno and tipoOre = @TipoOre;
+						end
+				end catch
+		END
 GO
 create procedure SP_AddHLavoro
 	@data Date,
@@ -35,16 +42,23 @@ as
 			INSERT INTO Giorni (giorno, idUtente) VALUES (@data, @idUtente);
 			SET @idGiorno = (SELECT IDENT_CURRENT ('Giorni'));
 		end;
-	begin try
-		insert into OreLavorative(idGiorno, idCommessa, ore) values(@idGiorno, @idCommessa, @ore);
-	end try
-	begin catch			
-		if(@@Error = 2627)
-			begin
-				declare @oreDellaComm int = (select top 1 ore from OreLavorative where idGiorno=@idGiorno and idCommessa = @idCommessa);
-				update OreLavorative set ore=@ore+@oreDellaComm where idGiorno=@idGiorno and idCommessa = @idCommessa;
-			end
-	end catch
+	declare @oreNonLav int =  ISNULL((select sum(ore) from OreNonLavorative where idGiorno = @idGiorno),0);
+	declare @oreLav int = ISNULL((select sum(ore) from OreLavorative where idGiorno = @idGiorno),0);
+	if (@ore + @oreLav + @oreNonLav <= 8)
+		begin
+			begin try
+				insert into OreLavorative(idGiorno, idCommessa, ore) values(@idGiorno, @idCommessa, @ore);
+			end try
+			begin catch			
+				if(@@Error = 2627)
+					begin
+						declare @oreDellaComm int = (select top 1 ore from OreLavorative where idGiorno=@idGiorno and idCommessa = @idCommessa);
+						update OreLavorative set ore=@ore+@oreDellaComm where idGiorno=@idGiorno and idCommessa = @idCommessa;
+					end
+			end catch
+		end
+	else
+		throw 111133,'non si puo inserire il record',22;
 go
 create procedure SP_VisualizzaCommessa
 	@idC int,
@@ -52,8 +66,7 @@ create procedure SP_VisualizzaCommessa
 as 
 	select G.id,G.giorno,OL.ore,C.id,C.nome,C.descrizione
 	from Giorni G inner join OreLavorative OL on G.id=OL.idGiorno inner join Commesse C on OL.idCommessa=C.id
-	where G.idUtente=@idU and C.id=@idC
-	order by G.giorno;
+	where G.idUtente=@idU and C.id=@idC;
 go
 create procedure SP_CercaCommessa
 	@nomeCommessa nvarchar(50)
@@ -63,15 +76,6 @@ as
 										  where C.id=C1.id) as OreTotLavorate
 	from Commesse C
 	where nome = @nomeCommessa;
-go
-create procedure SP_CercaCommesse
-	@nomeCommessa nvarchar(50)
-as	
-	select id,nome,descrizione,stimaOre, (select ISNULL(SUM(OL.ore),0)
-										  from OreLavorative OL inner join Commesse C1 on OL.idCommessa=C1.id
-										  where C.id=C1.id) as OreTotLavorate
-	from Commesse C
-	where nome like '%'+@nomeCommessa+'%';
 go
 create procedure SP_VisualizzaGiorno
 	@Data date,
@@ -103,15 +107,4 @@ as
 		order by g.giorno
 go
 
-insert into Giorni (giorno, idUtente) values ('2018-04-16', 'admin');
-insert into Commesse (nome, descrizione) values ('MVC', 'lavorato su mvc');
-insert into OreLavorative (idGiorno, idCommessa, ore) values (1, 1, 2);
-insert into Commesse (nome, descrizione) values ('EF', 'lavorato su ef');
-insert into OreLavorative (idGiorno, idCommessa, ore) values (1, 2, 1);
-insert into Commesse (nome, descrizione) values ('SQL', 'lavorato su sql');
-insert into OreLavorative (idGiorno, idCommessa, ore) values (1, 3, 1);
-insert into OreNonLavorative(tipoOre, ore, idGiorno) values (2, 2, 1);
-insert into OreNonLavorative(tipoOre, ore, idGiorno) values (3, 2, 1);
-insert into Giorni (giorno, idUtente) values ('2018-04-14', 'admin');
-insert into OreNonLavorative(tipoOre, ore, idGiorno) values (4, 8, 2);
-go
+exec SP_VisualizzaMese 2018,04,'prova'
