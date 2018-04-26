@@ -10,15 +10,24 @@
 namespace GestioneWebForm {
     
     
-    public partial class _MyPage {
+    public partial class _Comp {
         
         /// <summary>
-        /// Controllo Codice.
+        /// Controllo titolo.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Codice;
+        protected global::System.Web.UI.WebControls.TextBox titolo;
+        
+        /// <summary>
+        /// Controllo livello.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox livello;
     }
 }

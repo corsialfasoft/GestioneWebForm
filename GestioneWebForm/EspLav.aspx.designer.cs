@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------
+﻿//------------------------------------------------------------------------------
 // <generato automaticamente>
 //     Codice generato da uno strumento.
 //
@@ -10,42 +10,42 @@
 namespace GestioneWebForm {
     
     
-    public partial class Site_Mobile {
+    public partial class _EspLav {
         
         /// <summary>
-        /// Controllo HeadContent.
+        /// Controllo qualifica.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+        protected global::System.Web.UI.WebControls.TextBox qualifica;
         
         /// <summary>
-        /// Controllo form1.
+        /// Controllo descrizioneEl.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox descrizioneEl;
         
         /// <summary>
-        /// Controllo FeaturedContent.
+        /// Controllo annoIEl.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder FeaturedContent;
+        protected global::System.Web.UI.WebControls.TextBox annoIEl;
         
         /// <summary>
-        /// Controllo MainContent.
+        /// Controllo annoFEl.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox annoFEl;
     }
 }
