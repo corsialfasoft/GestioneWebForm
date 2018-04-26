@@ -127,10 +127,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddGiorno.aspx" />
     <Content Include="SQL\DDLGeTime.sql" />
     <Content Include="SQL\SP_GeTime.sql" />
     <Content Include="SQL\SP_VisualizzaGiorno.sql" />
-    <Content Include="AddGiorno.aspx" />
+
     <Content Include="VisualizzaMese.aspx" />
     <Content Include="VisualizzaGiorno.aspx" />
     <Content Include="About.aspx" />
@@ -201,6 +202,7 @@
     <Compile Include="VisualizzaMese.aspx.designer.cs">
       <DependentUpon>VisualizzaMese.aspx</DependentUpon>
     </Compile>
+    <Compile Include="trasformatori.cs" />
     <Compile Include="VisualizzaGiorno.aspx.cs">
       <DependentUpon>VisualizzaGiorno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,6 +293,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibreriaDB\LibreriaDB.csproj">
+      <Project>{9fe75e5b-fb3d-4d41-b878-636de1e284b5}</Project>
+      <Name>LibreriaDB</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
