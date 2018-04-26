@@ -17,22 +17,23 @@ namespace GestioneWebForm {
         public void Update(object obj, EventArgs e) {
             TableRow row = new TableRow();
             row.Cells.Add(CreateCellLebel("#", 2));
-            row.Cells.Add(CreateCellLebel("Nome Commessa#", 5));
-            TabellaCommesse.Rows.Add(row);
+            row.Cells.Add(CreateCellLebel("Nome Commessa", 5));
+            TabCommesse.Rows.Add(row);
             int index = 1;
             foreach (Commessa com in ListaCommesse) {
                 row = new TableRow();
-                row.Cells.Add(CreateCellLebel($"{index}", 2));
+                row.Cells.Add(CreateCellLebel($"{index++}", 2));
                 row.Cells.Add(CreateCellLebel($"{com.Nome}", 5));
                 TableCell col = new TableCell();
                 if (VisualissaCommessa) {
-                    col.Controls.Add(new Button() { Text ="Seleziona", CssClass = "col-xs-2 col-sm-2 col-md-2 col-lg-2",PostBackUrl= $"~/ViewCommessa?nome={com.Nome}"});
+                    col.Controls.Add(new Button() { Text ="Seleziona", CssClass = "col-xs-3 col-sm-3 col-md-3 col-lg-3",PostBackUrl= $"~/ViewCommessa?nome={com.Nome}"});
                 }
                 if (AddGiorno) {
                     col.Controls.Add(new Button() {
-                        Text = "Seleziona", CssClass = "col-xs-2 col-sm-2 col-md-2 col-lg-2", PostBackUrl = $"~/AddCommessa?nome={com.Nome}"});
+                        Text = "Seleziona", CssClass = "col-xs-3 col-sm-3 col-md-3 col-lg-3", PostBackUrl = $"~/AddCommessa?nome={com.Nome}"});
                 }
-                TabellaCommesse.Rows.Add(row);
+                row.Cells.Add(col);
+                TabCommesse.Rows.Add(row);
             }
         }
         private TableCell CreateCellLebel(string text, int lunghezza) {
