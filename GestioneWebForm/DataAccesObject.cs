@@ -77,11 +77,7 @@ namespace DAO{
 			}
         }
 
-        public void AddCorso(Corso corso) {
-            throw new NotImplementedException();
-        }
-            throw new NotImplementedException();
-        }
+        
         //fatto
         public void AddCorso(Corso corso){
             SqlConnection con = new SqlConnection(GetConnection());
@@ -847,9 +843,8 @@ namespace DAO{
 				connection.Dispose();
 			}
 		}
-	}
-		public string GetConnectionGeCuV()
-		{
+	
+		public string GetConnectionGeCuV(){
 			SqlConnectionStringBuilder builder= new SqlConnectionStringBuilder();
 			builder.DataSource=@"(localdb)\MSSQLLocalDB";
 			builder.InitialCatalog="GECuV";
@@ -919,6 +914,7 @@ namespace DAO{
 			}
 		}
     }
+
     public class Profilo{ 
         public string Matrincola{get;set;}
         public string Nome{get;set;}

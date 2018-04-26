@@ -166,7 +166,6 @@
     <Content Include="EspLav.aspx" />
     <Content Include="PerStud.aspx" />
     <Content Include="ListCV.aspx" />
-    <Content Include="About.aspx" />
     <Content Include="Controls\ListaCorsi.ascx" />
     <Content Include="CercaCorsi.aspx" />
     <Content Include="Controls\ListaLezioni.ascx" />
@@ -184,7 +183,6 @@
     <Content Include="ModLezione.aspx" />
     <Content Include="RicercaCurriculum.aspx" />
     <Content Include="MyPage.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -358,12 +356,6 @@
     </Compile>
     <Compile Include="MyPage.aspx.designer.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="AggiungiCorso.aspx.cs">
       <DependentUpon>AggiungiCorso.aspx</DependentUpon>
