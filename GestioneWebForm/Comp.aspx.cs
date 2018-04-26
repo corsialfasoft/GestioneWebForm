@@ -29,8 +29,15 @@ namespace GestioneWebForm {
 			Competenza co = new Competenza{Livello=int.Parse(livello.Text),Titolo=titolo.Text};
             dao.ModComp(idCo,co);
             compe = dao.GetCompetenza(idCo);
-            var url = String.Format($"~/DettagliCv.aspx");
+			string matr= dao.GetMatrFromComp(idCo);
+            var url = String.Format($"~/DettagliCv.aspx?codice={matr}");
             Response.Redirect(url);
         }
+
+		protected void Dettaglio_Click(object sender,EventArgs e) {
+			string matr= dao.GetMatrFromComp(idCo);
+            var url = String.Format($"~/DettagliCv.aspx?codice={matr}");
+            Response.Redirect(url);
+		}
 	}
 }

@@ -6,7 +6,7 @@ using System.Data;
 namespace DAO{
  public enum HType { HMalattia = 1, HPermesso, HFerie }
 	public interface IDao{
-		void ModificaCV(CV a, CV b); //modifica un curriculum nel db
+		void ModificaCV(string matr ,CV b); //modifica un curriculum nel db
 		void AggiungiCV(CV a); //quando sei loggato, puoi aggiungere un curriculum nel db
 		void CaricaCV(string path); //quando non sei loggato, puoi spedire un curriuculum
 		CV Search(string id); //search di un curriculum per id di un curriculum
@@ -188,14 +188,14 @@ namespace DAO{
         public List<Corso> ListaCorsi(int idUtente) {
             throw new NotImplementedException();
         }
-		public void ModificaCV(CV a,CV b) {
+		public void ModificaCV(string matr, CV  b) {
 			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
 			try{
 				connection.Open();
 				SqlCommand command = new SqlCommand("ModificaCurriculum",connection) {
 					CommandType = System.Data.CommandType.StoredProcedure
 				};
-				command.Parameters.Add("@matricolaM", System.Data.SqlDbType.NVarChar).Value=a.Matricola ;
+				command.Parameters.Add("@matricolaM", System.Data.SqlDbType.NVarChar).Value=matr ;
 				command.Parameters.Add("@nomeM", System.Data.SqlDbType.NVarChar).Value=b.Nome;
 				command.Parameters.Add("@cognomeM", System.Data.SqlDbType.NVarChar).Value=b.Cognome;
 				command.Parameters.Add("@etaM", System.Data.SqlDbType.Int).Value=b.Eta;
@@ -419,6 +419,7 @@ namespace DAO{
 				command.Parameters.Add("@Nome",System.Data.SqlDbType.NVarChar).Value= c.Nome;
 				command.Parameters.Add("@Cognome",System.Data.SqlDbType.NVarChar).Value= c.Cognome;
 				command.Parameters.Add("@Eta",System.Data.SqlDbType.Int).Value= c.Eta;
+				command.Parameters.Add("@Email",System.Data.SqlDbType.NVarChar).Value= c.Email;
 				command.Parameters.Add("@Matricola",System.Data.SqlDbType.NVarChar).Value= c.Matricola;
 				command.Parameters.Add("@Residenza",System.Data.SqlDbType.NVarChar).Value= c.Residenza;
 				command.Parameters.Add("@Telefono",System.Data.SqlDbType.NVarChar).Value= c.Telefono;
@@ -625,6 +626,69 @@ namespace DAO{
 			builder.DataSource=@"(localdb)\MSSQLLocalDB";
 			builder.InitialCatalog="GECuV";
 			return builder.ToString();
+		}
+		public string GetMatrFromEspLav(int id){
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
+			try{
+				connection.Open();
+				SqlCommand command = new SqlCommand("GetMatrFromEspLav",connection);
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("@idEsp",SqlDbType.Int).Value=id;
+				string res ="";
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()){
+					res=reader.GetString(0);
+				}
+				reader.Close();
+				command.Dispose();
+				return res;
+			}catch(Exception e ){
+				throw e ; 
+			}finally{
+				connection.Dispose();
+			}
+		}
+		public string GetMatrFromComp(int id){
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
+			try{
+				connection.Open();
+				SqlCommand command = new SqlCommand("GetMatrFromComp",connection);
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("@idComp",SqlDbType.Int).Value=id;
+				string res ="";
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()){
+					res=reader.GetString(0);
+				}
+				reader.Close();
+				command.Dispose();
+				return res;
+			}catch(Exception e ){
+				throw e ; 
+			}finally{
+				connection.Dispose();
+			}
+		}
+		public string GetMatrFromPerStud(int id){
+			SqlConnection connection = new SqlConnection(GetConnectionGeCuV());
+			try{
+				connection.Open();
+				SqlCommand command = new SqlCommand("GetMatrFromPerStud",connection);
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("@idPerStud",SqlDbType.Int).Value=id;
+				string res ="";
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()){
+					res=reader.GetString(0);
+				}
+				reader.Close();
+				command.Dispose();
+				return res;
+			}catch(Exception e ){
+				throw e ; 
+			}finally{
+				connection.Dispose();
+			}
 		}
     }
     public class Profilo{ 

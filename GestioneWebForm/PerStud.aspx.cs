@@ -31,8 +31,15 @@ namespace GestioneWebForm {
 			PerStud pN = new PerStud{Titolo=titolo.Text,Descrizione=descrizione.Text,AnnoFine=int.Parse(annoF.Text),AnnoInizio=int.Parse(annoI.Text)};
             dao.ModPerStudi(idPs,pN);
             percorso = dao.GetPercorso(idPs);
-            var url = String.Format($"~/DettagliCv.aspx");
+			string matr = dao.GetMatrFromPerStud(idPs);
+            var url = String.Format($"~/DettagliCv.aspx?codice={matr}");
             Response.Redirect(url);
         }
+
+		protected void Dettaglio_Click(object sender,EventArgs e) {
+			string matr = dao.GetMatrFromPerStud(idPs);
+            var url = String.Format($"~/DettagliCv.aspx?codice={matr}");
+            Response.Redirect(url);
+		}
 	}
 }

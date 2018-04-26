@@ -25,9 +25,14 @@ namespace GestioneWebForm {
             }else{ 
                 Message = "Curriculum inesistente";    
             }
-            //var url = String.Format($"~/DettagliCv.aspx?matr={Request["matr"]}");
-            var url = String.Format($"~/DettagliCv.aspx");
+            var url = String.Format($"~/DettagliCv.aspx?codice={Request["matr"]}");
+            //var url = String.Format($"~/DettagliCv.aspx");
             Response.Redirect(url);
         }
+
+		protected void Dettaglio_Click(object sender,EventArgs e) {
+			 var url = String.Format($"~/DettagliCv.aspx?codice={Request["matr"]}");
+            Response.Redirect(url);
+		}
 	}
 }

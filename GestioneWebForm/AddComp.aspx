@@ -24,6 +24,7 @@
             </div>
         </div> 
         <asp:Button runat="server" OnClick="Aggiungi_Click" Text="Aggiungi"/>
+        <asp:Button runat="server" OnClick="Dettaglio_Click" Text="Back" />
 
     </div>
     <br />

@@ -40,6 +40,7 @@
         </div> 
 
         <asp:Button runat="server" OnClick="Modifica_Click" Text="Modifica"/>
+        <asp:Button runat="server" OnClick="Dettaglio_Click" Text="Back" />
     <%}%>
         </div>
     <br />

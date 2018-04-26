@@ -66,7 +66,11 @@
               </div>
          </div>
     </div>
-    <asp:Button ID="modAnag" OnClick="modAnag_Click" Text="Modifica" runat="server"/>
+    <%if(HaveCv) {%>
+        <asp:Button ID="modAnag" OnClick="modAnag_Click" Text="Modifica" runat="server"/>
+    <%}else{ %>
+        <asp:Button ID="AddCV" OnClick="AddCV_Click" Text="Aggiungi Curriculum" runat="server" />
+    <%} %>
     <hr  style="color:black; border-width:3px;"/>
     <br />
     <div class="row">

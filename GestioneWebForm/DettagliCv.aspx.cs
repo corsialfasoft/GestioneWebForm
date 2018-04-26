@@ -9,13 +9,52 @@ namespace GestioneWebForm {
 	public partial class DettagliCv : System.Web.UI.Page {
 		public string Message {get;set;}
 		public CV c {get;set;}
+		public string matr{get;set;}
+		public bool HaveCv{get;set;}
+		IDao dao = new DataAccesObject();
 		protected void Page_Load(object sender,EventArgs e) {
-			IDao dao = new DataAccesObject();
 			//string matricola="ciao";
-			Profilo p = Session["profile"] as Profilo;
-			c=dao.Search(Request["codice"]);
+			//Profilo p = Session["profile"] as Profilo;
 			
-			if(!Page.IsPostBack){
+				if(Request["codice"]==null /*&& !Page.IsPostBack */){
+					Profilo mok = new Profilo();
+			
+					mok.Matrincola=Guid.NewGuid().ToString().Substring(1,9);
+					matr=mok.Matrincola;
+					Session["profile"] = mok;
+
+				}
+				/*else if(Request["codice"]==null && HaveCv ){
+					HaveCv=true;
+					Profilo test = Session["profile"] as Profilo;
+					matr=test.Matrincola;
+					c=dao.Search(matr);
+				}
+				if(Request["codice"]==null ){	// manca Controllo del profilo
+					Profilo test = Session["profile"] as Profilo;
+					matr=test.Matrincola;
+				}
+				*/
+
+			/*
+				c=new CV();
+				c.Nome=NomeTextBox.Text;
+				c.Cognome=CognomeTextBox.Text;
+				c.Eta=int.Parse(EtaTextBox.Text);
+				c.Residenza=ResidenzaTextBox.Text;
+				c.Email=EmailTextBox.Text;
+				c.Telefono=TelefonoTextBox.Text;
+				c.Matricola=mok.Matrincola;
+				dao.AggiungiCV(c);
+				*/
+			 else if(!Page.IsPostBack ){
+				//c=dao.Search(Request["codice"]);
+				if(Request["codice"]==null){
+					matr=(Session["profile"] as Profilo).Matrincola;
+				}else{
+					matr= Request["codice"];
+				}
+				c=dao.Search(matr);
 				NomeTextBox.Text=c.Nome;
 				CognomeTextBox.Text=c.Cognome;
 				EtaTextBox.Text=c.Eta.ToString();
@@ -37,7 +76,14 @@ namespace GestioneWebForm {
 				} else {
 					InitTableComp(c.Competenze);
 				}
-			}else{
+				HaveCv=true;
+			}else if(Request["codice"]!=null && Page.IsPostBack){
+				if(Request["codice"]==null){
+					matr=(Session["profile"] as Profilo).Matrincola;
+				}else{
+					matr= Request["codice"];
+				}
+				c=dao.Search(matr);
 				if(c.Percorsostudi==null){
 					InitTablePS(new List<PerStud>());
 				}else{
@@ -53,7 +99,7 @@ namespace GestioneWebForm {
 				} else {
 					InitTableComp(c.Competenze);
 				}
-				
+				HaveCv=true;
 			}
 		}
 		protected void InitTablePS(List<PerStud> pers) {
@@ -134,8 +180,8 @@ namespace GestioneWebForm {
 			Mod.Residenza= ResidenzaTextBox.Text;
 			Mod.Email=EmailTextBox.Text;
 			Mod.Telefono= TelefonoTextBox.Text;
-			dao.ModificaCV(c,Mod);
-			c=dao.Search(c.Matricola);
+			dao.ModificaCV(matr,Mod);
+			c=dao.Search(matr);
 		}
 
 		protected void btn_AddPerStudi_Click(object sender,EventArgs e) {
@@ -150,6 +196,24 @@ namespace GestioneWebForm {
 		protected void btn_AddComp_Click(object sender,EventArgs e) {
             var url = string.Format($"~/AddComp?matr={c.Matricola}");
 			Response.Redirect(url);
+		}
+
+		protected void AddCV_Click(object sender,EventArgs e) {
+			//Profilo mok = new Profilo();
+			
+			//mok.Matrincola=Guid.NewGuid().ToString().Substring(1,9);
+			c=new CV();
+			c.Nome=NomeTextBox.Text;
+			c.Cognome=CognomeTextBox.Text;
+			c.Eta=int.Parse(EtaTextBox.Text);
+			c.Residenza=ResidenzaTextBox.Text;
+			c.Email=EmailTextBox.Text;
+			c.Telefono=TelefonoTextBox.Text;
+			c.Matricola=matr;
+			dao.AggiungiCV(c);
+			var url = string.Format($"~/DettagliCv.Aspx?codice={c.Matricola}");
+			Response.Redirect(url);
+			HaveCv=true;
 		}
 	}
 }

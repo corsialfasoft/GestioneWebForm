@@ -31,8 +31,15 @@ namespace GestioneWebForm {
 			EspLav eL = new EspLav{Qualifica=qualifica.Text,Descrizione=descrizioneEl.Text,AnnoFine=int.Parse(annoFEl.Text),AnnoInizio=int.Parse(annoIEl.Text)};
             dao.ModEspLav(idEl,eL);
             esperienza = dao.GetEsperienza(idEl);
-            var url = String.Format($"~/DettagliCv.aspx");
+			string matr = dao.GetMatrFromEspLav(idEl);
+            var url = String.Format($"~/DettagliCv.aspx?codice={matr}");
             Response.Redirect(url);
         }
+
+		protected void Dettaglio_Click(object sender,EventArgs e) {
+			string matr = dao.GetMatrFromEspLav(idEl);
+            var url = String.Format($"~/DettagliCv.aspx?codice={matr}");
+            Response.Redirect(url);
+		}
 	}
 }
