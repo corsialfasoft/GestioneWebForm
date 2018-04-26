@@ -1,70 +1,83 @@
-﻿<%@ Page Title="Aggiungi Giorno"
-    Language="C#" 
-    MasterPageFile="~/Site.Master" 
-    AutoEventWireup="true" 
-    CodeBehind="AddGiorno.aspx.cs" 
-    Inherits="GestioneWebForm._AddGiorno" %>
+﻿<%@ Page Title="Aggiungi un giorno" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGiorno.aspx.cs" Inherits="GestioneWebForm._AddGiorno" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    
     <h2><%: Title %></h2>
-    <br><br>
-    <h4>Aggiorna i tuoi dati...</h4>
-    <br><br>
-    <div class="Conteiner">
-        Data (*)          <input type="date" name="dateTime" required/>
-        <br><br>
-<%--        <form method="get">--%>
-            Tipologia Ore (*)
-            <input list="HType" name="tipoOre">
-            <select id="HType">
-                <option value="">Seòeziona tipo di ore
-                <option value="Ore di lavoro">Ore di lavoro
-                <option value="Ore di permesso">Ore di lavoro
-                <option value="Ore di ferie">Ore di ferie
-                <option value="Ore di malattia">Ore di malattia
-            </select>
-<%--        </form>--%>
-        <br><br>
-        Nome Commessa <input type="text" name="Commessa" placeholder=" - - - " /> (Solo per ore di lavoro)
-        <br><br>
-        Numero Ore:  (*)  <input type="number" name="ore" min=1 max=8>
-        <br><br>
-        <input type="submit" name="caricaOre" value="Carica Ore" />
-        <br><br>
-    </div>
-</asp:Content>
-
-
-<%--<h2>@ViewBag.Title:</h2>
-<br><br>
-<div>
-    @using (Html.BeginForm("AddGiorno", "Home", FormMethod.Post)) {
-    <div class="Conteiner">
-        Data (*)          <input type="date" name="dateTime" />
-        <br><br>
-        <form method="get">
-            Tipologia Ore (*)
-            <input list="HType" name="tipoOre">
-            <datalist id="HType">
-                <option value="Ore di lavoro">
-                <option value="Ore di permesso">
-                <option value="Ore di ferie">
-                <option value="Ore di malattia">
-            </datalist>
-        </form>
-        <br><br>
-        Nome Commessa <input type="text" name="Commessa" placeholder=" - - - " /> (Solo per ore di lavoro)
-        <br><br>
-        Numero Ore:  (*)  <input type="number" name="ore" min=1 max=8>
-        <br><br>
-        <input type="submit" name="caricaOre" value="Carica Ore" />
-        <br><br>
-    </div>
+    <br />
+<script type="text/javascript">
+   function changeHTyp(value) {
+        if (value == 'Ore di permesso' || value == 'Ore di malattia') {
+            document.getElementById('commesse').disabled = true;
+            document.getElementById('ore').value = ""; 
+            document.getElementById('ore').setAttribute('max', '8');
+            document.getElementById('ore').disabled = false;
+        } else if (value == 'Ore di ferie') {
+            document.getElementById('ore').value = 8;
+            document.getElementById('ore').disabled = true;
+            document.getElementById('commesse').disabled = true;
+        } else if (value == 'Ore di lavoro' || value =='') {
+            document.getElementById('commesse').disabled = false;
+            document.getElementById('ore').value = "";
+            if (value == 'Ore di lavoro')
+                document.getElementById('ore').setAttribute('max', '14');
+            else
+                document.getElementById('ore').setAttribute('max', '8');
+            document.getElementById('ore').disabled = false;
+        }
     }
-</div>
-<p>(*) Campi obligatori</p>
-<br><br>
-@if(ViewBag.GeCoDataTime != null){
-    <p>@ViewBag.GeCoDataTime.ToString("yyyy-MM-dd")</p>}
-    <p>@ViewBag.EsitoAddGiorno</p>
-<br><br>--%>
+</script>
+    <div class="text-warning" style="font-size:large">
+        <%=Message %>
+        <br />
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            Seleziona una data
+        </div>
+        <div class="col-md-1">
+            <asp:Calendar runat="server" ID="oggi"    ></asp:Calendar>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            Tipo di orario
+        </div>
+        <div class="col-md-1">
+                 <select id="HType"  name="tipoOre"   onchange = "javascript:changeHTyp(this.value);">
+                    <option value="" />Seleziona tipo Ore
+                    <option value="Ore di lavoro" />Ore di lavoro
+                    <option value="Ore di permesso" />Ore di permesso
+                    <option value="Ore di ferie" />Ore di ferie
+                    <option value="Ore di malattia" />Ore di malattia
+                </select>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            Commessa
+        </div>
+        <div class="col-md-1">
+            <asp:TextBox runat="server" id="commesse" ></asp:TextBox>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            Ore
+        </div>
+        <div class="col-md-1">
+            <asp:TextBox runat="server" id="ore" TextMode="Number" ></asp:TextBox>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <asp:Button  runat="server" ID="Aggiungi" OnClick="Aggiungi_Click" Text="Aggiungi"  ></asp:Button>
+        </div>
+    </div>
+    
+    
+</asp:Content>

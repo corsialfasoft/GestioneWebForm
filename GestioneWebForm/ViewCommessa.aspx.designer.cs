@@ -10,42 +10,51 @@
 namespace GestioneWebForm {
     
     
-    public partial class _AddGiorno {
+    public partial class ViewCommessa {
         
         /// <summary>
-        /// Controllo oggi.
+        /// Controllo txt_Id.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar oggi;
+        protected global::System.Web.UI.WebControls.TextBox txt_Id;
         
         /// <summary>
-        /// Controllo commesse.
+        /// Controllo txt_Descr.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox commesse;
+        protected global::System.Web.UI.WebControls.TextBox txt_Descr;
         
         /// <summary>
-        /// Controllo ore.
+        /// Controllo Cerca.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ore;
+        protected global::System.Web.UI.WebControls.Button Cerca;
         
         /// <summary>
-        /// Controllo Aggiungi.
+        /// Controllo ListaCommesse.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Aggiungi;
+        protected global::System.Web.UI.WebControls.Table ListaCommesse;
+        
+        /// <summary>
+        /// Controllo ListaOreCommessa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table ListaOreCommessa;
     }
 }
