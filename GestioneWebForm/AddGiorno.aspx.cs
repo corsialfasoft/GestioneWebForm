@@ -47,7 +47,7 @@ namespace GestioneWebForm {
                         Message="Inserire la commessa";
                         Response.Redirect($"~/AddGiorno");
                     }
-					List<Commessa> commesse = dao.CercaCommessa(comme2);
+					List<Commessa> commesse = dao.CercaCommesse(comme2);
 					if (commesse.Count == 0){
 						Message ="Commessa non trovata";
 						Response.Redirect($"~/AddGiorno");

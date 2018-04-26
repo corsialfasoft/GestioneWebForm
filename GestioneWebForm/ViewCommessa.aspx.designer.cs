@@ -13,22 +13,13 @@ namespace GestioneWebForm {
     public partial class ViewCommessa {
         
         /// <summary>
-        /// Controllo txt_Id.
+        /// Controllo nomeCommessa.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Id;
-        
-        /// <summary>
-        /// Controllo txt_Descr.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Descr;
+        protected global::System.Web.UI.WebControls.TextBox nomeCommessa;
         
         /// <summary>
         /// Controllo Cerca.
