@@ -22,32 +22,54 @@ namespace DAO{
 		Giorno VisualizzaGiorno(DateTime data, int idUtente);
 		List<Giorno> GiorniCommessa(int idCommessa, int idUtente);
 		Commessa CercaCommessa(string nomeCommessa);
-        //Aggiungi nuovo corso. Lo puo fare solo l'admin
-        void AddCorso(Corso corso);
-        //Aggiungi una lezione a un determinato corso. Lo puo fare solo il prof
-        void AddLezione(int idCorso, Lezione lezione);
-        //Iscrizione di uno studente a un determinato corso. Lo puo fare solo lo studente specifico
-        void Iscriviti (int idCorso, int idStudente);
 
+        //Aggiungi nuovo corso. Lo puo fare solo l'admin
+        void AddCorso(Corso corso);//fatto
+        //Aggiungi una lezione a un determinato corso. Lo puo fare solo il prof
+        void AddLezione(int idCorso, Lezione lezione);//fatto
+        //restituisce le lezioni di un determinato corso
+        List<Lezione> SearchLezioni(int idCorso);//fatto
+        //Iscrizione di uno studente a un determinato corso. Lo puo fare solo lo studente specifico
+        void Iscriviti (int idCorso, string idStudente);//fatto
         //Cerca un determinato corso 
-        Corso SearchCorsi(int idCorso);
+        Corso SearchCorsi(int idCorso);//fatto
         //Cerca tutti i corsi che contine la "descrizione" nei suoi attributi(nome,descrizione)
-        List<Corso> SearchCorsi(string descrizione);
+        List<Corso> SearchCorsi(string descrizione);//fatto
         //Cerca tutti i corsi che contiene la "descrizione" di un determinato studente(idStudente)
-        List<Corso>SearchCorsi(string descrizione, int idUtente);
+        List<Corso>SearchCorsi(string descrizione, string matrUtente);//fatto
         //Mostra tutti i corsi presenti nel db
-        List<Corso>ListaCorsi();
+        List<Corso>ListaCorsi();//fatto
         //Mostra tutti i corsi a cui è iscritto un determinato studente(idStudente)
-        List<Corso>ListaCorsi(int idUtente);
+        List<Corso>ListaCorsi(int idUtente);//fatto
+		void EliminaLezione(int idLezione);
+		Lezione SearchLezione(int idLezione);
+		void ModificaLezione(Lezione lezione);
     }
 	 public enum HType { HMalattia = 1, HPermesso, HFerie }
     public partial class DataAccesObject : IDao {
         public void AddCompetenze(string MatrCv,Competenza comp) {
             throw new NotImplementedException();
         }
-
-        public void AddCorso(Corso corso) {
-            throw new NotImplementedException();
+        //fatto
+        public void AddCorso(Corso corso){
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                SqlCommand cmd = new SqlCommand ("AddCorso",con){CommandType = CommandType.StoredProcedure}; 
+                cmd.Parameters.Add("@nome",SqlDbType.NVarChar).Value=corso.Nome;
+                cmd.Parameters.Add("@descrizione",SqlDbType.NVarChar).Value=corso.Descrizione;
+                cmd.Parameters.Add("@dInizio",SqlDbType.Date).Value=corso.Inizio.ToString("yyyy/MM/dd");
+                cmd.Parameters.Add("@dFine",SqlDbType.Date).Value=corso.Fine.ToString("yyyy/MM/dd");
+                int x = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if(x==0){ 
+                    throw new Exception();    
+                }
+            }catch(Exception e){ 
+                throw e;    
+            }finally{ 
+                con.Dispose();    
+            }
         }
 
         public void AddCvStudi(string MatrCv,PerStud studi) {
@@ -57,9 +79,25 @@ namespace DAO{
         public void AddEspLav(string MatrCv,EspLav esp) {
             throw new NotImplementedException();
         }
-
-        public void AddLezione(int idCorso,Lezione lezione) {
-            throw new NotImplementedException();
+        //fatto
+        public void AddLezione(int idCorso,Lezione lezione){
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                SqlCommand cmd = new SqlCommand ("AddLezione",con){CommandType = CommandType.StoredProcedure}; 
+                cmd.Parameters.Add("@idCorso",SqlDbType.Int).Value=idCorso;
+                cmd.Parameters.Add("@argomento",SqlDbType.NVarChar).Value=lezione.Argomento;
+                cmd.Parameters.Add("@durata",SqlDbType.Int).Value=lezione.Durata;
+                int x = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if(x==0){ 
+                    throw new Exception();    
+                }
+            }catch(Exception e){ 
+                throw e;    
+            }finally{ 
+                con.Dispose();    
+            }
         }
 
         public void AggiungiCV(CV a) {
@@ -89,9 +127,24 @@ namespace DAO{
         public List<Giorno> GiorniCommessa(int idCommessa,int idUtente) {
             throw new NotImplementedException();
         }
-
-        public void Iscriviti(int idCorso,int idStudente) {
-            throw new NotImplementedException();
+        //fatto
+        public void Iscriviti(int idCorso,string idStudente){
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                SqlCommand cmd = new SqlCommand ("Iscrizione",con){CommandType = CommandType.StoredProcedure}; 
+                cmd.Parameters.Add("@IdCorso",SqlDbType.Int).Value=idCorso;
+                cmd.Parameters.Add("@matr",SqlDbType.NVarChar).Value=idStudente;
+                int x = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if(x==0){ 
+                    throw new Exception();    
+                }
+            }catch(Exception e){ 
+                throw e;    
+            }finally{ 
+                con.Dispose();    
+            }
         }
 
         public List<Corso> ListaCorsi() {
@@ -121,17 +174,95 @@ namespace DAO{
         public List<CV> SearchCognome(string cognome) {
             throw new NotImplementedException();
         }
-
+        //fatto
+        private string GetConnection(){
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(){ 
+                DataSource = @"(localdb)\MSSQLLocalDB",
+                InitialCatalog = "GeCo"
+                };  
+            return builder.ToString();
+        }
+        
+        //fatto
         public Corso SearchCorsi(int idCorso) {
-            throw new NotImplementedException();
+            Corso corso = new Corso();
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                SqlCommand cmd = new SqlCommand ("SearchCorso",con){CommandType = CommandType.StoredProcedure}; 
+                cmd.Parameters.Add("@IdCorso",SqlDbType.Int).Value=idCorso;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read()){ 
+                    int _id = reader.GetInt32(0);
+                    string _nome = reader.GetString(1);
+                    string _descrizione = reader.GetString(2);
+                    DateTime _dInizio = reader.GetDateTime(3);
+                    DateTime _dFine = reader.GetDateTime(4);
+                    corso = new Corso{Id=_id, Nome = _nome, Descrizione = _descrizione,Inizio = _dInizio, Fine = _dFine};
+                }
+                reader.Close();
+                cmd.Dispose();
+                return corso;
+            }catch(Exception e){ 
+                throw e;    
+            }finally{ 
+                con.Dispose();    
+            }
+        }
+        
+        //fatto
+        public List<Corso> SearchCorsi(string descrizione){
+            List<Corso> corsi = new List<Corso>();
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                SqlCommand cmd = new SqlCommand ("SearchCorsi",con){CommandType = CommandType.StoredProcedure}; 
+                cmd.Parameters.Add("@descrizione",SqlDbType.NVarChar).Value=descrizione;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read()){ 
+                    int _id = reader.GetInt32(0);
+                    string _nome = reader.GetString(1);
+                    string _descrizione = reader.GetString(2);
+                    DateTime _dInizio = reader.GetDateTime(3);
+                    DateTime _dFine = reader.GetDateTime(4);
+                    corsi.Add(new Corso{Id=_id, Nome = _nome, Descrizione = _descrizione,Inizio = _dInizio, Fine = _dFine});
+                }
+                reader.Close();
+                cmd.Dispose();
+                return corsi;
+            }catch(Exception e){ 
+                throw e;    
+            }finally{ 
+                con.Dispose();    
+            }
         }
 
-        public List<Corso> SearchCorsi(string descrizione) {
-            throw new NotImplementedException();
-        }
-
-        public List<Corso> SearchCorsi(string descrizione,int idUtente) {
-            throw new NotImplementedException();
+        //fatto
+        public List<Corso> SearchCorsi(string descrizione,string matrUtente){
+            List<Corso> corsi = new List<Corso>();
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                SqlCommand cmd = new SqlCommand ("SearchCorsiStud",con){CommandType = CommandType.StoredProcedure}; 
+                cmd.Parameters.Add("@idStudente",SqlDbType.NVarChar).Value=matrUtente;
+                cmd.Parameters.Add("@descrizione",SqlDbType.NVarChar).Value=descrizione;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read()){ 
+                    int _id = reader.GetInt32(0);
+                    string _nome = reader.GetString(1);
+                    string _descrizione = reader.GetString(2);
+                    DateTime _dInizio = reader.GetDateTime(3);
+                    DateTime _dFine = reader.GetDateTime(4);
+                    corsi.Add(new Corso{Id=_id, Nome = _nome, Descrizione = _descrizione,Inizio = _dInizio, Fine = _dFine});
+                }
+                reader.Close();
+                cmd.Dispose();
+                return corsi;
+            }catch(Exception e){ 
+                throw e;    
+            }finally{ 
+                con.Dispose();    
+            }
         }
 
         public List<CV> SearchEta(int eta) {
@@ -145,7 +276,96 @@ namespace DAO{
         public Giorno VisualizzaGiorno(DateTime data,int idUtente) {
             throw new NotImplementedException();
         }
-    }
+
+        //fatto
+        public List<Lezione> SearchLezioni(int idCorso) {
+            List<Lezione> lezioni = new List<Lezione>();
+            SqlConnection con = new SqlConnection(GetConnection());
+            try{
+                con.Open();
+                SqlCommand cmd = new SqlCommand ("SearchLezioni",con){CommandType = CommandType.StoredProcedure}; 
+                cmd.Parameters.Add("@IdCorso",SqlDbType.Int).Value=idCorso;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read()){ 
+                    int _id = reader.GetInt32(0);
+                    string _argomento = reader.GetString(1);
+                    int _durata = reader.GetInt32(2);
+                    lezioni.Add(new Lezione{Id=_id, Argomento = _argomento, Durata = _durata});
+                }
+                reader.Close();
+                cmd.Dispose();
+                return lezioni;
+            }catch(Exception e){ 
+                throw e;    
+            }finally{ 
+                con.Dispose();    
+            }
+        }
+
+		public void EliminaLezione(int idLezione)
+		{
+			SqlConnection connection=new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("dbo.EliminaLezione",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@IdLezione",System.Data.SqlDbType.Int).Value=idLezione;
+				int x = command.ExecuteNonQuery();
+				if (x == 0) {
+					throw new Exception("La lezione non è stata eliminata");
+				}
+				command.Dispose();
+			}catch (Exception x) {
+				throw x;
+			} finally {
+				connection.Dispose();
+			}
+		}
+
+		public Lezione SearchLezione(int idLezione)
+		{
+			Lezione lez = new Lezione();
+			SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("SearchLezione",connection);
+				command.CommandType= CommandType.StoredProcedure;
+				command.Parameters.Add("@idLezione",SqlDbType.Int).Value=idLezione;
+				SqlDataReader reader = command.ExecuteReader();
+				while(reader.Read()) {
+					lez.Argomento= reader.GetString(0);
+					lez.Durata = reader.GetInt32(1);
+				}
+				return lez;
+			} catch (Exception e){
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
+		}
+
+		public void ModificaLezione(Lezione lezione)
+		{
+			SqlConnection connection = new SqlConnection(GetConnection());
+			try {
+				connection.Open();
+				SqlCommand command = new SqlCommand("ModificaLezione",connection);
+				command.CommandType=CommandType.StoredProcedure;
+				command.Parameters.Add("@idLezione",SqlDbType.Int).Value=lezione.Id;
+				command.Parameters.Add("@argomento",SqlDbType.NVarChar).Value=lezione.Argomento;
+				command.Parameters.Add("@durata",SqlDbType.Int).Value=lezione.Durata;
+				int x = command.ExecuteNonQuery();
+				if(x == 0) {
+					throw new Exception("Nessuna lezione modificata");
+				}
+				
+			}catch(Exception e) {
+				throw e;
+			} finally {
+				connection.Dispose();
+			}
+		}
+	}
     public class Profilo{ 
         public string Matrincola{get;set;}
         public string Nome{get;set;}
@@ -171,8 +391,7 @@ namespace DAO{
     }
     public class Lezione{ 
         public int Id{get;set;}
-        public string Nome {get;set;}
-        public string Descrizione{get;set;}
+        public string Argomento {get;set;}
         public int Durata{get;set;}
     }
 	
