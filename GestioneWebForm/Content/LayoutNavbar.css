@@ -36,7 +36,9 @@ body {
     }
     .sidenav .nav.login{
         padding-bottom:0px;
-        position:relative;
+        padding-right:0px;
+        margin-bottom:0px;
+        margin-right:0px;
     }
         .sidenav .nav.active {
             left: -10px;

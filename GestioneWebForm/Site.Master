@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Applicazione ASP.NET</title>
+    <title><%: Page.Title %> - Gestione Corsi</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -23,12 +23,12 @@
     <div class="sidenav right">
             <div class="nav  active"><div class="icon fa fa-home"></div><div class="description">Home</div></div>
               <div class="nav"> <div class="glyphicon glyphicon-user  icon"> </div> <div class="description">Geco </div></div> 
-              <div class="nav"><div class="glyphicon glyphicon-file  icon">     </div>  <div class="description">GeCv </div></div> 
+              <div class="nav"><div class="glyphicon glyphicon-file  icon"></div>  <div class="description">GeCv </div></div> 
              <div class="nav"> <div  class="fa fa-clock-o white icon " aria-hidden="true" "></div> <div class="description">GeTime</div></div> 
 
 
         
-        <div class="nav  "><div class="glyphicon glyphicon-off  icon"></div>   <div class="description">Login</div>   </div> 
+        <div class="nav login  "><div class="glyphicon glyphicon-off  icon"></div>   <div class="description">Login</div>   </div> 
      </div>
            
 
@@ -38,7 +38,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Applicazione ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Gestione</p>
             </footer>
         </div>
 
