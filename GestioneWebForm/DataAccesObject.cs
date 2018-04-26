@@ -593,10 +593,7 @@ namespace DAO{
 
         public List<CV> SearchRange(int etmin,int etmax) {
            List<CV> trovati = new List<CV>();
-			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
-				DataSource = @"(localdb)\MSSQLLocalDB",
-				InitialCatalog = "GECV"
-			};
+			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(GetConnectionGeCuV());
 			SqlConnection connection = new SqlConnection(builder.ToString());
 			try {
 				connection.Open();

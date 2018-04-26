@@ -12,9 +12,9 @@ namespace GestioneWebForm {
 		protected void Page_Load(object sender,EventArgs e) {
 			IDao dao = new DataAccesObject();
 			//string matricola="ciao";
-			//c=dao.Search(Request["codice"]);
+			Profilo p = Session["profile"] as Profilo;
+			c=dao.Search(Request["codice"]);
 			
-			c=dao.Search("EEEE");
 			if(!Page.IsPostBack){
 				NomeTextBox.Text=c.Nome;
 				CognomeTextBox.Text=c.Cognome;
