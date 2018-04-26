@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="Aggiungi un giorno" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGiorno.aspx.cs" Inherits="GestioneWebForm._AddGiorno" %>
-
+<%@ Register TagPrefix="TabCom" TagName="tabCom" Src=""  %> 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
     <h2><%: Title %></h2>
     <br />
-<%--<script type="text/javascript">
+<script type="text/javascript">
    function changeHTyp(value) {
         if (value == 'Ore di permesso' || value == 'Ore di malattia') {
             document.getElementById('commesse').disabled = true;
@@ -25,11 +25,12 @@
             document.getElementById('ore').disabled = false;
         }
     }
-</script>--%>
+</script>
     <div class="text-warning" style="font-size:large">
         <%=Message %>
         <br />
     </div>
+<%if(ListaCommesse==null){%>
     <br />
     <div class="row">
         <div class="col-md-2">
@@ -45,7 +46,7 @@
             Tipo di orario
         </div>
         <div class="col-md-1">
-                  <asp:DropDownList ID="tipoOre" runat="server">
+                  <asp:DropDownList ID="tipoOre" runat="server" onClick="changeHTyp(this.value);">
                   <asp:ListItem Selected="True" Value=""> Scegli una Tipologia </asp:ListItem>
                   <asp:ListItem Value="Ore di lavoro"> Lavoro </asp:ListItem>
                   <asp:ListItem Value="Ore di permesso" > Permesso </asp:ListItem>
@@ -82,6 +83,8 @@
         <%=EsitoAddGiorno %>
         <%=GeCoDataTime %>
     </div>
-    
+<%}else{%> 
+    <%Table %>
+<%}%>
     
 </asp:Content>
