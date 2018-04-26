@@ -20,12 +20,12 @@ namespace GestioneWebForm {
 
 		protected void Aggiungi_Click(object sender,EventArgs e) {
             string matr = "EEEE";
-            if(ht.Text ==""){
+            Comme = tipoOre.Text;
+            if( Comme ==""){
                 Message="Scegliere la tipologia delle ore";
                 Response.Redirect($"~/AddGiorno");
             }
             dataC = oggi.SelectedDate;
-            Comme = ht.Text;
             Giorno giorno = dao.VisualizzaGiorno(dataC,matr);
             string comme2 = commesse.Text;
 			try{

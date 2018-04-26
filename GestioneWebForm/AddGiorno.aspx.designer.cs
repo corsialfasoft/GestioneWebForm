@@ -22,6 +22,15 @@ namespace GestioneWebForm {
         protected global::System.Web.UI.WebControls.Calendar oggi;
         
         /// <summary>
+        /// Controllo tipoOre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList tipoOre;
+        
+        /// <summary>
         /// Controllo commesse.
         /// </summary>
         /// <remarks>
