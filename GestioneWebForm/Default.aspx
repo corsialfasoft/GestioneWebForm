@@ -8,6 +8,15 @@
   background-position: top;
   font-family: 'Roboto'!important;
 }
+
+       .btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: black;
+    border-color: black;
+}
 #content{
   text-align: center;
   padding: 25% 0 2% 0;
@@ -22,31 +31,39 @@
             
            }
 
-/*Responsive*/
 @media (max-width: 840px) {
   a{margin-top: 10px;}
 }
-    </style>
 
-    <div class="jumbotron">
-        <h1>Corsi</h1>
+        
+    </style>
+    
+
+
+    <div class="jumbotron" style="background:url(Content/Image/Corso.jpg); background-repeat: no-repeat;background-attachment: fixed;border-radius:10px;">
+        <h1 style="color: #f7ca43;">Corsi</h1>
         <p class="lead">Ricerca il corso più adatto alle tue esigenze all'interno del nostro elenco</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Vai a corsi &raquo;</a></p>
+        <p ><a href="http://www.asp.net" class="btn btn-primary btn-lg">Vai a corsi &raquo;</a></p>
     </div>
 
     <div class="row">
-        <div class="jumbotron" style="width:40%;float:left;border">
-        <h1>GeTime</h1>
-        <p class="lead">Ricerca il corso più adatto alle tue esigenze all'interno del nostro elenco</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Vai a GeTime &raquo;</a></p>
+        <div class="jumbotron" style="width:45%;float:left;background:none;background-attachment: fixed;margin-right:5px;">
+            <h1 style="color: #f7ca43;">GeTime</h1>
+            <p class="lead">GeTime si occupa della gestione delle ore lavorative</p>
+            <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Vai a GeTime &raquo;</a></p>
         </div>
-        <div class="jumbotron" style="width:40%;float:left;">
-        <h1>GeCv</h1>
-        <p class="lead">Ricerca il corso più adatto alle tue esigenze all'interno del nostro elenco</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Vai a GeCv &raquo;</a></p>
-    </div>
+        <div class="jumbotron" style="width:45%;float:left;background:none;background-attachment: fixed;">
+            <h1 style="color: #f7ca43;">GeCv</h1>
+            <p class="lead">GeCv si occupa della gestione e modifica del proprio curriculum.</p>
+            <p><a href="/Home/GeTimeHome" class="btn btn-primary btn-lg">Vai a GeCv &raquo;</a></p>            
+
+        </div>
+
+
 
     </div>
+
+
 
 
 
