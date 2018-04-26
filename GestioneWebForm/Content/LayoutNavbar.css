@@ -18,6 +18,7 @@ body {
     position: absolute;
     right: 0px;
     top: 0px;
+    
     height: 100%;
     width: 60px;
     background: #333;
@@ -33,7 +34,10 @@ body {
         transition: all 0.4s ease;
         cursor: pointer;
     }
-
+    .sidenav .nav.login{
+        padding-bottom:0px;
+        position:relative;
+    }
         .sidenav .nav.active {
             left: -10px;
         }
@@ -51,7 +55,7 @@ body {
     .sidenav .nav.active .description, .sidenav .nav.active .icon {
         background: #FF5722;
     }
-
+    
     .sidenav .icon {
         width: 60px; /* Width of navbar */
         text-align: center;
@@ -82,3 +86,9 @@ body {
     z-index: 10;
     background: #ddd;
 }
+img{
+    width:20px;
+    height:20px:
+
+}
+
