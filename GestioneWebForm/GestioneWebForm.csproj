@@ -133,6 +133,7 @@
     <Content Include="Content\Image\GeCV.png" />
     <Content Include="Content\Image\login.png" />
     <Content Include="Content\Image\Ore.png" />
+    <Content Include="Content\Image\Corso.jpg" />
     <Content Include="Content\LayoutNavbar.css" />
     <Content Include="MyPage.aspx" />
     <Content Include="Contact.aspx" />
