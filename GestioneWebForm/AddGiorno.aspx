@@ -4,7 +4,7 @@
     
     <h2><%: Title %></h2>
     <br />
-<script type="text/javascript">
+<%--<script type="text/javascript">
    function changeHTyp(value) {
         if (value == 'Ore di permesso' || value == 'Ore di malattia') {
             document.getElementById('commesse').disabled = true;
@@ -25,7 +25,7 @@
             document.getElementById('ore').disabled = false;
         }
     }
-</script>
+</script>--%>
     <div class="text-warning" style="font-size:large">
         <%=Message %>
         <br />
@@ -46,7 +46,7 @@
         </div>
         <div class="col-md-1">
                   <asp:DropDownList ID="tipoOre" runat="server">
-                  <asp:ListItem Selected="True" Value="White"> White </asp:ListItem>
+                  <asp:ListItem Selected="True" Value=""> Scegli una Tipologia </asp:ListItem>
                   <asp:ListItem Value="Ore di lavoro"> Lavoro </asp:ListItem>
                   <asp:ListItem Value="Ore di permesso" > Permesso </asp:ListItem>
                   <asp:ListItem Value="Ore di ferie"> Ferie </asp:ListItem>
@@ -77,6 +77,10 @@
         <div class="col-md-2">
             <asp:Button  runat="server" ID="Aggiungi" OnClick="Aggiungi_Click" Text="Aggiungi"  ></asp:Button>
         </div>
+    </div>
+    <div class="row">
+        <%=EsitoAddGiorno %>
+        <%=GeCoDataTime %>
     </div>
     
     
