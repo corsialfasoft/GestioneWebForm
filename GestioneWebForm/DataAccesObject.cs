@@ -19,11 +19,12 @@ namespace DAO{
         void AddCvStudi(string MatrCv,PerStud studi);
         void AddEspLav(string MatrCv, EspLav esp );
         void AddCompetenze(string MatrCv, Competenza comp);
-		void CompilaHLavoro(DateTime data, int ore, int idCommessa, string idUtente);
-		void Compila(DateTime data, int ore, HType tipoOre, string idUtente);
-		Giorno VisualizzaGiorno(DateTime data, string idUtente);
-		List<Giorno> GiorniCommessa(int idCommessa, string idUtente);
-		List<Commessa> CercaCommessa(string nomeCommessa);
+        void CompilaHLavoro(DateTime data, int ore, int idCommessa, string idUtente);
+        void Compila(DateTime data, int ore, HType tipoOre, string idUtente);
+        Giorno VisualizzaGiorno(DateTime data, string idUtente);
+        List<Giorno> GiorniCommessa(int idCommessa, string idUtente);
+        List<Commessa> CercaCommesse(string nomeCommessa);
+        Commessa CercaCommessa(string nomeCommessa);
         //Aggiungi nuovo corso. Lo puo fare solo l'admin
         void AddCorso(Corso corso);
         //Aggiungi una lezione a un determinato corso. Lo puo fare solo il prof
@@ -114,77 +115,78 @@ namespace DAO{
 
         //GeTime
         ITrasformer transf = new Trasformator();
-        public List<Commessa> CercaCommessa(string nomeCommessa){
-			try {
-				SqlParameter[] parameter = {
-					new SqlParameter("@nomeCommessa", nomeCommessa)
-				};			
-				return DB.ExecQProcedureReader("SP_CercaCommessa", transf.TrasformInListaCommesse, parameter, "GeTime");
-			} catch(SqlException){
-				throw new Exception("Errore server!");
-			} catch(Exception e){
-				throw e;
-			}
-		}
-		public void Compila(DateTime data, int ore, HType tipoOre, string idUtente){
-            try{ 
-                SqlParameter[] parameters = {
-					new SqlParameter("@giorno",data.ToString("yyyy-MM-dd")),
-					new SqlParameter("@idUtente",idUtente),
-					new SqlParameter("@ore", ore),
-					new SqlParameter("@TipoOre", (int)tipoOre)
-					};
-				DB.ExecNonQProcedure("SP_Compila", parameters, "GeTime");
-            } catch(SqlException){
+        //GeTime 
+        public List<Commessa> CercaCommesse(string nomeCommessa) {
+            try {
+                SqlParameter[] parameter = {
+                    new SqlParameter("@nomeCommessa", nomeCommessa)
+                };
+                return DB.ExecQProcedureReader("SP_CercaCommesse", transf.TrasformInListaCommesse, parameter, "GeTime");
+            } catch (SqlException) {
                 throw new Exception("Errore server!");
-            } catch(Exception e){
+            } catch (Exception e) {
                 throw e;
             }
         }
-		public void CompilaHLavoro(DateTime data,int ore,int idCommessa,string idUtente){
-			try{
+        public void Compila(DateTime data, int ore, HType tipoOre, string idUtente) {
+            try {
                 SqlParameter[] parameters = {
-					new SqlParameter("@data",data.ToString("yyyy-MM-dd")),
-					new SqlParameter("@ore", ore),
-					new SqlParameter("@idCommessa",idCommessa),
-					new SqlParameter("@idUtente", idUtente)
-					};
-                DB.ExecNonQProcedure("SP_AddHLavoro", parameters, "GeTime");
-			} catch(SqlException){
+                    new SqlParameter("@giorno",data.ToString("yyyy-MM-dd")),
+                    new SqlParameter("@idUtente",idUtente),
+                    new SqlParameter("@ore", ore),
+                    new SqlParameter("@TipoOre", (int)tipoOre)
+                    };
+                DB.ExecNonQProcedure("SP_Compila", parameters, "GeTime");
+            } catch (SqlException) {
                 throw new Exception("Errore server!");
-			} catch(Exception e){
-				throw e;
-			}
-		}
-		public Giorno VisualizzaGiorno(DateTime data, string idUtente){
-            try{
-                SqlParameter[] parameter = {
-					new SqlParameter("@Data", data.ToString("yyyy-MM-dd")),               
-					new SqlParameter("@IdUtente", idUtente)
-				};                
-                Giorno result = DB.ExecQProcedureReader("SP_VisualizzaGiorno", transf.TrasformInGiorno, parameter, "GeTime");
-                if(result!=null)
-                    result.Data=data;
-                return result;
-			} catch(SqlException){
-                throw new Exception("Errore server!");
-            } catch(Exception e){
+            } catch (Exception e) {
                 throw e;
-            } 
-		}
-		public List<Giorno> GiorniCommessa(int idCommessa,string idUtente){
-			try{
-				SqlParameter[] parameter = {
-					new SqlParameter("@idC", idCommessa),				
-					new SqlParameter("@idU",idUtente)
-				};
-				return DB.ExecQProcedureReader("SP_VisualizzaCommessa", transf.TrasformInGiorni,parameter,"GeTime");
-			}catch(SqlException){
-				throw new Exception("Errore server!");
-			}catch(Exception e){
-				throw e;
-			}
-		}
+            }
+        }
+        public void CompilaHLavoro(DateTime data, int ore, int idCommessa, string idUtente) {
+            try {
+                SqlParameter[] parameters = {
+                    new SqlParameter("@data",data.ToString("yyyy-MM-dd")),
+                    new SqlParameter("@ore", ore),
+                    new SqlParameter("@idCommessa",idCommessa),
+                    new SqlParameter("@idUtente", idUtente)
+                    };
+                DB.ExecNonQProcedure("SP_AddHLavoro", parameters, "GeTime");
+            } catch (SqlException) {
+                throw new Exception("Errore server!");
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        public Giorno VisualizzaGiorno(DateTime data, string idUtente) {
+            try {
+                SqlParameter[] parameter = {
+                    new SqlParameter("@Data", data.ToString("yyyy-MM-dd")),
+                    new SqlParameter("@IdUtente", idUtente)
+                };
+                Giorno result = DB.ExecQProcedureReader("SP_VisualizzaGiorno", transf.TrasformInGiorno, parameter, "GeTime");
+                if (result != null)
+                    result.Data = data;
+                return result;
+            } catch (SqlException) {
+                throw new Exception("Errore server!");
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        public List<Giorno> GiorniCommessa(int idCommessa, string idUtente) {
+            try {
+                SqlParameter[] parameter = {
+                    new SqlParameter("@idC", idCommessa),
+                    new SqlParameter("@idU",idUtente)
+                };
+                return DB.ExecQProcedureReader("SP_VisualizzaCommessa", transf.TrasformInGiorni, parameter, "GeTime");
+            } catch (SqlException) {
+                throw new Exception("Errore server!");
+            } catch (Exception e) {
+                throw e;
+            }
+        }
         public List<DTGiornoDMese> DettaglioMese(int anno, int mese, string idutente) {
             try {
                 SqlParameter[] param = { new SqlParameter("@anno", anno), new SqlParameter("@mese", mese), new SqlParameter("@idutente", idutente) };
@@ -201,7 +203,25 @@ namespace DAO{
                 throw e;
             }
         }
+        public Commessa CercaCommessa(string nomeCommessa) {
+            try {
+                SqlParameter[] param = { new SqlParameter("@nomeCommessa", nomeCommessa) };
+                return DB.ExecQProcedureReader("SP_CercaCommessa", transf.TrasformInCommessa, param, "GeTime");
+            } catch (SqlException) {
+                throw new Exception("Errore server!");
+            } catch (Exception e) {
+                throw e;
+            }
+        }
 
+    }
+    public class Profilo{ 
+        public string Matrincola{get;set;}
+        public string Nome{get;set;}
+        public string Cognome{get;set;}
+        public string Ruolo{get;set;}
+        public string Username{get;set;}
+        public string Password{get;set;}
     }
 
     public class Studente{ 
