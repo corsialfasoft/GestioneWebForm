@@ -7,18 +7,18 @@
 // </generato automaticamente>
 //------------------------------------------------------------------------------
 
-namespace GestioneWebForm {
+namespace GestioneWebForm.Controll {
     
     
-    public partial class _MyPage {
+    public partial class ListCurriculum {
         
         /// <summary>
-        /// Controllo Codice.
+        /// Controllo Curriculum.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Codice;
+        protected global::System.Web.UI.WebControls.Table Curriculum;
     }
 }

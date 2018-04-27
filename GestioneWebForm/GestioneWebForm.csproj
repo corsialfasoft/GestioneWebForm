@@ -127,7 +127,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
+    <Content Include="AddComp.aspx" />
+    <Content Include="AddPerStud.aspx" />
+    <Content Include="Controll\ListPerStud.ascx" />
+    <Content Include="Controll\ListCurriculum.ascx" />
+    <Content Include="DB.CV\DataBase\Creazione.sql" />
+    <Content Include="DB.CV\Popolamento\Test.sql" />
+    <Content Include="DB.CV\Procedure\GetMatrFromComp.sql" />
+    <Content Include="DB.CV\Procedure\GetMatrFromEspLav.sql" />
+    <Content Include="DB.CV\Procedure\GetMatrFromPerStud.sql" />
+    <Content Include="DB.CV\Procedure\GetPercorso.sql" />
+    <Content Include="DB.CV\Procedure\GetEsperienza.sql" />
+    <Content Include="DB.CV\Procedure\GetCompetenza.sql" />
+    <Content Include="DB.CV\Procedure\GetEspLav.sql" />
+    <Content Include="DB.CV\Procedure\GetPerStudi.sql" />
+    <Content Include="DB.CV\Procedure\GetComp.sql" />
+    <Content Include="DB.CV\Procedure\GetCV.sql" />
+    <Content Include="DB.CV\Procedure\CercaLingua.sql" />
+    <Content Include="DB.CV\Procedure\CercaParolaChiava.sql" />
+    <Content Include="DB.CV\Procedure\ModificaCV.sql" />
+    <Content Include="DB.CV\Procedure\ModComp.sql" />
+    <Content Include="DB.CV\Procedure\ModPerStud.sql" />
+    <Content Include="DB.CV\Procedure\ModEspLav.sql" />
+    <Content Include="DB.CV\Procedure\CercaMatricola.sql" />
+    <Content Include="DB.CV\Procedure\CercaCitta.sql" />
+    <Content Include="DB.CV\Procedure\CercaEta.sql" />
+    <Content Include="DB.CV\Procedure\ModificaCurriculum.sql" />
+    <Content Include="DB.CV\Procedure\CercaCognome.sql" />
+    <Content Include="DB.CV\Procedure\CercaEtaMinMax.sql" />
+    <Content Include="DB.CV\Procedure\DeleteCurriculum.sql" />
+    <Content Include="DB.CV\Procedure\AddCompetenze.sql" />
+    <Content Include="DB.CV\Procedure\AddEspLav.sql" />
+    <Content Include="DB.CV\Procedure\AddCvStudi.sql" />
+    <Content Include="DB.CV\Procedure\AddCv.sql" />
+    <Content Include="DB.CV\Procedure\procedure.sql" />
+    <Content Include="Comp.aspx" />
+    <Content Include="AddEspLav.aspx" />
+    <Content Include="EspLav.aspx" />
+    <Content Include="PerStud.aspx" />
+    <Content Include="ListCV.aspx" />
     <Content Include="Controls\ListaCorsi.ascx" />
     <Content Include="CercaCorsi.aspx" />
     <Content Include="Controls\ListaLezioni.ascx" />
@@ -143,13 +181,14 @@
     <Content Include="DB\CreazioneDBGeCo.sql" />
     <Content Include="DB\EliminaLezione.sql" />
     <Content Include="ModLezione.aspx" />
+    <Content Include="RicercaCurriculum.aspx" />
     <Content Include="MyPage.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="AggiungiCorso.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DettagliCv.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -197,13 +236,69 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="AddComp.aspx.cs">
+      <DependentUpon>AddComp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="AddComp.aspx.designer.cs">
+      <DependentUpon>AddComp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddPerStud.aspx.cs">
+      <DependentUpon>AddPerStud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddPerStud.aspx.designer.cs">
+      <DependentUpon>AddPerStud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controll\ListPerStud.ascx.cs">
+      <DependentUpon>ListPerStud.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controll\ListPerStud.ascx.designer.cs">
+      <DependentUpon>ListPerStud.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controll\ListCurriculum.ascx.cs">
+      <DependentUpon>ListCurriculum.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controll\ListCurriculum.ascx.designer.cs">
+      <DependentUpon>ListCurriculum.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comp.aspx.cs">
+      <DependentUpon>Comp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comp.aspx.designer.cs">
+      <DependentUpon>Comp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddEspLav.aspx.cs">
+      <DependentUpon>AddEspLav.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddEspLav.aspx.designer.cs">
+      <DependentUpon>AddEspLav.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EspLav.aspx.cs">
+      <DependentUpon>EspLav.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EspLav.aspx.designer.cs">
+      <DependentUpon>EspLav.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PerStud.aspx.cs">
+      <DependentUpon>PerStud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PerStud.aspx.designer.cs">
+      <DependentUpon>PerStud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListCV.aspx.cs">
+      <DependentUpon>ListCV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListCV.aspx.designer.cs">
+      <DependentUpon>ListCV.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controls\ListaCorsi.ascx.cs">
@@ -248,19 +343,19 @@
     <Compile Include="ModLezione.aspx.designer.cs">
       <DependentUpon>ModLezione.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RicercaCurriculum.aspx.cs">
+      <DependentUpon>RicercaCurriculum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RicercaCurriculum.aspx.designer.cs">
+      <DependentUpon>RicercaCurriculum.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MyPage.aspx.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MyPage.aspx.designer.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="AggiungiCorso.aspx.cs">
       <DependentUpon>AggiungiCorso.aspx</DependentUpon>
@@ -276,6 +371,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DettagliCv.aspx.cs">
+      <DependentUpon>DettagliCv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DettagliCv.aspx.designer.cs">
+      <DependentUpon>DettagliCv.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
