@@ -21,14 +21,11 @@
 <body>
     
     <div class="sidenav right">
-            <div class="nav  active"><div class="icon fa fa-home"></div><div class="description">Home</div></div>
-              <div class="nav"> <div class="glyphicon glyphicon-user  icon"> </div> <div class="description">Geco </div></div> 
-              <div class="nav"><div class="glyphicon glyphicon-file  icon"></div>  <div class="description">GeCv </div></div> 
-             <div class="nav"> <div  class="fa fa-clock-o white icon " aria-hidden="true" "></div> <div class="description">GeTime</div></div> 
-
-
-        
-        <div class="nav login  "><div class="glyphicon glyphicon-off  icon"></div>   <div class="description">Login</div>   </div> 
+             <div class="nav "><div class="icon"><img style="width:100%;" src="../Content/Image/alfaSoftSito.png"/></div><div class="description">Home</div></div>    
+             <div class="nav"> <div class="glyphicon glyphicon-user  icon"> </div> <div class="description">Geco </div></div> 
+             <div class="nav"><div class="glyphicon glyphicon-file  icon"></div>  <div class="description">GeCv </div></div> 
+             <div class="nav"> <div  class="fa fa-clock-o white icon " aria-hidden="true" "></div> <div class="description">GeTime</div></div>     
+        <div class="nav"><div class="glyphicon glyphicon-off  icon"></div>   <div class="description">Login</div>   </div> 
      </div>
            
 
