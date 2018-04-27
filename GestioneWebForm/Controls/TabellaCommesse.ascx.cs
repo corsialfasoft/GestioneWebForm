@@ -14,7 +14,7 @@ namespace GestioneWebForm {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
-        public void Update(object obj, EventArgs e) {
+        public void Update() {
             TableRow row = new TableRow();
             row.Cells.Add(CreateCellLebel("#", 2));
             row.Cells.Add(CreateCellLebel("Nome Commessa", 5));

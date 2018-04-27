@@ -32,7 +32,8 @@ namespace GestioneWebForm {
 
                     tr = new TableRow();
                     TableCell tdComm = new TableCell();
-                    List<Giorno> giorni = dao.GiorniCommessa(commessa.Id, "prova");
+                    //List<Giorno> giorni = dao.GiorniCommessa(commessa.Id, "prova");
+                    List<Giorno> giorni = dao.GiorniCommessa(commessa.Id, "EEEE");
                     foreach (Giorno banana in giorni) {
                         CreateCell(tdComm, $"{count}", 3);
                         CreateCell(tdComm, banana.Data.ToShortDateString(), 5);
@@ -64,7 +65,7 @@ namespace GestioneWebForm {
                 }
                 if(commesse.Count > 0) {
                     tableC.ListaCommesse = commesse;
-                    tableC.Update(sender, e);
+                    tableC.Update();
                 } else {
                     Message = "Commessa non trovata!";
                 }

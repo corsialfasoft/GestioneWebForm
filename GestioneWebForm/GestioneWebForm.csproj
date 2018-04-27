@@ -131,7 +131,6 @@
     <Content Include="SQL\DDLGeTime.sql" />
     <Content Include="SQL\SP_GeTime.sql" />
     <Content Include="SQL\SP_VisualizzaGiorno.sql" />
-
     <Content Include="VisualizzaMese.aspx" />
     <Content Include="Controls\TabellaCommesse.ascx" />
     <Content Include="VisualizzaGiorno.aspx" />

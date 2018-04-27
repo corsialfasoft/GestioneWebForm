@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Aggiungi un giorno" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGiorno.aspx.cs" Inherits="GestioneWebForm._AddGiorno" %>
-<%@ Register TagPrefix="TabCom" TagName="tabCom" Src="~/Controls/TabellaCommesse.ascx"  %> 
+<%--<%@ Register TagPrefix="TabCom" TagName="tabCom" Src="~/Controls/TabellaCommesse.ascx"  %> --%>
+<%@ Register TagName="ListCommessa" TagPrefix="TableC" Src="~/Controls/TabellaCommesse.ascx"%>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
     <h2><%: Title %></h2>
@@ -84,7 +85,8 @@
         <%=GeCoDataTime %>
     </div>
 <%}else{%> 
-   <asp:Table ID="TabellaGiorno" runat="server" width="100%" CellPadding="10" GridLines="None" HorizontalAlign="Center" CssClass="table"></asp:Table>
+    <TableC:ListCommessa VisualissaCommessa="true" AddGiorno="false" runat="server" ID="tableC"/>
+   <%--<asp:Table ID="TabellaGiorno" runat="server" width="100%" CellPadding="10" GridLines="None" HorizontalAlign="Center" CssClass="table"></asp:Table>--%>
 <%}%>
     
 </asp:Content>

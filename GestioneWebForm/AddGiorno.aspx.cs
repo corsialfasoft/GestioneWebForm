@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DAO;
+
 namespace GestioneWebForm {
     public partial class _AddGiorno : Page {
 		IDao dao = new DataAccesObject();
@@ -26,11 +27,11 @@ namespace GestioneWebForm {
             DateTime giornoV = oggi.SelectedDate;
             if(tipoOre.Text==""){
                 Message="Scegliere la tipologia delle ore";
-                Response.Redirect($"~/AddGiorno?Message={Message}");
+                //Response.Redirect($"~/AddGiorno?Message={Message}");
             }
             if (ore == null && tipoOre.Text != "Ore di ferie" || (int.TryParse(ore.Text,out oreM)&& oreM <= 0)) {
                 Message = "Inserire le ore";
-                Response.Redirect($"~/AddGiorno?Message={Message}");
+                //Response.Redirect($"~/AddGiorno?Message={Message}");
             }
             Giorno giorno = dao.VisualizzaGiorno(giornoV, matr);
 			try{
@@ -41,35 +42,38 @@ namespace GestioneWebForm {
                     if (giorno.HFerie > 0) {
                         Giorno = giorno;
                         Message = $"Il giorno {giorno.Data.ToString("yyyy-MM-dd")} eri in ferie";
-                       Response.Redirect($"~/AddGiorno?Message={Message}");
+                      /// Response.Redirect($"~/AddGiorno?Message={Message}");
                     }
                     oreL= giorno.TotOreLavorate;
                 }
 				if (tipoOre.Text == "Ore di lavoro"){
                     if(commesse.Text == ""){
                         Message="Inserire la commessa";
-                       Response.Redirect($"~/AddGiorno?Message={Message}");
+                      // Response.Redirect($"~/AddGiorno?Message={Message}");
                     }
                     if (oreT == oreL && oreT + oreM > 14) {
                         Giorno = giorno;
                         Message="Massimo ore lavorative raggiunte!";
-                        Response.Redirect($"~/AddGiorno?Message={Message}");
+                       // Response.Redirect($"~/AddGiorno?Message={Message}");
                     } else if (oreT != oreL && oreT + oreM > 8)
                         ErrorMessage(giornoV, giorno);
                     List<Commessa> commesseCs = dao.CercaCommesse(commesse.Text);
 					if (commesseCs.Count == 0){
 						Message ="Commessa non trovata";
-						Response.Redirect($"~/AddGiorno?Message={Message}");
+						//Response.Redirect($"~/AddGiorno?Message={Message}");
 					} else if(commesseCs.Count == 1){
                         if (commesseCs[0].OreLavorate+oreM>commesseCs[0].Capienza) {
                             Message = $"Capienza ore commessa superate!\nMassimo ore: {commesseCs[0].Capienza}";
-                            Response.Redirect($"~/AddGiorno?Message={Message}");
+                           // Response.Redirect($"~/AddGiorno?Message={Message}");
                         }
 						dao.CompilaHLavoro(giornoV,oreM, commesseCs[0].Id, matr);				
 					} else if(commesseCs.Count > 1) {
                         Session["stateGiorno"] = new StateGiorno { Data= giornoV, Ore=oreM };
+                        tableC.ListaCommesse = commesseCs;
+                        tableC.Update();
                         ListaCommesse = commesseCs;
-                        Response.Redirect($"~/AddGiorno?Message={Message}");
+                        Message = "Non so";
+                        //Response.Redirect($"~/AddGiorno?Message={Message}");
 					}
 				} else if (tipoOre.Text == "Ore di permesso"){
                     if (oreT + oreM > 8)
@@ -85,7 +89,7 @@ namespace GestioneWebForm {
                     dao.Compila(giornoV, 8, (HType)3, matr);
                 } else {
                     Message = $"Input Errato!";
-                    Response.Redirect($"~/AddGiorno?Message={Message}");
+                    //Response.Redirect($"~/AddGiorno?Message={Message}");
                 }
 				EsitoAddGiorno = ore + " " + tipoOre + " aggiunte!";
                 GeCoDataTime = giornoV;
